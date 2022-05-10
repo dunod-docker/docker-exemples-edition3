@@ -33,8 +33,7 @@ En procédant de la sorte nous garantissons un fonctionnement complètement homo
 ### 1.2- Installation de l'environnement Vagrant
 
 1. Créez un répertoire ```vm-vagrant-docker``` sur votre machine.
-2. Copiez les fichiers se trouvant dans le répertoire [vm-vagrant-docker](../../vm-vagrant-docker/) de ce dépôt GitHub.
-3. Créez dans ce répertoire un fichier ```init.sh``` contenant le code suivant:
+2. Créez dans ce répertoire un fichier ```init.sh``` contenant le code suivant:
 
 ```
 #!/bin/sh
@@ -44,7 +43,7 @@ sudo yum install -y dos2unix
 sudo yum install -y python2
 ```
 
-4. Créez dans ce même répertoire un second fichier ```Vagrantfile``` (veillez à respecter la casse) contenant le code suivant :
+3. Créez dans ce même répertoire un second fichier ```Vagrantfile``` (veillez à respecter la casse) contenant le code suivant :
 
 ```
 Vagrant.configure("2") do |config|
@@ -63,10 +62,10 @@ end
 > **ATTENTION** : Notez bien que seuls certains ports sont ouverts entre la machine virtuelle et votre hôte (8000, 8001, 8080, 8081, 8090). Ces ports seront utilisés dans le cadre des différents exercices du livre. Si vous rencontrez un problème pensez à vérifier que vous n'utilisez pas un port "bloqué". Vous trouverez quelques explications additionnelles [ici](#14--lien-entre-votre-poste-la-machine-virtuelle-et-docker).
 
 
-5. Ouvrez un terminal dans ce même répertoire.
+4. Ouvrez un terminal dans ce même répertoire.
 > Pour windows vous pouvez utiliser CMD, Powershell ou le Shell git. Nous vous recommandons aussi de considérer l'installation de [Windows terminal](https://docs.microsoft.com/fr-fr/windows/terminal/) qui améliore nettement le terminal par défaut de windows.
 
-6. Comme indiqué en page 65 du livre, lancez la commande suivante:
+5. Comme indiqué en page 65 du livre, lancez la commande suivante:
 
 ```
 vagrant up --provider virtualbox
@@ -86,7 +85,7 @@ L'installation devrait se terminer par la séquence suivante:
     default: Complete!
 ```
 
-7. Une fois l'installation terminée, connectez-vous dans la machine virtuelle ainsi créée:
+6. Une fois l'installation terminée, connectez-vous dans la machine virtuelle ainsi créée:
 
 ```
 vagrant ssh
@@ -98,7 +97,7 @@ Une fois connecté vous devriez voir l'invite de commande suivante:
 [vagrant@localhost ~]$
 ```
 
-8. Placez vous dans le répertoire ```/vagrant``` avec la commande suivante:
+7. Placez vous dans le répertoire ```/vagrant``` avec la commande suivante:
 
 ```
 cd /vagrant
