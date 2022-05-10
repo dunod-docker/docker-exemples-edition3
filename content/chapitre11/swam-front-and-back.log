@@ -1,0 +1,23 @@
+[vagrant@node-server ~]$ sudo docker network create -d overlay hello-overlay
+psvd8oosrtpabbtbxf6xakcta
+[vagrant@node-server ~]$ sudo docker service create --replicas=2 --name hello-front --network=hello-overlay --publish published=8080,target=5000 flask-app
+image flask-app:latest could not be accessed on a registry to record
+its digest. Each node will access flask-app:latest independently,
+possibly leading to different nodes running different
+versions of the image.
+
+5vcftwv1apx0lbrlmryv3nr0m
+overall progress: 2 out of 2 tasks
+1/2: running   [==================================================>]
+2/2: running   [==================================================>]
+verify: Service converged
+[vagrant@node-server ~]$ sudo docker service create --replicas=1 --name hello-back --network=hello-overlay flask-app
+image flask-app:latest could not be accessed on a registry to record
+its digest. Each node will access flask-app:latest independently,
+possibly leading to different nodes running different
+versions of the image.
+
+nu0kxbhja426f9nnpipimu4fc
+overall progress: 1 out of 1 tasks
+1/1: running   [==================================================>]
+verify: Service converged

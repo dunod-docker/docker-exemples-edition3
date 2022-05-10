@@ -1,0 +1,1509 @@
+[vagrant@localhost supervisor]$ ./build.sh
+********************************
+ Copie du code source du projet
+********************************
+***********************************
+ Build de l'image de build basique
+***********************************
+Sending build context to Docker daemon  122.4kB
+Step 1/5 : FROM openjdk:8-alpine
+8-alpine: Pulling from library/openjdk
+e7c96db7181b: Pull complete
+f910a506b6cb: Pull complete
+c2274a1a0e27: Pull complete
+Digest: sha256:94792824df2df33402f201713f932b58cb9de94a0cd524164a0f2283343547b3
+Status: Downloaded newer image for openjdk:8-alpine
+ ---> a3562aa0b991
+Step 2/5 : VOLUME /opt/output
+ ---> Running in cf694efb98fd
+Removing intermediate container cf694efb98fd
+ ---> 236e62f37688
+Step 3/5 : COPY front-end /front-end
+ ---> a11d463b0976
+Step 4/5 : RUN cd /front-end && chmod u+x gradlew && ./gradlew -v && ./gradlew --console=verbose clean build
+ ---> Running in 349fcd15a2f5
+Downloading https://services.gradle.org/distributions/gradle-7.3.2-bin.zip
+...........10%...........20%...........30%...........40%...........50%...........60%...........70%...........80%...........90%...........100%
+
+Welcome to Gradle 7.3.2!
+
+Here are the highlights of this release:
+ - Easily declare new test suites in Java projects
+ - Support for Java 17
+ - Support for Scala 3
+
+For more details see https://docs.gradle.org/7.3.2/release-notes.html
+
+
+------------------------------------------------------------
+Gradle 7.3.2
+------------------------------------------------------------
+
+Build time:   2021-12-15 11:22:31 UTC
+Revision:     26c186eb63b2b02e68d83b0dbc6ec69ab118653a
+
+Kotlin:       1.5.31
+Groovy:       3.0.9
+Ant:          Apache Ant(TM) version 1.10.11 compiled on July 10 2021
+JVM:          1.8.0_212 (IcedTea 25.212-b04)
+OS:           Linux 4.18.0-305.3.1.el8_4.x86_64 amd64
+
+Starting a Gradle Daemon (subsequent builds will be faster)
+> Task :clean UP-TO-DATE
+> Task :compileJava
+> Task :processResources
+> Task :classes
+> Task :bootJarMainClassName
+> Task :bootJar
+> Task :jar
+> Task :assemble
+> Task :compileTestJava NO-SOURCE
+> Task :processTestResources NO-SOURCE
+> Task :testClasses UP-TO-DATE
+> Task :test NO-SOURCE
+> Task :check UP-TO-DATE
+> Task :build
+
+BUILD SUCCESSFUL in 54s
+6 actionable tasks: 5 executed, 1 up-to-date
+Removing intermediate container 349fcd15a2f5
+ ---> 877c320d06d9
+Step 5/5 : ENTRYPOINT cd /front-end && ./gradlew --console=verbose clean build && cp build/libs/*.jar /opt/output
+ ---> Running in a1c8cf262457
+Removing intermediate container a1c8cf262457
+ ---> 34181d6f8a3f
+Successfully built 34181d6f8a3f
+Successfully tagged build-basique:latest
+********************************
+ Lancement du build
+********************************
+Starting a Gradle Daemon, 1 incompatible and 1 stopped Daemons could not be reused, use --status for details
+> Task :clean
+> Task :compileJava
+> Task :processResources
+> Task :classes
+> Task :bootJarMainClassName
+> Task :bootJar
+> Task :jar
+> Task :assemble
+> Task :compileTestJava NO-SOURCE
+> Task :processTestResources NO-SOURCE
+> Task :testClasses UP-TO-DATE
+> Task :test NO-SOURCE
+> Task :check UP-TO-DATE
+> Task :build
+
+BUILD SUCCESSFUL in 10s
+6 actionable tasks: 6 executed
+********************************
+ Nettoyage
+********************************
+Total reclaimed space: 0B
+Sending build context to Docker daemon  25.51MB
+Step 1/21 : FROM centos:7
+ ---> eeb6ee3f44bd
+Step 2/21 : RUN yum install -y epel-release &&     yum update -y &&     yum install -y mariadb-server                    java                    supervisor                    python36                    cronie                    && yum clean all
+ ---> Running in f7129e2584af
+Loaded plugins: fastestmirror, ovl
+Determining fastest mirrors
+ * base: pkg.adfinis.com
+ * extras: pkg.adfinis.com
+ * updates: pkg.adfinis.com
+Resolving Dependencies
+--> Running transaction check
+---> Package epel-release.noarch 0:7-11 will be installed
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+================================================================================
+ Package                Arch             Version         Repository        Size
+================================================================================
+Installing:
+ epel-release           noarch           7-11            extras            15 k
+
+Transaction Summary
+================================================================================
+Install  1 Package
+
+Total download size: 15 k
+Installed size: 24 k
+Downloading packages:
+warning: /var/cache/yum/x86_64/7/extras/packages/epel-release-7-11.noarch.rpm: Header V3 RSA/SHA256 Signature, key ID f4a80eb5: NOKEY
+Public key for epel-release-7-11.noarch.rpm is not installed
+Retrieving key from file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
+Importing GPG key 0xF4A80EB5:
+ Userid     : "CentOS-7 Key (CentOS 7 Official Signing Key) <security@centos.org>"
+ Fingerprint: 6341 ab27 53d7 8a78 a7c2 7bb1 24c6 a8a7 f4a8 0eb5
+ Package    : centos-release-7-9.2009.0.el7.centos.x86_64 (@CentOS)
+ From       : /etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Installing : epel-release-7-11.noarch                                     1/1
+  Verifying  : epel-release-7-11.noarch                                     1/1
+
+Installed:
+  epel-release.noarch 0:7-11
+
+Complete!
+Loaded plugins: fastestmirror, ovl
+Loading mirror speeds from cached hostfile
+ * base: pkg.adfinis.com
+ * epel: pkg.adfinis.com
+ * extras: pkg.adfinis.com
+ * updates: pkg.adfinis.com
+Resolving Dependencies
+--> Running transaction check
+---> Package bash.x86_64 0:4.2.46-34.el7 will be updated
+---> Package bash.x86_64 0:4.2.46-35.el7_9 will be an update
+---> Package bind-license.noarch 32:9.11.4-26.P2.el7 will be updated
+---> Package bind-license.noarch 32:9.11.4-26.P2.el7_9.9 will be an update
+---> Package binutils.x86_64 0:2.27-44.base.el7 will be updated
+---> Package binutils.x86_64 0:2.27-44.base.el7_9.1 will be an update
+---> Package ca-certificates.noarch 0:2020.2.41-70.0.el7_8 will be updated
+---> Package ca-certificates.noarch 0:2021.2.50-72.el7_9 will be an update
+---> Package centos-release.x86_64 0:7-9.2009.0.el7.centos will be updated
+---> Package centos-release.x86_64 0:7-9.2009.1.el7.centos will be an update
+---> Package coreutils.x86_64 0:8.22-24.el7 will be updated
+---> Package coreutils.x86_64 0:8.22-24.el7_9.2 will be an update
+---> Package curl.x86_64 0:7.29.0-59.el7 will be updated
+---> Package curl.x86_64 0:7.29.0-59.el7_9.1 will be an update
+---> Package cyrus-sasl-lib.x86_64 0:2.1.26-23.el7 will be updated
+---> Package cyrus-sasl-lib.x86_64 0:2.1.26-24.el7_9 will be an update
+---> Package device-mapper.x86_64 7:1.02.170-6.el7 will be updated
+---> Package device-mapper.x86_64 7:1.02.170-6.el7_9.5 will be an update
+---> Package device-mapper-libs.x86_64 7:1.02.170-6.el7 will be updated
+---> Package device-mapper-libs.x86_64 7:1.02.170-6.el7_9.5 will be an update
+---> Package epel-release.noarch 0:7-11 will be updated
+---> Package epel-release.noarch 0:7-14 will be an update
+---> Package expat.x86_64 0:2.1.0-12.el7 will be updated
+---> Package expat.x86_64 0:2.1.0-14.el7_9 will be an update
+---> Package glib2.x86_64 0:2.56.1-7.el7 will be updated
+---> Package glib2.x86_64 0:2.56.1-9.el7_9 will be an update
+---> Package glibc.x86_64 0:2.17-317.el7 will be updated
+---> Package glibc.x86_64 0:2.17-325.el7_9 will be an update
+---> Package glibc-common.x86_64 0:2.17-317.el7 will be updated
+---> Package glibc-common.x86_64 0:2.17-325.el7_9 will be an update
+---> Package kpartx.x86_64 0:0.4.9-133.el7 will be updated
+---> Package kpartx.x86_64 0:0.4.9-135.el7_9 will be an update
+---> Package krb5-libs.x86_64 0:1.15.1-50.el7 will be updated
+---> Package krb5-libs.x86_64 0:1.15.1-51.el7_9 will be an update
+---> Package libblkid.x86_64 0:2.23.2-65.el7 will be updated
+---> Package libblkid.x86_64 0:2.23.2-65.el7_9.1 will be an update
+---> Package libcurl.x86_64 0:7.29.0-59.el7 will be updated
+---> Package libcurl.x86_64 0:7.29.0-59.el7_9.1 will be an update
+---> Package libmount.x86_64 0:2.23.2-65.el7 will be updated
+---> Package libmount.x86_64 0:2.23.2-65.el7_9.1 will be an update
+---> Package libsmartcols.x86_64 0:2.23.2-65.el7 will be updated
+---> Package libsmartcols.x86_64 0:2.23.2-65.el7_9.1 will be an update
+---> Package libuuid.x86_64 0:2.23.2-65.el7 will be updated
+---> Package libuuid.x86_64 0:2.23.2-65.el7_9.1 will be an update
+---> Package libxml2.x86_64 0:2.9.1-6.el7.5 will be updated
+---> Package libxml2.x86_64 0:2.9.1-6.el7_9.6 will be an update
+---> Package libxml2-python.x86_64 0:2.9.1-6.el7.5 will be updated
+---> Package libxml2-python.x86_64 0:2.9.1-6.el7_9.6 will be an update
+---> Package nspr.x86_64 0:4.25.0-2.el7_9 will be updated
+---> Package nspr.x86_64 0:4.32.0-1.el7_9 will be an update
+---> Package nss.x86_64 0:3.53.1-3.el7_9 will be updated
+---> Package nss.x86_64 0:3.67.0-4.el7_9 will be an update
+---> Package nss-softokn.x86_64 0:3.53.1-6.el7_9 will be updated
+---> Package nss-softokn.x86_64 0:3.67.0-3.el7_9 will be an update
+---> Package nss-softokn-freebl.x86_64 0:3.53.1-6.el7_9 will be updated
+---> Package nss-softokn-freebl.x86_64 0:3.67.0-3.el7_9 will be an update
+---> Package nss-sysinit.x86_64 0:3.53.1-3.el7_9 will be updated
+---> Package nss-sysinit.x86_64 0:3.67.0-4.el7_9 will be an update
+---> Package nss-tools.x86_64 0:3.53.1-3.el7_9 will be updated
+---> Package nss-tools.x86_64 0:3.67.0-4.el7_9 will be an update
+---> Package nss-util.x86_64 0:3.53.1-1.el7_9 will be updated
+---> Package nss-util.x86_64 0:3.67.0-1.el7_9 will be an update
+---> Package openldap.x86_64 0:2.4.44-22.el7 will be updated
+---> Package openldap.x86_64 0:2.4.44-25.el7_9 will be an update
+---> Package openssl-libs.x86_64 1:1.0.2k-19.el7 will be updated
+---> Package openssl-libs.x86_64 1:1.0.2k-25.el7_9 will be an update
+---> Package python.x86_64 0:2.7.5-89.el7 will be updated
+---> Package python.x86_64 0:2.7.5-90.el7 will be an update
+---> Package python-libs.x86_64 0:2.7.5-89.el7 will be updated
+---> Package python-libs.x86_64 0:2.7.5-90.el7 will be an update
+---> Package rpm.x86_64 0:4.11.3-45.el7 will be updated
+---> Package rpm.x86_64 0:4.11.3-48.el7_9 will be an update
+---> Package rpm-build-libs.x86_64 0:4.11.3-45.el7 will be updated
+---> Package rpm-build-libs.x86_64 0:4.11.3-48.el7_9 will be an update
+---> Package rpm-libs.x86_64 0:4.11.3-45.el7 will be updated
+---> Package rpm-libs.x86_64 0:4.11.3-48.el7_9 will be an update
+---> Package rpm-python.x86_64 0:4.11.3-45.el7 will be updated
+---> Package rpm-python.x86_64 0:4.11.3-48.el7_9 will be an update
+---> Package systemd.x86_64 0:219-78.el7 will be updated
+---> Package systemd.x86_64 0:219-78.el7_9.5 will be an update
+---> Package systemd-libs.x86_64 0:219-78.el7 will be updated
+---> Package systemd-libs.x86_64 0:219-78.el7_9.5 will be an update
+---> Package tzdata.noarch 0:2020d-2.el7 will be updated
+---> Package tzdata.noarch 0:2022a-1.el7 will be an update
+---> Package util-linux.x86_64 0:2.23.2-65.el7 will be updated
+---> Package util-linux.x86_64 0:2.23.2-65.el7_9.1 will be an update
+---> Package vim-minimal.x86_64 2:7.4.629-7.el7 will be updated
+---> Package vim-minimal.x86_64 2:7.4.629-8.el7_9 will be an update
+---> Package zlib.x86_64 0:1.2.7-18.el7 will be updated
+---> Package zlib.x86_64 0:1.2.7-19.el7_9 will be an update
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+================================================================================
+ Package               Arch      Version                       Repository  Size
+================================================================================
+Updating:
+ bash                  x86_64    4.2.46-35.el7_9               updates    1.0 M
+ bind-license          noarch    32:9.11.4-26.P2.el7_9.9       updates     91 k
+ binutils              x86_64    2.27-44.base.el7_9.1          updates    5.9 M
+ ca-certificates       noarch    2021.2.50-72.el7_9            updates    379 k
+ centos-release        x86_64    7-9.2009.1.el7.centos         updates     27 k
+ coreutils             x86_64    8.22-24.el7_9.2               updates    3.3 M
+ curl                  x86_64    7.29.0-59.el7_9.1             updates    271 k
+ cyrus-sasl-lib        x86_64    2.1.26-24.el7_9               updates    156 k
+ device-mapper         x86_64    7:1.02.170-6.el7_9.5          updates    297 k
+ device-mapper-libs    x86_64    7:1.02.170-6.el7_9.5          updates    325 k
+ epel-release          noarch    7-14                          epel        15 k
+ expat                 x86_64    2.1.0-14.el7_9                updates     83 k
+ glib2                 x86_64    2.56.1-9.el7_9                updates    2.5 M
+ glibc                 x86_64    2.17-325.el7_9                updates    3.6 M
+ glibc-common          x86_64    2.17-325.el7_9                updates     12 M
+ kpartx                x86_64    0.4.9-135.el7_9               updates     81 k
+ krb5-libs             x86_64    1.15.1-51.el7_9               updates    809 k
+ libblkid              x86_64    2.23.2-65.el7_9.1             updates    183 k
+ libcurl               x86_64    7.29.0-59.el7_9.1             updates    223 k
+ libmount              x86_64    2.23.2-65.el7_9.1             updates    185 k
+ libsmartcols          x86_64    2.23.2-65.el7_9.1             updates    143 k
+ libuuid               x86_64    2.23.2-65.el7_9.1             updates     84 k
+ libxml2               x86_64    2.9.1-6.el7_9.6               updates    668 k
+ libxml2-python        x86_64    2.9.1-6.el7_9.6               updates    247 k
+ nspr                  x86_64    4.32.0-1.el7_9                updates    127 k
+ nss                   x86_64    3.67.0-4.el7_9                updates    882 k
+ nss-softokn           x86_64    3.67.0-3.el7_9                updates    358 k
+ nss-softokn-freebl    x86_64    3.67.0-3.el7_9                updates    337 k
+ nss-sysinit           x86_64    3.67.0-4.el7_9                updates     66 k
+ nss-tools             x86_64    3.67.0-4.el7_9                updates    549 k
+ nss-util              x86_64    3.67.0-1.el7_9                updates     79 k
+ openldap              x86_64    2.4.44-25.el7_9               updates    356 k
+ openssl-libs          x86_64    1:1.0.2k-25.el7_9             updates    1.2 M
+ python                x86_64    2.7.5-90.el7                  updates     96 k
+ python-libs           x86_64    2.7.5-90.el7                  updates    5.6 M
+ rpm                   x86_64    4.11.3-48.el7_9               updates    1.2 M
+ rpm-build-libs        x86_64    4.11.3-48.el7_9               updates    108 k
+ rpm-libs              x86_64    4.11.3-48.el7_9               updates    279 k
+ rpm-python            x86_64    4.11.3-48.el7_9               updates     84 k
+ systemd               x86_64    219-78.el7_9.5                updates    5.1 M
+ systemd-libs          x86_64    219-78.el7_9.5                updates    419 k
+ tzdata                noarch    2022a-1.el7                   updates    501 k
+ util-linux            x86_64    2.23.2-65.el7_9.1             updates    2.0 M
+ vim-minimal           x86_64    2:7.4.629-8.el7_9             updates    443 k
+ zlib                  x86_64    1.2.7-19.el7_9                updates     90 k
+
+Transaction Summary
+================================================================================
+Upgrade  45 Packages
+
+Total download size: 52 M
+Downloading packages:
+Delta RPMs disabled because /usr/bin/applydeltarpm not installed.
+warning: /var/cache/yum/x86_64/7/epel/packages/epel-release-7-14.noarch.rpm: Header V4 RSA/SHA256 Signature, key ID 352c64e5: NOKEY
+Public key for epel-release-7-14.noarch.rpm is not installed
+--------------------------------------------------------------------------------
+Total                                               19 MB/s |  52 MB  00:02
+Retrieving key from file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7
+Importing GPG key 0x352C64E5:
+ Userid     : "Fedora EPEL (7) <epel@fedoraproject.org>"
+ Fingerprint: 91e9 7d7c 4a5e 96f1 7f3e 888f 6a2f aea2 352c 64e5
+ Package    : epel-release-7-11.noarch (@extras)
+ From       : /etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Updating   : centos-release-7-9.2009.1.el7.centos.x86_64                 1/90
+  Updating   : tzdata-2022a-1.el7.noarch                                   2/90
+  Updating   : bash-4.2.46-35.el7_9.x86_64                                 3/90
+  Updating   : nss-softokn-freebl-3.67.0-3.el7_9.x86_64                    4/90
+  Updating   : glibc-common-2.17-325.el7_9.x86_64                          5/90
+  Updating   : glibc-2.17-325.el7_9.x86_64                                 6/90
+  Updating   : nspr-4.32.0-1.el7_9.x86_64                                  7/90
+  Updating   : nss-util-3.67.0-1.el7_9.x86_64                              8/90
+  Updating   : zlib-1.2.7-19.el7_9.x86_64                                  9/90
+  Updating   : libuuid-2.23.2-65.el7_9.1.x86_64                           10/90
+  Updating   : systemd-libs-219-78.el7_9.5.x86_64                         11/90
+  Updating   : nss-softokn-3.67.0-3.el7_9.x86_64                          12/90
+  Updating   : libxml2-2.9.1-6.el7_9.6.x86_64                             13/90
+  Updating   : libsmartcols-2.23.2-65.el7_9.1.x86_64                      14/90
+  Updating   : expat-2.1.0-14.el7_9.x86_64                                15/90
+  Updating   : ca-certificates-2021.2.50-72.el7_9.noarch                  16/90
+  Updating   : coreutils-8.22-24.el7_9.2.x86_64                           17/90
+  Updating   : 1:openssl-libs-1.0.2k-25.el7_9.x86_64                      18/90
+  Updating   : krb5-libs-1.15.1-51.el7_9.x86_64                           19/90
+  Updating   : python-libs-2.7.5-90.el7.x86_64                            20/90
+  Updating   : libblkid-2.23.2-65.el7_9.1.x86_64                          21/90
+  Updating   : libmount-2.23.2-65.el7_9.1.x86_64                          22/90
+  Updating   : python-2.7.5-90.el7.x86_64                                 23/90
+  Updating   : util-linux-2.23.2-65.el7_9.1.x86_64                        24/90
+  Updating   : cyrus-sasl-lib-2.1.26-24.el7_9.x86_64                      25/90
+  Updating   : nss-3.67.0-4.el7_9.x86_64                                  26/90
+  Updating   : nss-sysinit-3.67.0-4.el7_9.x86_64                          27/90
+  Updating   : nss-tools-3.67.0-4.el7_9.x86_64                            28/90
+  Updating   : libcurl-7.29.0-59.el7_9.1.x86_64                           29/90
+  Updating   : curl-7.29.0-59.el7_9.1.x86_64                              30/90
+  Updating   : rpm-libs-4.11.3-48.el7_9.x86_64                            31/90
+  Updating   : rpm-4.11.3-48.el7_9.x86_64                                 32/90
+  Updating   : openldap-2.4.44-25.el7_9.x86_64                            33/90
+  Updating   : rpm-build-libs-4.11.3-48.el7_9.x86_64                      34/90
+  Updating   : systemd-219-78.el7_9.5.x86_64                              35/90
+Failed to get D-Bus connection: Operation not permitted
+  Updating   : 7:device-mapper-libs-1.02.170-6.el7_9.5.x86_64             36/90
+  Updating   : 7:device-mapper-1.02.170-6.el7_9.5.x86_64                  37/90
+  Updating   : kpartx-0.4.9-135.el7_9.x86_64                              38/90
+  Updating   : rpm-python-4.11.3-48.el7_9.x86_64                          39/90
+  Updating   : libxml2-python-2.9.1-6.el7_9.6.x86_64                      40/90
+  Updating   : glib2-2.56.1-9.el7_9.x86_64                                41/90
+  Updating   : binutils-2.27-44.base.el7_9.1.x86_64                       42/90
+install-info: No such file or directory for /usr/share/info/as.info.gz
+install-info: No such file or directory for /usr/share/info/binutils.info.gz
+install-info: No such file or directory for /usr/share/info/gprof.info.gz
+install-info: No such file or directory for /usr/share/info/ld.info.gz
+install-info: No such file or directory for /usr/share/info/standards.info.gz
+  Updating   : 2:vim-minimal-7.4.629-8.el7_9.x86_64                       43/90
+  Updating   : epel-release-7-14.noarch                                   44/90
+  Updating   : 32:bind-license-9.11.4-26.P2.el7_9.9.noarch                45/90
+  Cleanup    : rpm-python-4.11.3-45.el7.x86_64                            46/90
+  Cleanup    : libxml2-python-2.9.1-6.el7.5.x86_64                        47/90
+  Cleanup    : rpm-build-libs-4.11.3-45.el7.x86_64                        48/90
+  Cleanup    : glib2-2.56.1-7.el7.x86_64                                  49/90
+  Cleanup    : python-2.7.5-89.el7.x86_64                                 50/90
+  Cleanup    : python-libs-2.7.5-89.el7.x86_64                            51/90
+  Cleanup    : binutils-2.27-44.base.el7.x86_64                           52/90
+  Cleanup    : libxml2-2.9.1-6.el7.5.x86_64                               53/90
+  Cleanup    : kpartx-0.4.9-133.el7.x86_64                                54/90
+  Cleanup    : epel-release-7-11.noarch                                   55/90
+  Cleanup    : 7:device-mapper-libs-1.02.170-6.el7.x86_64                 56/90
+  Cleanup    : 7:device-mapper-1.02.170-6.el7.x86_64                      57/90
+  Cleanup    : systemd-219-78.el7.x86_64                                  58/90
+  Cleanup    : util-linux-2.23.2-65.el7.x86_64                            59/90
+  Cleanup    : curl-7.29.0-59.el7.x86_64                                  60/90
+  Cleanup    : libcurl-7.29.0-59.el7.x86_64                               61/90
+  Cleanup    : openldap-2.4.44-22.el7.x86_64                              62/90
+  Cleanup    : rpm-libs-4.11.3-45.el7.x86_64                              63/90
+  Cleanup    : rpm-4.11.3-45.el7.x86_64                                   64/90
+  Cleanup    : nss-tools-3.53.1-3.el7_9.x86_64                            65/90
+  Cleanup    : nss-sysinit-3.53.1-3.el7_9.x86_64                          66/90
+  Cleanup    : nss-3.53.1-3.el7_9.x86_64                                  67/90
+  Cleanup    : nss-softokn-3.53.1-6.el7_9.x86_64                          68/90
+  Cleanup    : libmount-2.23.2-65.el7.x86_64                              69/90
+  Cleanup    : libblkid-2.23.2-65.el7.x86_64                              70/90
+  Cleanup    : cyrus-sasl-lib-2.1.26-23.el7.x86_64                        71/90
+  Cleanup    : krb5-libs-1.15.1-50.el7.x86_64                             72/90
+  Cleanup    : coreutils-8.22-24.el7.x86_64                               73/90
+  Cleanup    : 1:openssl-libs-1.0.2k-19.el7.x86_64                        74/90
+  Cleanup    : ca-certificates-2020.2.41-70.0.el7_8.noarch                75/90
+  Cleanup    : zlib-1.2.7-18.el7.x86_64                                   76/90
+  Cleanup    : libuuid-2.23.2-65.el7.x86_64                               77/90
+  Cleanup    : libsmartcols-2.23.2-65.el7.x86_64                          78/90
+  Cleanup    : systemd-libs-219-78.el7.x86_64                             79/90
+  Cleanup    : expat-2.1.0-12.el7.x86_64                                  80/90
+  Cleanup    : 2:vim-minimal-7.4.629-7.el7.x86_64                         81/90
+  Cleanup    : centos-release-7-9.2009.0.el7.centos.x86_64                82/90
+  Cleanup    : 32:bind-license-9.11.4-26.P2.el7.noarch                    83/90
+  Cleanup    : glibc-common-2.17-317.el7.x86_64                           84/90
+  Cleanup    : bash-4.2.46-34.el7.x86_64                                  85/90
+  Cleanup    : nspr-4.25.0-2.el7_9.x86_64                                 86/90
+  Cleanup    : nss-util-3.53.1-1.el7_9.x86_64                             87/90
+  Cleanup    : nss-softokn-freebl-3.53.1-6.el7_9.x86_64                   88/90
+  Cleanup    : glibc-2.17-317.el7.x86_64                                  89/90
+  Cleanup    : tzdata-2020d-2.el7.noarch                                  90/90
+  Verifying  : libblkid-2.23.2-65.el7_9.1.x86_64                           1/90
+  Verifying  : krb5-libs-1.15.1-51.el7_9.x86_64                            2/90
+  Verifying  : centos-release-7-9.2009.1.el7.centos.x86_64                 3/90
+  Verifying  : libsmartcols-2.23.2-65.el7_9.1.x86_64                       4/90
+  Verifying  : util-linux-2.23.2-65.el7_9.1.x86_64                         5/90
+  Verifying  : nss-3.67.0-4.el7_9.x86_64                                   6/90
+  Verifying  : libcurl-7.29.0-59.el7_9.1.x86_64                            7/90
+  Verifying  : tzdata-2022a-1.el7.noarch                                   8/90
+  Verifying  : openldap-2.4.44-25.el7_9.x86_64                             9/90
+  Verifying  : python-libs-2.7.5-90.el7.x86_64                            10/90
+  Verifying  : libxml2-python-2.9.1-6.el7_9.6.x86_64                      11/90
+  Verifying  : nss-util-3.67.0-1.el7_9.x86_64                             12/90
+  Verifying  : 7:device-mapper-1.02.170-6.el7_9.5.x86_64                  13/90
+  Verifying  : libxml2-2.9.1-6.el7_9.6.x86_64                             14/90
+  Verifying  : kpartx-0.4.9-135.el7_9.x86_64                              15/90
+  Verifying  : libmount-2.23.2-65.el7_9.1.x86_64                          16/90
+  Verifying  : nss-softokn-freebl-3.67.0-3.el7_9.x86_64                   17/90
+  Verifying  : glibc-common-2.17-325.el7_9.x86_64                         18/90
+  Verifying  : binutils-2.27-44.base.el7_9.1.x86_64                       19/90
+  Verifying  : bash-4.2.46-35.el7_9.x86_64                                20/90
+  Verifying  : curl-7.29.0-59.el7_9.1.x86_64                              21/90
+  Verifying  : 2:vim-minimal-7.4.629-8.el7_9.x86_64                       22/90
+  Verifying  : nss-softokn-3.67.0-3.el7_9.x86_64                          23/90
+  Verifying  : 32:bind-license-9.11.4-26.P2.el7_9.9.noarch                24/90
+  Verifying  : cyrus-sasl-lib-2.1.26-24.el7_9.x86_64                      25/90
+  Verifying  : epel-release-7-14.noarch                                   26/90
+  Verifying  : zlib-1.2.7-19.el7_9.x86_64                                 27/90
+  Verifying  : python-2.7.5-90.el7.x86_64                                 28/90
+  Verifying  : expat-2.1.0-14.el7_9.x86_64                                29/90
+  Verifying  : 7:device-mapper-libs-1.02.170-6.el7_9.5.x86_64             30/90
+  Verifying  : ca-certificates-2021.2.50-72.el7_9.noarch                  31/90
+  Verifying  : coreutils-8.22-24.el7_9.2.x86_64                           32/90
+  Verifying  : rpm-libs-4.11.3-48.el7_9.x86_64                            33/90
+  Verifying  : nss-tools-3.67.0-4.el7_9.x86_64                            34/90
+  Verifying  : glibc-2.17-325.el7_9.x86_64                                35/90
+  Verifying  : libuuid-2.23.2-65.el7_9.1.x86_64                           36/90
+  Verifying  : rpm-4.11.3-48.el7_9.x86_64                                 37/90
+  Verifying  : glib2-2.56.1-9.el7_9.x86_64                                38/90
+  Verifying  : 1:openssl-libs-1.0.2k-25.el7_9.x86_64                      39/90
+  Verifying  : nspr-4.32.0-1.el7_9.x86_64                                 40/90
+  Verifying  : rpm-python-4.11.3-48.el7_9.x86_64                          41/90
+  Verifying  : nss-sysinit-3.67.0-4.el7_9.x86_64                          42/90
+  Verifying  : systemd-libs-219-78.el7_9.5.x86_64                         43/90
+  Verifying  : systemd-219-78.el7_9.5.x86_64                              44/90
+  Verifying  : rpm-build-libs-4.11.3-48.el7_9.x86_64                      45/90
+  Verifying  : rpm-4.11.3-45.el7.x86_64                                   46/90
+  Verifying  : nss-tools-3.53.1-3.el7_9.x86_64                            47/90
+  Verifying  : glibc-common-2.17-317.el7.x86_64                           48/90
+  Verifying  : ca-certificates-2020.2.41-70.0.el7_8.noarch                49/90
+  Verifying  : nss-softokn-3.53.1-6.el7_9.x86_64                          50/90
+  Verifying  : nss-util-3.53.1-1.el7_9.x86_64                             51/90
+  Verifying  : glib2-2.56.1-7.el7.x86_64                                  52/90
+  Verifying  : epel-release-7-11.noarch                                   53/90
+  Verifying  : nspr-4.25.0-2.el7_9.x86_64                                 54/90
+  Verifying  : systemd-219-78.el7.x86_64                                  55/90
+  Verifying  : 7:device-mapper-1.02.170-6.el7.x86_64                      56/90
+  Verifying  : libblkid-2.23.2-65.el7.x86_64                              57/90
+  Verifying  : rpm-libs-4.11.3-45.el7.x86_64                              58/90
+  Verifying  : 1:openssl-libs-1.0.2k-19.el7.x86_64                        59/90
+  Verifying  : libxml2-python-2.9.1-6.el7.5.x86_64                        60/90
+  Verifying  : libuuid-2.23.2-65.el7.x86_64                               61/90
+  Verifying  : 2:vim-minimal-7.4.629-7.el7.x86_64                         62/90
+  Verifying  : coreutils-8.22-24.el7.x86_64                               63/90
+  Verifying  : nss-sysinit-3.53.1-3.el7_9.x86_64                          64/90
+  Verifying  : nss-softokn-freebl-3.53.1-6.el7_9.x86_64                   65/90
+  Verifying  : rpm-python-4.11.3-45.el7.x86_64                            66/90
+  Verifying  : libcurl-7.29.0-59.el7.x86_64                               67/90
+  Verifying  : curl-7.29.0-59.el7.x86_64                                  68/90
+  Verifying  : bash-4.2.46-34.el7.x86_64                                  69/90
+  Verifying  : rpm-build-libs-4.11.3-45.el7.x86_64                        70/90
+  Verifying  : binutils-2.27-44.base.el7.x86_64                           71/90
+  Verifying  : nss-3.53.1-3.el7_9.x86_64                                  72/90
+  Verifying  : zlib-1.2.7-18.el7.x86_64                                   73/90
+  Verifying  : libxml2-2.9.1-6.el7.5.x86_64                               74/90
+  Verifying  : centos-release-7-9.2009.0.el7.centos.x86_64                75/90
+  Verifying  : systemd-libs-219-78.el7.x86_64                             76/90
+  Verifying  : openldap-2.4.44-22.el7.x86_64                              77/90
+  Verifying  : 7:device-mapper-libs-1.02.170-6.el7.x86_64                 78/90
+  Verifying  : util-linux-2.23.2-65.el7.x86_64                            79/90
+  Verifying  : python-2.7.5-89.el7.x86_64                                 80/90
+  Verifying  : tzdata-2020d-2.el7.noarch                                  81/90
+  Verifying  : expat-2.1.0-12.el7.x86_64                                  82/90
+  Verifying  : glibc-2.17-317.el7.x86_64                                  83/90
+  Verifying  : krb5-libs-1.15.1-50.el7.x86_64                             84/90
+  Verifying  : kpartx-0.4.9-133.el7.x86_64                                85/90
+  Verifying  : 32:bind-license-9.11.4-26.P2.el7.noarch                    86/90
+  Verifying  : python-libs-2.7.5-89.el7.x86_64                            87/90
+  Verifying  : libsmartcols-2.23.2-65.el7.x86_64                          88/90
+  Verifying  : cyrus-sasl-lib-2.1.26-23.el7.x86_64                        89/90
+  Verifying  : libmount-2.23.2-65.el7.x86_64                              90/90
+
+Updated:
+  bash.x86_64 0:4.2.46-35.el7_9
+  bind-license.noarch 32:9.11.4-26.P2.el7_9.9
+  binutils.x86_64 0:2.27-44.base.el7_9.1
+  ca-certificates.noarch 0:2021.2.50-72.el7_9
+  centos-release.x86_64 0:7-9.2009.1.el7.centos
+  coreutils.x86_64 0:8.22-24.el7_9.2
+  curl.x86_64 0:7.29.0-59.el7_9.1
+  cyrus-sasl-lib.x86_64 0:2.1.26-24.el7_9
+  device-mapper.x86_64 7:1.02.170-6.el7_9.5
+  device-mapper-libs.x86_64 7:1.02.170-6.el7_9.5
+  epel-release.noarch 0:7-14
+  expat.x86_64 0:2.1.0-14.el7_9
+  glib2.x86_64 0:2.56.1-9.el7_9
+  glibc.x86_64 0:2.17-325.el7_9
+  glibc-common.x86_64 0:2.17-325.el7_9
+  kpartx.x86_64 0:0.4.9-135.el7_9
+  krb5-libs.x86_64 0:1.15.1-51.el7_9
+  libblkid.x86_64 0:2.23.2-65.el7_9.1
+  libcurl.x86_64 0:7.29.0-59.el7_9.1
+  libmount.x86_64 0:2.23.2-65.el7_9.1
+  libsmartcols.x86_64 0:2.23.2-65.el7_9.1
+  libuuid.x86_64 0:2.23.2-65.el7_9.1
+  libxml2.x86_64 0:2.9.1-6.el7_9.6
+  libxml2-python.x86_64 0:2.9.1-6.el7_9.6
+  nspr.x86_64 0:4.32.0-1.el7_9
+  nss.x86_64 0:3.67.0-4.el7_9
+  nss-softokn.x86_64 0:3.67.0-3.el7_9
+  nss-softokn-freebl.x86_64 0:3.67.0-3.el7_9
+  nss-sysinit.x86_64 0:3.67.0-4.el7_9
+  nss-tools.x86_64 0:3.67.0-4.el7_9
+  nss-util.x86_64 0:3.67.0-1.el7_9
+  openldap.x86_64 0:2.4.44-25.el7_9
+  openssl-libs.x86_64 1:1.0.2k-25.el7_9
+  python.x86_64 0:2.7.5-90.el7
+  python-libs.x86_64 0:2.7.5-90.el7
+  rpm.x86_64 0:4.11.3-48.el7_9
+  rpm-build-libs.x86_64 0:4.11.3-48.el7_9
+  rpm-libs.x86_64 0:4.11.3-48.el7_9
+  rpm-python.x86_64 0:4.11.3-48.el7_9
+  systemd.x86_64 0:219-78.el7_9.5
+  systemd-libs.x86_64 0:219-78.el7_9.5
+  tzdata.noarch 0:2022a-1.el7
+  util-linux.x86_64 0:2.23.2-65.el7_9.1
+  vim-minimal.x86_64 2:7.4.629-8.el7_9
+  zlib.x86_64 0:1.2.7-19.el7_9
+
+Complete!
+Loaded plugins: fastestmirror, ovl
+Loading mirror speeds from cached hostfile
+ * base: pkg.adfinis.com
+ * epel: pkg.adfinis.com
+ * extras: pkg.adfinis.com
+ * updates: pkg.adfinis.com
+Resolving Dependencies
+--> Running transaction check
+---> Package cronie.x86_64 0:1.4.11-24.el7_9 will be installed
+--> Processing Dependency: dailyjobs for package: cronie-1.4.11-24.el7_9.x86_64
+---> Package java-1.8.0-openjdk.x86_64 1:1.8.0.322.b06-1.el7_9 will be installed
+--> Processing Dependency: java-1.8.0-openjdk-headless(x86-64) = 1:1.8.0.322.b06-1.el7_9 for package: 1:java-1.8.0-openjdk-1.8.0.322.b06-1.el7_9.x86_64
+--> Processing Dependency: xorg-x11-fonts-Type1 for package: 1:java-1.8.0-openjdk-1.8.0.322.b06-1.el7_9.x86_64
+--> Processing Dependency: libpng15.so.15(PNG15_0)(64bit) for package: 1:java-1.8.0-openjdk-1.8.0.322.b06-1.el7_9.x86_64
+--> Processing Dependency: libjvm.so(SUNWprivate_1.1)(64bit) for package: 1:java-1.8.0-openjdk-1.8.0.322.b06-1.el7_9.x86_64
+--> Processing Dependency: libjpeg.so.62(LIBJPEG_6.2)(64bit) for package: 1:java-1.8.0-openjdk-1.8.0.322.b06-1.el7_9.x86_64
+--> Processing Dependency: libjava.so(SUNWprivate_1.1)(64bit) for package: 1:java-1.8.0-openjdk-1.8.0.322.b06-1.el7_9.x86_64
+--> Processing Dependency: libasound.so.2(ALSA_0.9.0rc4)(64bit) for package: 1:java-1.8.0-openjdk-1.8.0.322.b06-1.el7_9.x86_64
+--> Processing Dependency: libasound.so.2(ALSA_0.9)(64bit) for package: 1:java-1.8.0-openjdk-1.8.0.322.b06-1.el7_9.x86_64
+--> Processing Dependency: libXcomposite(x86-64) for package: 1:java-1.8.0-openjdk-1.8.0.322.b06-1.el7_9.x86_64
+--> Processing Dependency: gtk2(x86-64) for package: 1:java-1.8.0-openjdk-1.8.0.322.b06-1.el7_9.x86_64
+--> Processing Dependency: fontconfig(x86-64) for package: 1:java-1.8.0-openjdk-1.8.0.322.b06-1.el7_9.x86_64
+--> Processing Dependency: libpng15.so.15()(64bit) for package: 1:java-1.8.0-openjdk-1.8.0.322.b06-1.el7_9.x86_64
+--> Processing Dependency: libjvm.so()(64bit) for package: 1:java-1.8.0-openjdk-1.8.0.322.b06-1.el7_9.x86_64
+--> Processing Dependency: libjpeg.so.62()(64bit) for package: 1:java-1.8.0-openjdk-1.8.0.322.b06-1.el7_9.x86_64
+--> Processing Dependency: libjava.so()(64bit) for package: 1:java-1.8.0-openjdk-1.8.0.322.b06-1.el7_9.x86_64
+--> Processing Dependency: libgif.so.4()(64bit) for package: 1:java-1.8.0-openjdk-1.8.0.322.b06-1.el7_9.x86_64
+--> Processing Dependency: libasound.so.2()(64bit) for package: 1:java-1.8.0-openjdk-1.8.0.322.b06-1.el7_9.x86_64
+--> Processing Dependency: libXtst.so.6()(64bit) for package: 1:java-1.8.0-openjdk-1.8.0.322.b06-1.el7_9.x86_64
+--> Processing Dependency: libXrender.so.1()(64bit) for package: 1:java-1.8.0-openjdk-1.8.0.322.b06-1.el7_9.x86_64
+--> Processing Dependency: libXi.so.6()(64bit) for package: 1:java-1.8.0-openjdk-1.8.0.322.b06-1.el7_9.x86_64
+--> Processing Dependency: libXext.so.6()(64bit) for package: 1:java-1.8.0-openjdk-1.8.0.322.b06-1.el7_9.x86_64
+--> Processing Dependency: libX11.so.6()(64bit) for package: 1:java-1.8.0-openjdk-1.8.0.322.b06-1.el7_9.x86_64
+---> Package mariadb-server.x86_64 1:5.5.68-1.el7 will be installed
+--> Processing Dependency: mariadb-libs(x86-64) = 1:5.5.68-1.el7 for package: 1:mariadb-server-5.5.68-1.el7.x86_64
+--> Processing Dependency: mariadb(x86-64) = 1:5.5.68-1.el7 for package: 1:mariadb-server-5.5.68-1.el7.x86_64
+--> Processing Dependency: perl-DBI for package: 1:mariadb-server-5.5.68-1.el7.x86_64
+--> Processing Dependency: perl-DBD-MySQL for package: 1:mariadb-server-5.5.68-1.el7.x86_64
+--> Processing Dependency: perl(vars) for package: 1:mariadb-server-5.5.68-1.el7.x86_64
+--> Processing Dependency: perl(strict) for package: 1:mariadb-server-5.5.68-1.el7.x86_64
+--> Processing Dependency: perl(Sys::Hostname) for package: 1:mariadb-server-5.5.68-1.el7.x86_64
+--> Processing Dependency: perl(POSIX) for package: 1:mariadb-server-5.5.68-1.el7.x86_64
+--> Processing Dependency: perl(Getopt::Long) for package: 1:mariadb-server-5.5.68-1.el7.x86_64
+--> Processing Dependency: perl(File::Temp) for package: 1:mariadb-server-5.5.68-1.el7.x86_64
+--> Processing Dependency: perl(File::Path) for package: 1:mariadb-server-5.5.68-1.el7.x86_64
+--> Processing Dependency: perl(File::Copy) for package: 1:mariadb-server-5.5.68-1.el7.x86_64
+--> Processing Dependency: perl(File::Basename) for package: 1:mariadb-server-5.5.68-1.el7.x86_64
+--> Processing Dependency: perl(Data::Dumper) for package: 1:mariadb-server-5.5.68-1.el7.x86_64
+--> Processing Dependency: perl(DBI) for package: 1:mariadb-server-5.5.68-1.el7.x86_64
+--> Processing Dependency: libaio.so.1(LIBAIO_0.4)(64bit) for package: 1:mariadb-server-5.5.68-1.el7.x86_64
+--> Processing Dependency: libaio.so.1(LIBAIO_0.1)(64bit) for package: 1:mariadb-server-5.5.68-1.el7.x86_64
+--> Processing Dependency: /usr/bin/perl for package: 1:mariadb-server-5.5.68-1.el7.x86_64
+--> Processing Dependency: libaio.so.1()(64bit) for package: 1:mariadb-server-5.5.68-1.el7.x86_64
+---> Package python3.x86_64 0:3.6.8-18.el7 will be installed
+--> Processing Dependency: python3-libs(x86-64) = 3.6.8-18.el7 for package: python3-3.6.8-18.el7.x86_64
+--> Processing Dependency: python3-setuptools for package: python3-3.6.8-18.el7.x86_64
+--> Processing Dependency: python3-pip for package: python3-3.6.8-18.el7.x86_64
+--> Processing Dependency: libpython3.6m.so.1.0()(64bit) for package: python3-3.6.8-18.el7.x86_64
+---> Package supervisor.noarch 0:3.4.0-1.el7 will be installed
+--> Processing Dependency: python-meld3 >= 0.6.5 for package: supervisor-3.4.0-1.el7.noarch
+--> Processing Dependency: python-setuptools for package: supervisor-3.4.0-1.el7.noarch
+--> Running transaction check
+---> Package alsa-lib.x86_64 0:1.1.8-1.el7 will be installed
+---> Package cronie-anacron.x86_64 0:1.4.11-24.el7_9 will be installed
+--> Processing Dependency: crontabs for package: cronie-anacron-1.4.11-24.el7_9.x86_64
+---> Package fontconfig.x86_64 0:2.13.0-4.3.el7 will be installed
+--> Processing Dependency: freetype >= 2.8-7 for package: fontconfig-2.13.0-4.3.el7.x86_64
+--> Processing Dependency: freetype for package: fontconfig-2.13.0-4.3.el7.x86_64
+--> Processing Dependency: fontpackages-filesystem for package: fontconfig-2.13.0-4.3.el7.x86_64
+--> Processing Dependency: dejavu-sans-fonts for package: fontconfig-2.13.0-4.3.el7.x86_64
+--> Processing Dependency: libfreetype.so.6()(64bit) for package: fontconfig-2.13.0-4.3.el7.x86_64
+---> Package giflib.x86_64 0:4.1.6-9.el7 will be installed
+--> Processing Dependency: libSM.so.6()(64bit) for package: giflib-4.1.6-9.el7.x86_64
+--> Processing Dependency: libICE.so.6()(64bit) for package: giflib-4.1.6-9.el7.x86_64
+---> Package gtk2.x86_64 0:2.24.31-1.el7 will be installed
+--> Processing Dependency: pango >= 1.20.0-1 for package: gtk2-2.24.31-1.el7.x86_64
+--> Processing Dependency: libtiff >= 3.6.1 for package: gtk2-2.24.31-1.el7.x86_64
+--> Processing Dependency: libXrandr >= 1.2.99.4-2 for package: gtk2-2.24.31-1.el7.x86_64
+--> Processing Dependency: atk >= 1.29.4-2 for package: gtk2-2.24.31-1.el7.x86_64
+--> Processing Dependency: hicolor-icon-theme for package: gtk2-2.24.31-1.el7.x86_64
+--> Processing Dependency: gtk-update-icon-cache for package: gtk2-2.24.31-1.el7.x86_64
+--> Processing Dependency: libpangoft2-1.0.so.0()(64bit) for package: gtk2-2.24.31-1.el7.x86_64
+--> Processing Dependency: libpangocairo-1.0.so.0()(64bit) for package: gtk2-2.24.31-1.el7.x86_64
+--> Processing Dependency: libpango-1.0.so.0()(64bit) for package: gtk2-2.24.31-1.el7.x86_64
+--> Processing Dependency: libgdk_pixbuf-2.0.so.0()(64bit) for package: gtk2-2.24.31-1.el7.x86_64
+--> Processing Dependency: libcups.so.2()(64bit) for package: gtk2-2.24.31-1.el7.x86_64
+--> Processing Dependency: libcairo.so.2()(64bit) for package: gtk2-2.24.31-1.el7.x86_64
+--> Processing Dependency: libatk-1.0.so.0()(64bit) for package: gtk2-2.24.31-1.el7.x86_64
+--> Processing Dependency: libXrandr.so.2()(64bit) for package: gtk2-2.24.31-1.el7.x86_64
+--> Processing Dependency: libXinerama.so.1()(64bit) for package: gtk2-2.24.31-1.el7.x86_64
+--> Processing Dependency: libXfixes.so.3()(64bit) for package: gtk2-2.24.31-1.el7.x86_64
+--> Processing Dependency: libXdamage.so.1()(64bit) for package: gtk2-2.24.31-1.el7.x86_64
+--> Processing Dependency: libXcursor.so.1()(64bit) for package: gtk2-2.24.31-1.el7.x86_64
+---> Package java-1.8.0-openjdk-headless.x86_64 1:1.8.0.322.b06-1.el7_9 will be installed
+--> Processing Dependency: tzdata-java >= 2021e for package: 1:java-1.8.0-openjdk-headless-1.8.0.322.b06-1.el7_9.x86_64
+--> Processing Dependency: copy-jdk-configs >= 3.3 for package: 1:java-1.8.0-openjdk-headless-1.8.0.322.b06-1.el7_9.x86_64
+--> Processing Dependency: pcsc-lite-libs(x86-64) for package: 1:java-1.8.0-openjdk-headless-1.8.0.322.b06-1.el7_9.x86_64
+--> Processing Dependency: lksctp-tools(x86-64) for package: 1:java-1.8.0-openjdk-headless-1.8.0.322.b06-1.el7_9.x86_64
+--> Processing Dependency: jpackage-utils for package: 1:java-1.8.0-openjdk-headless-1.8.0.322.b06-1.el7_9.x86_64
+---> Package libX11.x86_64 0:1.6.7-4.el7_9 will be installed
+--> Processing Dependency: libX11-common >= 1.6.7-4.el7_9 for package: libX11-1.6.7-4.el7_9.x86_64
+--> Processing Dependency: libxcb.so.1()(64bit) for package: libX11-1.6.7-4.el7_9.x86_64
+---> Package libXcomposite.x86_64 0:0.4.4-4.1.el7 will be installed
+---> Package libXext.x86_64 0:1.3.3-3.el7 will be installed
+---> Package libXi.x86_64 0:1.7.9-1.el7 will be installed
+---> Package libXrender.x86_64 0:0.9.10-1.el7 will be installed
+---> Package libXtst.x86_64 0:1.2.3-1.el7 will be installed
+---> Package libaio.x86_64 0:0.3.109-13.el7 will be installed
+---> Package libjpeg-turbo.x86_64 0:1.2.90-8.el7 will be installed
+---> Package libpng.x86_64 2:1.5.13-8.el7 will be installed
+---> Package mariadb.x86_64 1:5.5.68-1.el7 will be installed
+--> Processing Dependency: perl(Exporter) for package: 1:mariadb-5.5.68-1.el7.x86_64
+---> Package mariadb-libs.x86_64 1:5.5.68-1.el7 will be installed
+---> Package perl.x86_64 4:5.16.3-299.el7_9 will be installed
+--> Processing Dependency: perl-libs = 4:5.16.3-299.el7_9 for package: 4:perl-5.16.3-299.el7_9.x86_64
+--> Processing Dependency: perl(Socket) >= 1.3 for package: 4:perl-5.16.3-299.el7_9.x86_64
+--> Processing Dependency: perl(Scalar::Util) >= 1.10 for package: 4:perl-5.16.3-299.el7_9.x86_64
+--> Processing Dependency: perl-macros for package: 4:perl-5.16.3-299.el7_9.x86_64
+--> Processing Dependency: perl-libs for package: 4:perl-5.16.3-299.el7_9.x86_64
+--> Processing Dependency: perl(threads::shared) for package: 4:perl-5.16.3-299.el7_9.x86_64
+--> Processing Dependency: perl(threads) for package: 4:perl-5.16.3-299.el7_9.x86_64
+--> Processing Dependency: perl(constant) for package: 4:perl-5.16.3-299.el7_9.x86_64
+--> Processing Dependency: perl(Time::Local) for package: 4:perl-5.16.3-299.el7_9.x86_64
+--> Processing Dependency: perl(Time::HiRes) for package: 4:perl-5.16.3-299.el7_9.x86_64
+--> Processing Dependency: perl(Storable) for package: 4:perl-5.16.3-299.el7_9.x86_64
+--> Processing Dependency: perl(Socket) for package: 4:perl-5.16.3-299.el7_9.x86_64
+--> Processing Dependency: perl(Scalar::Util) for package: 4:perl-5.16.3-299.el7_9.x86_64
+--> Processing Dependency: perl(Pod::Simple::XHTML) for package: 4:perl-5.16.3-299.el7_9.x86_64
+--> Processing Dependency: perl(Pod::Simple::Search) for package: 4:perl-5.16.3-299.el7_9.x86_64
+--> Processing Dependency: perl(Filter::Util::Call) for package: 4:perl-5.16.3-299.el7_9.x86_64
+--> Processing Dependency: perl(File::Spec::Unix) for package: 4:perl-5.16.3-299.el7_9.x86_64
+--> Processing Dependency: perl(File::Spec::Functions) for package: 4:perl-5.16.3-299.el7_9.x86_64
+--> Processing Dependency: perl(File::Spec) for package: 4:perl-5.16.3-299.el7_9.x86_64
+--> Processing Dependency: perl(Cwd) for package: 4:perl-5.16.3-299.el7_9.x86_64
+--> Processing Dependency: perl(Carp) for package: 4:perl-5.16.3-299.el7_9.x86_64
+--> Processing Dependency: libperl.so()(64bit) for package: 4:perl-5.16.3-299.el7_9.x86_64
+---> Package perl-DBD-MySQL.x86_64 0:4.023-6.el7 will be installed
+---> Package perl-DBI.x86_64 0:1.627-4.el7 will be installed
+--> Processing Dependency: perl(RPC::PlServer) >= 0.2001 for package: perl-DBI-1.627-4.el7.x86_64
+--> Processing Dependency: perl(RPC::PlClient) >= 0.2000 for package: perl-DBI-1.627-4.el7.x86_64
+---> Package perl-Data-Dumper.x86_64 0:2.145-3.el7 will be installed
+---> Package perl-File-Path.noarch 0:2.09-2.el7 will be installed
+---> Package perl-File-Temp.noarch 0:0.23.01-3.el7 will be installed
+---> Package perl-Getopt-Long.noarch 0:2.40-3.el7 will be installed
+--> Processing Dependency: perl(Pod::Usage) >= 1.14 for package: perl-Getopt-Long-2.40-3.el7.noarch
+--> Processing Dependency: perl(Text::ParseWords) for package: perl-Getopt-Long-2.40-3.el7.noarch
+---> Package python-meld3.x86_64 0:0.6.10-1.el7 will be installed
+---> Package python-setuptools.noarch 0:0.9.8-7.el7 will be installed
+--> Processing Dependency: python-backports-ssl_match_hostname for package: python-setuptools-0.9.8-7.el7.noarch
+---> Package python3-libs.x86_64 0:3.6.8-18.el7 will be installed
+--> Processing Dependency: libtirpc.so.1()(64bit) for package: python3-libs-3.6.8-18.el7.x86_64
+---> Package python3-pip.noarch 0:9.0.3-8.el7 will be installed
+---> Package python3-setuptools.noarch 0:39.2.0-10.el7 will be installed
+---> Package xorg-x11-fonts-Type1.noarch 0:7.5-9.el7 will be installed
+--> Processing Dependency: ttmkfdir for package: xorg-x11-fonts-Type1-7.5-9.el7.noarch
+--> Processing Dependency: ttmkfdir for package: xorg-x11-fonts-Type1-7.5-9.el7.noarch
+--> Processing Dependency: mkfontdir for package: xorg-x11-fonts-Type1-7.5-9.el7.noarch
+--> Processing Dependency: mkfontdir for package: xorg-x11-fonts-Type1-7.5-9.el7.noarch
+--> Running transaction check
+---> Package atk.x86_64 0:2.28.1-2.el7 will be installed
+---> Package cairo.x86_64 0:1.15.12-4.el7 will be installed
+--> Processing Dependency: libpixman-1.so.0()(64bit) for package: cairo-1.15.12-4.el7.x86_64
+--> Processing Dependency: libGL.so.1()(64bit) for package: cairo-1.15.12-4.el7.x86_64
+--> Processing Dependency: libEGL.so.1()(64bit) for package: cairo-1.15.12-4.el7.x86_64
+---> Package copy-jdk-configs.noarch 0:3.3-10.el7_5 will be installed
+---> Package crontabs.noarch 0:1.11-6.20121102git.el7 will be installed
+---> Package cups-libs.x86_64 1:1.6.3-51.el7 will be installed
+--> Processing Dependency: libavahi-common.so.3()(64bit) for package: 1:cups-libs-1.6.3-51.el7.x86_64
+--> Processing Dependency: libavahi-client.so.3()(64bit) for package: 1:cups-libs-1.6.3-51.el7.x86_64
+---> Package dejavu-sans-fonts.noarch 0:2.33-6.el7 will be installed
+--> Processing Dependency: dejavu-fonts-common = 2.33-6.el7 for package: dejavu-sans-fonts-2.33-6.el7.noarch
+---> Package fontpackages-filesystem.noarch 0:1.44-8.el7 will be installed
+---> Package freetype.x86_64 0:2.8-14.el7_9.1 will be installed
+---> Package gdk-pixbuf2.x86_64 0:2.36.12-3.el7 will be installed
+--> Processing Dependency: libjasper.so.1()(64bit) for package: gdk-pixbuf2-2.36.12-3.el7.x86_64
+---> Package gtk-update-icon-cache.x86_64 0:3.22.30-8.el7_9 will be installed
+---> Package hicolor-icon-theme.noarch 0:0.12-7.el7 will be installed
+---> Package javapackages-tools.noarch 0:3.4.1-11.el7 will be installed
+--> Processing Dependency: python-javapackages = 3.4.1-11.el7 for package: javapackages-tools-3.4.1-11.el7.noarch
+--> Processing Dependency: libxslt for package: javapackages-tools-3.4.1-11.el7.noarch
+---> Package libICE.x86_64 0:1.0.9-9.el7 will be installed
+---> Package libSM.x86_64 0:1.2.2-2.el7 will be installed
+---> Package libX11-common.noarch 0:1.6.7-4.el7_9 will be installed
+---> Package libXcursor.x86_64 0:1.1.15-1.el7 will be installed
+---> Package libXdamage.x86_64 0:1.1.4-4.1.el7 will be installed
+---> Package libXfixes.x86_64 0:5.0.3-1.el7 will be installed
+---> Package libXinerama.x86_64 0:1.1.3-2.1.el7 will be installed
+---> Package libXrandr.x86_64 0:1.5.1-2.el7 will be installed
+---> Package libtiff.x86_64 0:4.0.3-35.el7 will be installed
+--> Processing Dependency: libjbig.so.2.0()(64bit) for package: libtiff-4.0.3-35.el7.x86_64
+---> Package libtirpc.x86_64 0:0.2.4-0.16.el7 will be installed
+---> Package libxcb.x86_64 0:1.13-1.el7 will be installed
+--> Processing Dependency: libXau.so.6()(64bit) for package: libxcb-1.13-1.el7.x86_64
+---> Package lksctp-tools.x86_64 0:1.0.17-2.el7 will be installed
+---> Package pango.x86_64 0:1.42.4-4.el7_7 will be installed
+--> Processing Dependency: libthai(x86-64) >= 0.1.9 for package: pango-1.42.4-4.el7_7.x86_64
+--> Processing Dependency: libXft(x86-64) >= 2.0.0 for package: pango-1.42.4-4.el7_7.x86_64
+--> Processing Dependency: harfbuzz(x86-64) >= 1.4.2 for package: pango-1.42.4-4.el7_7.x86_64
+--> Processing Dependency: fribidi(x86-64) >= 1.0 for package: pango-1.42.4-4.el7_7.x86_64
+--> Processing Dependency: libthai.so.0(LIBTHAI_0.1)(64bit) for package: pango-1.42.4-4.el7_7.x86_64
+--> Processing Dependency: libthai.so.0()(64bit) for package: pango-1.42.4-4.el7_7.x86_64
+--> Processing Dependency: libharfbuzz.so.0()(64bit) for package: pango-1.42.4-4.el7_7.x86_64
+--> Processing Dependency: libfribidi.so.0()(64bit) for package: pango-1.42.4-4.el7_7.x86_64
+--> Processing Dependency: libXft.so.2()(64bit) for package: pango-1.42.4-4.el7_7.x86_64
+---> Package pcsc-lite-libs.x86_64 0:1.8.8-8.el7 will be installed
+---> Package perl-Carp.noarch 0:1.26-244.el7 will be installed
+---> Package perl-Exporter.noarch 0:5.68-3.el7 will be installed
+---> Package perl-Filter.x86_64 0:1.49-3.el7 will be installed
+---> Package perl-PathTools.x86_64 0:3.40-5.el7 will be installed
+---> Package perl-PlRPC.noarch 0:0.2020-14.el7 will be installed
+--> Processing Dependency: perl(Net::Daemon) >= 0.13 for package: perl-PlRPC-0.2020-14.el7.noarch
+--> Processing Dependency: perl(Net::Daemon::Test) for package: perl-PlRPC-0.2020-14.el7.noarch
+--> Processing Dependency: perl(Net::Daemon::Log) for package: perl-PlRPC-0.2020-14.el7.noarch
+--> Processing Dependency: perl(Compress::Zlib) for package: perl-PlRPC-0.2020-14.el7.noarch
+---> Package perl-Pod-Simple.noarch 1:3.28-4.el7 will be installed
+--> Processing Dependency: perl(Pod::Escapes) >= 1.04 for package: 1:perl-Pod-Simple-3.28-4.el7.noarch
+--> Processing Dependency: perl(Encode) for package: 1:perl-Pod-Simple-3.28-4.el7.noarch
+---> Package perl-Pod-Usage.noarch 0:1.63-3.el7 will be installed
+--> Processing Dependency: perl(Pod::Text) >= 3.15 for package: perl-Pod-Usage-1.63-3.el7.noarch
+--> Processing Dependency: perl-Pod-Perldoc for package: perl-Pod-Usage-1.63-3.el7.noarch
+---> Package perl-Scalar-List-Utils.x86_64 0:1.27-248.el7 will be installed
+---> Package perl-Socket.x86_64 0:2.010-5.el7 will be installed
+---> Package perl-Storable.x86_64 0:2.45-3.el7 will be installed
+---> Package perl-Text-ParseWords.noarch 0:3.29-4.el7 will be installed
+---> Package perl-Time-HiRes.x86_64 4:1.9725-3.el7 will be installed
+---> Package perl-Time-Local.noarch 0:1.2300-2.el7 will be installed
+---> Package perl-constant.noarch 0:1.27-2.el7 will be installed
+---> Package perl-libs.x86_64 4:5.16.3-299.el7_9 will be installed
+---> Package perl-macros.x86_64 4:5.16.3-299.el7_9 will be installed
+---> Package perl-threads.x86_64 0:1.87-4.el7 will be installed
+---> Package perl-threads-shared.x86_64 0:1.43-6.el7 will be installed
+---> Package python-backports-ssl_match_hostname.noarch 0:3.5.0.1-1.el7 will be installed
+--> Processing Dependency: python-ipaddress for package: python-backports-ssl_match_hostname-3.5.0.1-1.el7.noarch
+--> Processing Dependency: python-backports for package: python-backports-ssl_match_hostname-3.5.0.1-1.el7.noarch
+---> Package ttmkfdir.x86_64 0:3.0.9-42.el7 will be installed
+---> Package tzdata-java.noarch 0:2022a-1.el7 will be installed
+---> Package xorg-x11-font-utils.x86_64 1:7.5-21.el7 will be installed
+--> Processing Dependency: libfontenc.so.1()(64bit) for package: 1:xorg-x11-font-utils-7.5-21.el7.x86_64
+--> Running transaction check
+---> Package avahi-libs.x86_64 0:0.6.31-20.el7 will be installed
+---> Package dejavu-fonts-common.noarch 0:2.33-6.el7 will be installed
+---> Package fribidi.x86_64 0:1.0.2-1.el7_7.1 will be installed
+---> Package harfbuzz.x86_64 0:1.7.5-2.el7 will be installed
+--> Processing Dependency: libgraphite2.so.3()(64bit) for package: harfbuzz-1.7.5-2.el7.x86_64
+---> Package jasper-libs.x86_64 0:1.900.1-33.el7 will be installed
+---> Package jbigkit-libs.x86_64 0:2.0-11.el7 will be installed
+---> Package libXau.x86_64 0:1.0.8-2.1.el7 will be installed
+---> Package libXft.x86_64 0:2.3.2-2.el7 will be installed
+---> Package libfontenc.x86_64 0:1.1.3-3.el7 will be installed
+---> Package libglvnd-egl.x86_64 1:1.0.1-0.8.git5baa1e5.el7 will be installed
+--> Processing Dependency: libglvnd(x86-64) = 1:1.0.1-0.8.git5baa1e5.el7 for package: 1:libglvnd-egl-1.0.1-0.8.git5baa1e5.el7.x86_64
+--> Processing Dependency: mesa-libEGL(x86-64) >= 13.0.4-1 for package: 1:libglvnd-egl-1.0.1-0.8.git5baa1e5.el7.x86_64
+--> Processing Dependency: libGLdispatch.so.0()(64bit) for package: 1:libglvnd-egl-1.0.1-0.8.git5baa1e5.el7.x86_64
+---> Package libglvnd-glx.x86_64 1:1.0.1-0.8.git5baa1e5.el7 will be installed
+--> Processing Dependency: mesa-libGL(x86-64) >= 13.0.4-1 for package: 1:libglvnd-glx-1.0.1-0.8.git5baa1e5.el7.x86_64
+---> Package libthai.x86_64 0:0.1.14-9.el7 will be installed
+---> Package libxslt.x86_64 0:1.1.28-6.el7 will be installed
+---> Package perl-Encode.x86_64 0:2.51-7.el7 will be installed
+---> Package perl-IO-Compress.noarch 0:2.061-2.el7 will be installed
+--> Processing Dependency: perl(Compress::Raw::Zlib) >= 2.061 for package: perl-IO-Compress-2.061-2.el7.noarch
+--> Processing Dependency: perl(Compress::Raw::Bzip2) >= 2.061 for package: perl-IO-Compress-2.061-2.el7.noarch
+---> Package perl-Net-Daemon.noarch 0:0.48-5.el7 will be installed
+---> Package perl-Pod-Escapes.noarch 1:1.04-299.el7_9 will be installed
+---> Package perl-Pod-Perldoc.noarch 0:3.20-4.el7 will be installed
+--> Processing Dependency: perl(parent) for package: perl-Pod-Perldoc-3.20-4.el7.noarch
+--> Processing Dependency: perl(HTTP::Tiny) for package: perl-Pod-Perldoc-3.20-4.el7.noarch
+--> Processing Dependency: groff-base for package: perl-Pod-Perldoc-3.20-4.el7.noarch
+---> Package perl-podlators.noarch 0:2.5.1-3.el7 will be installed
+---> Package pixman.x86_64 0:0.34.0-1.el7 will be installed
+---> Package python-backports.x86_64 0:1.0-8.el7 will be installed
+---> Package python-ipaddress.noarch 0:1.0.16-2.el7 will be installed
+---> Package python-javapackages.noarch 0:3.4.1-11.el7 will be installed
+--> Processing Dependency: python-lxml for package: python-javapackages-3.4.1-11.el7.noarch
+--> Running transaction check
+---> Package graphite2.x86_64 0:1.3.10-1.el7_3 will be installed
+---> Package groff-base.x86_64 0:1.22.2-8.el7 will be installed
+---> Package libglvnd.x86_64 1:1.0.1-0.8.git5baa1e5.el7 will be installed
+---> Package mesa-libEGL.x86_64 0:18.3.4-12.el7_9 will be installed
+--> Processing Dependency: mesa-libgbm = 18.3.4-12.el7_9 for package: mesa-libEGL-18.3.4-12.el7_9.x86_64
+--> Processing Dependency: libxshmfence.so.1()(64bit) for package: mesa-libEGL-18.3.4-12.el7_9.x86_64
+--> Processing Dependency: libwayland-server.so.0()(64bit) for package: mesa-libEGL-18.3.4-12.el7_9.x86_64
+--> Processing Dependency: libwayland-client.so.0()(64bit) for package: mesa-libEGL-18.3.4-12.el7_9.x86_64
+--> Processing Dependency: libglapi.so.0()(64bit) for package: mesa-libEGL-18.3.4-12.el7_9.x86_64
+--> Processing Dependency: libgbm.so.1()(64bit) for package: mesa-libEGL-18.3.4-12.el7_9.x86_64
+--> Processing Dependency: libdrm.so.2()(64bit) for package: mesa-libEGL-18.3.4-12.el7_9.x86_64
+---> Package mesa-libGL.x86_64 0:18.3.4-12.el7_9 will be installed
+--> Processing Dependency: libXxf86vm.so.1()(64bit) for package: mesa-libGL-18.3.4-12.el7_9.x86_64
+---> Package perl-Compress-Raw-Bzip2.x86_64 0:2.061-3.el7 will be installed
+---> Package perl-Compress-Raw-Zlib.x86_64 1:2.061-4.el7 will be installed
+---> Package perl-HTTP-Tiny.noarch 0:0.033-3.el7 will be installed
+---> Package perl-parent.noarch 1:0.225-244.el7 will be installed
+---> Package python-lxml.x86_64 0:3.2.1-4.el7 will be installed
+--> Running transaction check
+---> Package libXxf86vm.x86_64 0:1.1.4-1.el7 will be installed
+---> Package libdrm.x86_64 0:2.4.97-2.el7 will be installed
+--> Processing Dependency: libpciaccess.so.0()(64bit) for package: libdrm-2.4.97-2.el7.x86_64
+---> Package libwayland-client.x86_64 0:1.15.0-1.el7 will be installed
+---> Package libwayland-server.x86_64 0:1.15.0-1.el7 will be installed
+---> Package libxshmfence.x86_64 0:1.2-1.el7 will be installed
+---> Package mesa-libgbm.x86_64 0:18.3.4-12.el7_9 will be installed
+---> Package mesa-libglapi.x86_64 0:18.3.4-12.el7_9 will be installed
+--> Running transaction check
+---> Package libpciaccess.x86_64 0:0.14-1.el7 will be installed
+--> Processing Dependency: hwdata for package: libpciaccess-0.14-1.el7.x86_64
+--> Running transaction check
+---> Package hwdata.x86_64 0:0.252-9.7.el7 will be installed
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+================================================================================
+ Package                        Arch   Version                    Repository
+                                                                           Size
+================================================================================
+Installing:
+ cronie                         x86_64 1.4.11-24.el7_9            updates  92 k
+ java-1.8.0-openjdk             x86_64 1:1.8.0.322.b06-1.el7_9    updates 314 k
+ mariadb-server                 x86_64 1:5.5.68-1.el7             base     11 M
+ python3                        x86_64 3.6.8-18.el7               updates  70 k
+ supervisor                     noarch 3.4.0-1.el7                epel    498 k
+Installing for dependencies:
+ alsa-lib                       x86_64 1.1.8-1.el7                base    425 k
+ atk                            x86_64 2.28.1-2.el7               base    263 k
+ avahi-libs                     x86_64 0.6.31-20.el7              base     62 k
+ cairo                          x86_64 1.15.12-4.el7              base    741 k
+ copy-jdk-configs               noarch 3.3-10.el7_5               base     21 k
+ cronie-anacron                 x86_64 1.4.11-24.el7_9            updates  36 k
+ crontabs                       noarch 1.11-6.20121102git.el7     base     13 k
+ cups-libs                      x86_64 1:1.6.3-51.el7             base    359 k
+ dejavu-fonts-common            noarch 2.33-6.el7                 base     64 k
+ dejavu-sans-fonts              noarch 2.33-6.el7                 base    1.4 M
+ fontconfig                     x86_64 2.13.0-4.3.el7             base    254 k
+ fontpackages-filesystem        noarch 1.44-8.el7                 base    9.9 k
+ freetype                       x86_64 2.8-14.el7_9.1             updates 380 k
+ fribidi                        x86_64 1.0.2-1.el7_7.1            base     79 k
+ gdk-pixbuf2                    x86_64 2.36.12-3.el7              base    570 k
+ giflib                         x86_64 4.1.6-9.el7                base     40 k
+ graphite2                      x86_64 1.3.10-1.el7_3             base    115 k
+ groff-base                     x86_64 1.22.2-8.el7               base    942 k
+ gtk-update-icon-cache          x86_64 3.22.30-8.el7_9            updates  27 k
+ gtk2                           x86_64 2.24.31-1.el7              base    3.4 M
+ harfbuzz                       x86_64 1.7.5-2.el7                base    267 k
+ hicolor-icon-theme             noarch 0.12-7.el7                 base     42 k
+ hwdata                         x86_64 0.252-9.7.el7              base    2.5 M
+ jasper-libs                    x86_64 1.900.1-33.el7             base    150 k
+ java-1.8.0-openjdk-headless    x86_64 1:1.8.0.322.b06-1.el7_9    updates  33 M
+ javapackages-tools             noarch 3.4.1-11.el7               base     73 k
+ jbigkit-libs                   x86_64 2.0-11.el7                 base     46 k
+ libICE                         x86_64 1.0.9-9.el7                base     66 k
+ libSM                          x86_64 1.2.2-2.el7                base     39 k
+ libX11                         x86_64 1.6.7-4.el7_9              updates 607 k
+ libX11-common                  noarch 1.6.7-4.el7_9              updates 164 k
+ libXau                         x86_64 1.0.8-2.1.el7              base     29 k
+ libXcomposite                  x86_64 0.4.4-4.1.el7              base     22 k
+ libXcursor                     x86_64 1.1.15-1.el7               base     30 k
+ libXdamage                     x86_64 1.1.4-4.1.el7              base     20 k
+ libXext                        x86_64 1.3.3-3.el7                base     39 k
+ libXfixes                      x86_64 5.0.3-1.el7                base     18 k
+ libXft                         x86_64 2.3.2-2.el7                base     58 k
+ libXi                          x86_64 1.7.9-1.el7                base     40 k
+ libXinerama                    x86_64 1.1.3-2.1.el7              base     14 k
+ libXrandr                      x86_64 1.5.1-2.el7                base     27 k
+ libXrender                     x86_64 0.9.10-1.el7               base     26 k
+ libXtst                        x86_64 1.2.3-1.el7                base     20 k
+ libXxf86vm                     x86_64 1.1.4-1.el7                base     18 k
+ libaio                         x86_64 0.3.109-13.el7             base     24 k
+ libdrm                         x86_64 2.4.97-2.el7               base    151 k
+ libfontenc                     x86_64 1.1.3-3.el7                base     31 k
+ libglvnd                       x86_64 1:1.0.1-0.8.git5baa1e5.el7 base     89 k
+ libglvnd-egl                   x86_64 1:1.0.1-0.8.git5baa1e5.el7 base     44 k
+ libglvnd-glx                   x86_64 1:1.0.1-0.8.git5baa1e5.el7 base    125 k
+ libjpeg-turbo                  x86_64 1.2.90-8.el7               base    135 k
+ libpciaccess                   x86_64 0.14-1.el7                 base     26 k
+ libpng                         x86_64 2:1.5.13-8.el7             base    213 k
+ libthai                        x86_64 0.1.14-9.el7               base    187 k
+ libtiff                        x86_64 4.0.3-35.el7               base    172 k
+ libtirpc                       x86_64 0.2.4-0.16.el7             base     89 k
+ libwayland-client              x86_64 1.15.0-1.el7               base     33 k
+ libwayland-server              x86_64 1.15.0-1.el7               base     39 k
+ libxcb                         x86_64 1.13-1.el7                 base    214 k
+ libxshmfence                   x86_64 1.2-1.el7                  base    7.2 k
+ libxslt                        x86_64 1.1.28-6.el7               base    242 k
+ lksctp-tools                   x86_64 1.0.17-2.el7               base     88 k
+ mariadb                        x86_64 1:5.5.68-1.el7             base    8.8 M
+ mariadb-libs                   x86_64 1:5.5.68-1.el7             base    760 k
+ mesa-libEGL                    x86_64 18.3.4-12.el7_9            updates 110 k
+ mesa-libGL                     x86_64 18.3.4-12.el7_9            updates 166 k
+ mesa-libgbm                    x86_64 18.3.4-12.el7_9            updates  39 k
+ mesa-libglapi                  x86_64 18.3.4-12.el7_9            updates  46 k
+ pango                          x86_64 1.42.4-4.el7_7             base    280 k
+ pcsc-lite-libs                 x86_64 1.8.8-8.el7                base     34 k
+ perl                           x86_64 4:5.16.3-299.el7_9         updates 8.0 M
+ perl-Carp                      noarch 1.26-244.el7               base     19 k
+ perl-Compress-Raw-Bzip2        x86_64 2.061-3.el7                base     32 k
+ perl-Compress-Raw-Zlib         x86_64 1:2.061-4.el7              base     57 k
+ perl-DBD-MySQL                 x86_64 4.023-6.el7                base    140 k
+ perl-DBI                       x86_64 1.627-4.el7                base    802 k
+ perl-Data-Dumper               x86_64 2.145-3.el7                base     47 k
+ perl-Encode                    x86_64 2.51-7.el7                 base    1.5 M
+ perl-Exporter                  noarch 5.68-3.el7                 base     28 k
+ perl-File-Path                 noarch 2.09-2.el7                 base     26 k
+ perl-File-Temp                 noarch 0.23.01-3.el7              base     56 k
+ perl-Filter                    x86_64 1.49-3.el7                 base     76 k
+ perl-Getopt-Long               noarch 2.40-3.el7                 base     56 k
+ perl-HTTP-Tiny                 noarch 0.033-3.el7                base     38 k
+ perl-IO-Compress               noarch 2.061-2.el7                base    260 k
+ perl-Net-Daemon                noarch 0.48-5.el7                 base     51 k
+ perl-PathTools                 x86_64 3.40-5.el7                 base     82 k
+ perl-PlRPC                     noarch 0.2020-14.el7              base     36 k
+ perl-Pod-Escapes               noarch 1:1.04-299.el7_9           updates  52 k
+ perl-Pod-Perldoc               noarch 3.20-4.el7                 base     87 k
+ perl-Pod-Simple                noarch 1:3.28-4.el7               base    216 k
+ perl-Pod-Usage                 noarch 1.63-3.el7                 base     27 k
+ perl-Scalar-List-Utils         x86_64 1.27-248.el7               base     36 k
+ perl-Socket                    x86_64 2.010-5.el7                base     49 k
+ perl-Storable                  x86_64 2.45-3.el7                 base     77 k
+ perl-Text-ParseWords           noarch 3.29-4.el7                 base     14 k
+ perl-Time-HiRes                x86_64 4:1.9725-3.el7             base     45 k
+ perl-Time-Local                noarch 1.2300-2.el7               base     24 k
+ perl-constant                  noarch 1.27-2.el7                 base     19 k
+ perl-libs                      x86_64 4:5.16.3-299.el7_9         updates 690 k
+ perl-macros                    x86_64 4:5.16.3-299.el7_9         updates  44 k
+ perl-parent                    noarch 1:0.225-244.el7            base     12 k
+ perl-podlators                 noarch 2.5.1-3.el7                base    112 k
+ perl-threads                   x86_64 1.87-4.el7                 base     49 k
+ perl-threads-shared            x86_64 1.43-6.el7                 base     39 k
+ pixman                         x86_64 0.34.0-1.el7               base    248 k
+ python-backports               x86_64 1.0-8.el7                  base    5.8 k
+ python-backports-ssl_match_hostname
+                                noarch 3.5.0.1-1.el7              base     13 k
+ python-ipaddress               noarch 1.0.16-2.el7               base     34 k
+ python-javapackages            noarch 3.4.1-11.el7               base     31 k
+ python-lxml                    x86_64 3.2.1-4.el7                base    758 k
+ python-meld3                   x86_64 0.6.10-1.el7               epel     73 k
+ python-setuptools              noarch 0.9.8-7.el7                base    397 k
+ python3-libs                   x86_64 3.6.8-18.el7               updates 6.9 M
+ python3-pip                    noarch 9.0.3-8.el7                base    1.6 M
+ python3-setuptools             noarch 39.2.0-10.el7              base    629 k
+ ttmkfdir                       x86_64 3.0.9-42.el7               base     48 k
+ tzdata-java                    noarch 2022a-1.el7                updates 190 k
+ xorg-x11-font-utils            x86_64 1:7.5-21.el7               base    104 k
+ xorg-x11-fonts-Type1           noarch 7.5-9.el7                  base    521 k
+
+Transaction Summary
+================================================================================
+Install  5 Packages (+120 Dependent packages)
+
+Total download size: 95 M
+Installed size: 378 M
+Downloading packages:
+--------------------------------------------------------------------------------
+Total                                               13 MB/s |  95 MB  00:07
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Installing : libjpeg-turbo-1.2.90-8.el7.x86_64                          1/125
+  Installing : 2:libpng-1.5.13-8.el7.x86_64                               2/125
+  Installing : freetype-2.8-14.el7_9.1.x86_64                             3/125
+  Installing : mesa-libglapi-18.3.4-12.el7_9.x86_64                       4/125
+  Installing : 1:mariadb-libs-5.5.68-1.el7.x86_64                         5/125
+  Installing : libxslt-1.1.28-6.el7.x86_64                                6/125
+  Installing : 1:libglvnd-1.0.1-0.8.git5baa1e5.el7.x86_64                 7/125
+  Installing : fontpackages-filesystem-1.44-8.el7.noarch                  8/125
+  Installing : libICE-1.0.9-9.el7.x86_64                                  9/125
+  Installing : libxshmfence-1.2-1.el7.x86_64                             10/125
+  Installing : libwayland-server-1.15.0-1.el7.x86_64                     11/125
+  Installing : libSM-1.2.2-2.el7.x86_64                                  12/125
+  Installing : dejavu-fonts-common-2.33-6.el7.noarch                     13/125
+  Installing : dejavu-sans-fonts-2.33-6.el7.noarch                       14/125
+  Installing : fontconfig-2.13.0-4.3.el7.x86_64                          15/125
+  Installing : python-lxml-3.2.1-4.el7.x86_64                            16/125
+  Installing : python-javapackages-3.4.1-11.el7.noarch                   17/125
+  Installing : javapackages-tools-3.4.1-11.el7.noarch                    18/125
+  Installing : ttmkfdir-3.0.9-42.el7.x86_64                              19/125
+  Installing : jasper-libs-1.900.1-33.el7.x86_64                         20/125
+  Installing : cronie-1.4.11-24.el7_9.x86_64                             21/125
+  Installing : crontabs-1.11-6.20121102git.el7.noarch                    22/125
+  Installing : cronie-anacron-1.4.11-24.el7_9.x86_64                     23/125
+  Installing : libX11-common-1.6.7-4.el7_9.noarch                        24/125
+  Installing : libfontenc-1.1.3-3.el7.x86_64                             25/125
+  Installing : 1:xorg-x11-font-utils-7.5-21.el7.x86_64                   26/125
+  Installing : xorg-x11-fonts-Type1-7.5-9.el7.noarch                     27/125
+  Installing : jbigkit-libs-2.0-11.el7.x86_64                            28/125
+  Installing : libtiff-4.0.3-35.el7.x86_64                               29/125
+  Installing : libthai-0.1.14-9.el7.x86_64                               30/125
+  Installing : alsa-lib-1.1.8-1.el7.x86_64                               31/125
+  Installing : libtirpc-0.2.4-0.16.el7.x86_64                            32/125
+  Installing : python3-libs-3.6.8-18.el7.x86_64                          33/125
+  Installing : python3-3.6.8-18.el7.x86_64                               34/125
+  Installing : python3-setuptools-39.2.0-10.el7.noarch                   35/125
+  Installing : python3-pip-9.0.3-8.el7.noarch                            36/125
+  Installing : libaio-0.3.109-13.el7.x86_64                              37/125
+  Installing : fribidi-1.0.2-1.el7_7.1.x86_64                            38/125
+  Installing : copy-jdk-configs-3.3-10.el7_5.noarch                      39/125
+  Installing : hicolor-icon-theme-0.12-7.el7.noarch                      40/125
+  Installing : avahi-libs-0.6.31-20.el7.x86_64                           41/125
+  Installing : 1:cups-libs-1.6.3-51.el7.x86_64                           42/125
+  Installing : atk-2.28.1-2.el7.x86_64                                   43/125
+  Installing : pixman-0.34.0-1.el7.x86_64                                44/125
+  Installing : graphite2-1.3.10-1.el7_3.x86_64                           45/125
+  Installing : harfbuzz-1.7.5-2.el7.x86_64                               46/125
+  Installing : hwdata-0.252-9.7.el7.x86_64                               47/125
+  Installing : libpciaccess-0.14-1.el7.x86_64                            48/125
+  Installing : libdrm-2.4.97-2.el7.x86_64                                49/125
+  Installing : mesa-libgbm-18.3.4-12.el7_9.x86_64                        50/125
+  Installing : python-ipaddress-1.0.16-2.el7.noarch                      51/125
+  Installing : libXau-1.0.8-2.1.el7.x86_64                               52/125
+  Installing : libxcb-1.13-1.el7.x86_64                                  53/125
+  Installing : libX11-1.6.7-4.el7_9.x86_64                               54/125
+  Installing : libXext-1.3.3-3.el7.x86_64                                55/125
+  Installing : libXrender-0.9.10-1.el7.x86_64                            56/125
+  Installing : libXfixes-5.0.3-1.el7.x86_64                              57/125
+  Installing : libXi-1.7.9-1.el7.x86_64                                  58/125
+  Installing : libXdamage-1.1.4-4.1.el7.x86_64                           59/125
+  Installing : libXcomposite-0.4.4-4.1.el7.x86_64                        60/125
+  Installing : gdk-pixbuf2-2.36.12-3.el7.x86_64                          61/125
+  Installing : gtk-update-icon-cache-3.22.30-8.el7_9.x86_64              62/125
+  Installing : libXtst-1.2.3-1.el7.x86_64                                63/125
+  Installing : libXcursor-1.1.15-1.el7.x86_64                            64/125
+  Installing : libXrandr-1.5.1-2.el7.x86_64                              65/125
+  Installing : libXft-2.3.2-2.el7.x86_64                                 66/125
+  Installing : libXinerama-1.1.3-2.1.el7.x86_64                          67/125
+  Installing : libXxf86vm-1.1.4-1.el7.x86_64                             68/125
+  Installing : 1:libglvnd-glx-1.0.1-0.8.git5baa1e5.el7.x86_64            69/125
+  Installing : mesa-libGL-18.3.4-12.el7_9.x86_64                         70/125
+  Installing : giflib-4.1.6-9.el7.x86_64                                 71/125
+  Installing : tzdata-java-2022a-1.el7.noarch                            72/125
+  Installing : pcsc-lite-libs-1.8.8-8.el7.x86_64                         73/125
+  Installing : python-backports-1.0-8.el7.x86_64                         74/125
+  Installing : python-backports-ssl_match_hostname-3.5.0.1-1.el7.noar    75/125
+  Installing : python-setuptools-0.9.8-7.el7.noarch                      76/125
+  Installing : lksctp-tools-1.0.17-2.el7.x86_64                          77/125
+  Installing : 1:java-1.8.0-openjdk-headless-1.8.0.322.b06-1.el7_9.x8    78/125
+  Installing : python-meld3-0.6.10-1.el7.x86_64                          79/125
+  Installing : groff-base-1.22.2-8.el7.x86_64                            80/125
+  Installing : 1:perl-parent-0.225-244.el7.noarch                        81/125
+  Installing : perl-HTTP-Tiny-0.033-3.el7.noarch                         82/125
+  Installing : perl-podlators-2.5.1-3.el7.noarch                         83/125
+  Installing : perl-Pod-Perldoc-3.20-4.el7.noarch                        84/125
+  Installing : 1:perl-Pod-Escapes-1.04-299.el7_9.noarch                  85/125
+  Installing : perl-Text-ParseWords-3.29-4.el7.noarch                    86/125
+  Installing : perl-Encode-2.51-7.el7.x86_64                             87/125
+  Installing : perl-Pod-Usage-1.63-3.el7.noarch                          88/125
+  Installing : 4:perl-Time-HiRes-1.9725-3.el7.x86_64                     89/125
+  Installing : perl-threads-1.87-4.el7.x86_64                            90/125
+  Installing : perl-Storable-2.45-3.el7.x86_64                           91/125
+  Installing : perl-Carp-1.26-244.el7.noarch                             92/125
+  Installing : perl-Filter-1.49-3.el7.x86_64                             93/125
+  Installing : perl-Exporter-5.68-3.el7.noarch                           94/125
+  Installing : perl-constant-1.27-2.el7.noarch                           95/125
+  Installing : perl-Socket-2.010-5.el7.x86_64                            96/125
+  Installing : 4:perl-macros-5.16.3-299.el7_9.x86_64                     97/125
+  Installing : perl-Time-Local-1.2300-2.el7.noarch                       98/125
+  Installing : perl-threads-shared-1.43-6.el7.x86_64                     99/125
+  Installing : perl-File-Temp-0.23.01-3.el7.noarch                      100/125
+  Installing : perl-File-Path-2.09-2.el7.noarch                         101/125
+  Installing : perl-PathTools-3.40-5.el7.x86_64                         102/125
+  Installing : perl-Scalar-List-Utils-1.27-248.el7.x86_64               103/125
+  Installing : 4:perl-libs-5.16.3-299.el7_9.x86_64                      104/125
+  Installing : 1:perl-Pod-Simple-3.28-4.el7.noarch                      105/125
+  Installing : perl-Getopt-Long-2.40-3.el7.noarch                       106/125
+  Installing : 4:perl-5.16.3-299.el7_9.x86_64                           107/125
+  Installing : perl-Data-Dumper-2.145-3.el7.x86_64                      108/125
+  Installing : 1:mariadb-5.5.68-1.el7.x86_64                            109/125
+  Installing : perl-Compress-Raw-Bzip2-2.061-3.el7.x86_64               110/125
+  Installing : perl-Net-Daemon-0.48-5.el7.noarch                        111/125
+  Installing : 1:perl-Compress-Raw-Zlib-2.061-4.el7.x86_64              112/125
+  Installing : perl-IO-Compress-2.061-2.el7.noarch                      113/125
+  Installing : perl-PlRPC-0.2020-14.el7.noarch                          114/125
+  Installing : perl-DBI-1.627-4.el7.x86_64                              115/125
+  Installing : perl-DBD-MySQL-4.023-6.el7.x86_64                        116/125
+  Installing : libwayland-client-1.15.0-1.el7.x86_64                    117/125
+  Installing : 1:libglvnd-egl-1.0.1-0.8.git5baa1e5.el7.x86_64           118/125
+  Installing : mesa-libEGL-18.3.4-12.el7_9.x86_64                       119/125
+  Installing : cairo-1.15.12-4.el7.x86_64                               120/125
+  Installing : pango-1.42.4-4.el7_7.x86_64                              121/125
+  Installing : gtk2-2.24.31-1.el7.x86_64                                122/125
+  Installing : 1:java-1.8.0-openjdk-1.8.0.322.b06-1.el7_9.x86_64        123/125
+  Installing : 1:mariadb-server-5.5.68-1.el7.x86_64                     124/125
+  Installing : supervisor-3.4.0-1.el7.noarch                            125/125
+  Verifying  : libXext-1.3.3-3.el7.x86_64                                 1/125
+  Verifying  : perl-HTTP-Tiny-0.033-3.el7.noarch                          2/125
+  Verifying  : libXi-1.7.9-1.el7.x86_64                                   3/125
+  Verifying  : libXrender-0.9.10-1.el7.x86_64                             4/125
+  Verifying  : 1:xorg-x11-font-utils-7.5-21.el7.x86_64                    5/125
+  Verifying  : libwayland-server-1.15.0-1.el7.x86_64                      6/125
+  Verifying  : python-lxml-3.2.1-4.el7.x86_64                             7/125
+  Verifying  : libwayland-client-1.15.0-1.el7.x86_64                      8/125
+  Verifying  : python-javapackages-3.4.1-11.el7.noarch                    9/125
+  Verifying  : groff-base-1.22.2-8.el7.x86_64                            10/125
+  Verifying  : perl-File-Temp-0.23.01-3.el7.noarch                       11/125
+  Verifying  : libXcomposite-0.4.4-4.1.el7.x86_64                        12/125
+  Verifying  : python-meld3-0.6.10-1.el7.x86_64                          13/125
+  Verifying  : perl-DBI-1.627-4.el7.x86_64                               14/125
+  Verifying  : lksctp-tools-1.0.17-2.el7.x86_64                          15/125
+  Verifying  : 1:mariadb-libs-5.5.68-1.el7.x86_64                        16/125
+  Verifying  : perl-Data-Dumper-2.145-3.el7.x86_64                       17/125
+  Verifying  : perl-threads-shared-1.43-6.el7.x86_64                     18/125
+  Verifying  : python-backports-1.0-8.el7.x86_64                         19/125
+  Verifying  : 1:libglvnd-glx-1.0.1-0.8.git5baa1e5.el7.x86_64            20/125
+  Verifying  : dejavu-sans-fonts-2.33-6.el7.noarch                       21/125
+  Verifying  : pcsc-lite-libs-1.8.8-8.el7.x86_64                         22/125
+  Verifying  : python3-setuptools-39.2.0-10.el7.noarch                   23/125
+  Verifying  : libxshmfence-1.2-1.el7.x86_64                             24/125
+  Verifying  : tzdata-java-2022a-1.el7.noarch                            25/125
+  Verifying  : libXau-1.0.8-2.1.el7.x86_64                               26/125
+  Verifying  : perl-File-Path-2.09-2.el7.noarch                          27/125
+  Verifying  : 1:java-1.8.0-openjdk-headless-1.8.0.322.b06-1.el7_9.x8    28/125
+  Verifying  : gtk-update-icon-cache-3.22.30-8.el7_9.x86_64              29/125
+  Verifying  : perl-DBD-MySQL-4.023-6.el7.x86_64                         30/125
+  Verifying  : python-ipaddress-1.0.16-2.el7.noarch                      31/125
+  Verifying  : perl-Text-ParseWords-3.29-4.el7.noarch                    32/125
+  Verifying  : freetype-2.8-14.el7_9.1.x86_64                            33/125
+  Verifying  : libpciaccess-0.14-1.el7.x86_64                            34/125
+  Verifying  : libICE-1.0.9-9.el7.x86_64                                 35/125
+  Verifying  : giflib-4.1.6-9.el7.x86_64                                 36/125
+  Verifying  : hwdata-0.252-9.7.el7.x86_64                               37/125
+  Verifying  : 4:perl-Time-HiRes-1.9725-3.el7.x86_64                     38/125
+  Verifying  : python3-3.6.8-18.el7.x86_64                               39/125
+  Verifying  : python-setuptools-0.9.8-7.el7.noarch                      40/125
+  Verifying  : 1:cups-libs-1.6.3-51.el7.x86_64                           41/125
+  Verifying  : supervisor-3.4.0-1.el7.noarch                             42/125
+  Verifying  : libXtst-1.2.3-1.el7.x86_64                                43/125
+  Verifying  : mesa-libGL-18.3.4-12.el7_9.x86_64                         44/125
+  Verifying  : graphite2-1.3.10-1.el7_3.x86_64                           45/125
+  Verifying  : pixman-0.34.0-1.el7.x86_64                                46/125
+  Verifying  : javapackages-tools-3.4.1-11.el7.noarch                    47/125
+  Verifying  : perl-Pod-Usage-1.63-3.el7.noarch                          48/125
+  Verifying  : perl-Encode-2.51-7.el7.x86_64                             49/125
+  Verifying  : 1:libglvnd-egl-1.0.1-0.8.git5baa1e5.el7.x86_64            50/125
+  Verifying  : jasper-libs-1.900.1-33.el7.x86_64                         51/125
+  Verifying  : perl-threads-1.87-4.el7.x86_64                            52/125
+  Verifying  : 1:mariadb-5.5.68-1.el7.x86_64                             53/125
+  Verifying  : perl-Getopt-Long-2.40-3.el7.noarch                        54/125
+  Verifying  : libXfixes-5.0.3-1.el7.x86_64                              55/125
+  Verifying  : atk-2.28.1-2.el7.x86_64                                   56/125
+  Verifying  : 1:java-1.8.0-openjdk-1.8.0.322.b06-1.el7_9.x86_64         57/125
+  Verifying  : avahi-libs-0.6.31-20.el7.x86_64                           58/125
+  Verifying  : fontconfig-2.13.0-4.3.el7.x86_64                          59/125
+  Verifying  : python-backports-ssl_match_hostname-3.5.0.1-1.el7.noar    60/125
+  Verifying  : gdk-pixbuf2-2.36.12-3.el7.x86_64                          61/125
+  Verifying  : crontabs-1.11-6.20121102git.el7.noarch                    62/125
+  Verifying  : perl-Storable-2.45-3.el7.x86_64                           63/125
+  Verifying  : libXcursor-1.1.15-1.el7.x86_64                            64/125
+  Verifying  : cronie-1.4.11-24.el7_9.x86_64                             65/125
+  Verifying  : python3-pip-9.0.3-8.el7.noarch                            66/125
+  Verifying  : cronie-anacron-1.4.11-24.el7_9.x86_64                     67/125
+  Verifying  : perl-Compress-Raw-Bzip2-2.061-3.el7.x86_64                68/125
+  Verifying  : fontpackages-filesystem-1.44-8.el7.noarch                 69/125
+  Verifying  : ttmkfdir-3.0.9-42.el7.x86_64                              70/125
+  Verifying  : hicolor-icon-theme-0.12-7.el7.noarch                      71/125
+  Verifying  : 1:perl-parent-0.225-244.el7.noarch                        72/125
+  Verifying  : mesa-libglapi-18.3.4-12.el7_9.x86_64                      73/125
+  Verifying  : copy-jdk-configs-3.3-10.el7_5.noarch                      74/125
+  Verifying  : pango-1.42.4-4.el7_7.x86_64                               75/125
+  Verifying  : fribidi-1.0.2-1.el7_7.1.x86_64                            76/125
+  Verifying  : 1:perl-Pod-Escapes-1.04-299.el7_9.noarch                  77/125
+  Verifying  : libaio-0.3.109-13.el7.x86_64                              78/125
+  Verifying  : libjpeg-turbo-1.2.90-8.el7.x86_64                         79/125
+  Verifying  : perl-Carp-1.26-244.el7.noarch                             80/125
+  Verifying  : python3-libs-3.6.8-18.el7.x86_64                          81/125
+  Verifying  : harfbuzz-1.7.5-2.el7.x86_64                               82/125
+  Verifying  : libdrm-2.4.97-2.el7.x86_64                                83/125
+  Verifying  : libXrandr-1.5.1-2.el7.x86_64                              84/125
+  Verifying  : 2:libpng-1.5.13-8.el7.x86_64                              85/125
+  Verifying  : perl-PlRPC-0.2020-14.el7.noarch                           86/125
+  Verifying  : mesa-libgbm-18.3.4-12.el7_9.x86_64                        87/125
+  Verifying  : perl-Pod-Perldoc-3.20-4.el7.noarch                        88/125
+  Verifying  : 4:perl-5.16.3-299.el7_9.x86_64                            89/125
+  Verifying  : libSM-1.2.2-2.el7.x86_64                                  90/125
+  Verifying  : libX11-1.6.7-4.el7_9.x86_64                               91/125
+  Verifying  : perl-Filter-1.49-3.el7.x86_64                             92/125
+  Verifying  : libXdamage-1.1.4-4.1.el7.x86_64                           93/125
+  Verifying  : mesa-libEGL-18.3.4-12.el7_9.x86_64                        94/125
+  Verifying  : libtirpc-0.2.4-0.16.el7.x86_64                            95/125
+  Verifying  : libXinerama-1.1.3-2.1.el7.x86_64                          96/125
+  Verifying  : 1:mariadb-server-5.5.68-1.el7.x86_64                      97/125
+  Verifying  : libXxf86vm-1.1.4-1.el7.x86_64                             98/125
+  Verifying  : perl-IO-Compress-2.061-2.el7.noarch                       99/125
+  Verifying  : perl-Exporter-5.68-3.el7.noarch                          100/125
+  Verifying  : perl-constant-1.27-2.el7.noarch                          101/125
+  Verifying  : perl-PathTools-3.40-5.el7.x86_64                         102/125
+  Verifying  : perl-Socket-2.010-5.el7.x86_64                           103/125
+  Verifying  : gtk2-2.24.31-1.el7.x86_64                                104/125
+  Verifying  : alsa-lib-1.1.8-1.el7.x86_64                              105/125
+  Verifying  : 4:perl-macros-5.16.3-299.el7_9.x86_64                    106/125
+  Verifying  : perl-Net-Daemon-0.48-5.el7.noarch                        107/125
+  Verifying  : libtiff-4.0.3-35.el7.x86_64                              108/125
+  Verifying  : dejavu-fonts-common-2.33-6.el7.noarch                    109/125
+  Verifying  : 1:perl-Pod-Simple-3.28-4.el7.noarch                      110/125
+  Verifying  : libthai-0.1.14-9.el7.x86_64                              111/125
+  Verifying  : perl-Time-Local-1.2300-2.el7.noarch                      112/125
+  Verifying  : 1:libglvnd-1.0.1-0.8.git5baa1e5.el7.x86_64               113/125
+  Verifying  : libxcb-1.13-1.el7.x86_64                                 114/125
+  Verifying  : libXft-2.3.2-2.el7.x86_64                                115/125
+  Verifying  : xorg-x11-fonts-Type1-7.5-9.el7.noarch                    116/125
+  Verifying  : perl-Scalar-List-Utils-1.27-248.el7.x86_64               117/125
+  Verifying  : 1:perl-Compress-Raw-Zlib-2.061-4.el7.x86_64              118/125
+  Verifying  : jbigkit-libs-2.0-11.el7.x86_64                           119/125
+  Verifying  : cairo-1.15.12-4.el7.x86_64                               120/125
+  Verifying  : perl-podlators-2.5.1-3.el7.noarch                        121/125
+  Verifying  : libxslt-1.1.28-6.el7.x86_64                              122/125
+  Verifying  : libfontenc-1.1.3-3.el7.x86_64                            123/125
+  Verifying  : 4:perl-libs-5.16.3-299.el7_9.x86_64                      124/125
+  Verifying  : libX11-common-1.6.7-4.el7_9.noarch                       125/125
+
+Installed:
+  cronie.x86_64 0:1.4.11-24.el7_9
+  java-1.8.0-openjdk.x86_64 1:1.8.0.322.b06-1.el7_9
+  mariadb-server.x86_64 1:5.5.68-1.el7
+  python3.x86_64 0:3.6.8-18.el7
+  supervisor.noarch 0:3.4.0-1.el7
+
+Dependency Installed:
+  alsa-lib.x86_64 0:1.1.8-1.el7
+  atk.x86_64 0:2.28.1-2.el7
+  avahi-libs.x86_64 0:0.6.31-20.el7
+  cairo.x86_64 0:1.15.12-4.el7
+  copy-jdk-configs.noarch 0:3.3-10.el7_5
+  cronie-anacron.x86_64 0:1.4.11-24.el7_9
+  crontabs.noarch 0:1.11-6.20121102git.el7
+  cups-libs.x86_64 1:1.6.3-51.el7
+  dejavu-fonts-common.noarch 0:2.33-6.el7
+  dejavu-sans-fonts.noarch 0:2.33-6.el7
+  fontconfig.x86_64 0:2.13.0-4.3.el7
+  fontpackages-filesystem.noarch 0:1.44-8.el7
+  freetype.x86_64 0:2.8-14.el7_9.1
+  fribidi.x86_64 0:1.0.2-1.el7_7.1
+  gdk-pixbuf2.x86_64 0:2.36.12-3.el7
+  giflib.x86_64 0:4.1.6-9.el7
+  graphite2.x86_64 0:1.3.10-1.el7_3
+  groff-base.x86_64 0:1.22.2-8.el7
+  gtk-update-icon-cache.x86_64 0:3.22.30-8.el7_9
+  gtk2.x86_64 0:2.24.31-1.el7
+  harfbuzz.x86_64 0:1.7.5-2.el7
+  hicolor-icon-theme.noarch 0:0.12-7.el7
+  hwdata.x86_64 0:0.252-9.7.el7
+  jasper-libs.x86_64 0:1.900.1-33.el7
+  java-1.8.0-openjdk-headless.x86_64 1:1.8.0.322.b06-1.el7_9
+  javapackages-tools.noarch 0:3.4.1-11.el7
+  jbigkit-libs.x86_64 0:2.0-11.el7
+  libICE.x86_64 0:1.0.9-9.el7
+  libSM.x86_64 0:1.2.2-2.el7
+  libX11.x86_64 0:1.6.7-4.el7_9
+  libX11-common.noarch 0:1.6.7-4.el7_9
+  libXau.x86_64 0:1.0.8-2.1.el7
+  libXcomposite.x86_64 0:0.4.4-4.1.el7
+  libXcursor.x86_64 0:1.1.15-1.el7
+  libXdamage.x86_64 0:1.1.4-4.1.el7
+  libXext.x86_64 0:1.3.3-3.el7
+  libXfixes.x86_64 0:5.0.3-1.el7
+  libXft.x86_64 0:2.3.2-2.el7
+  libXi.x86_64 0:1.7.9-1.el7
+  libXinerama.x86_64 0:1.1.3-2.1.el7
+  libXrandr.x86_64 0:1.5.1-2.el7
+  libXrender.x86_64 0:0.9.10-1.el7
+  libXtst.x86_64 0:1.2.3-1.el7
+  libXxf86vm.x86_64 0:1.1.4-1.el7
+  libaio.x86_64 0:0.3.109-13.el7
+  libdrm.x86_64 0:2.4.97-2.el7
+  libfontenc.x86_64 0:1.1.3-3.el7
+  libglvnd.x86_64 1:1.0.1-0.8.git5baa1e5.el7
+  libglvnd-egl.x86_64 1:1.0.1-0.8.git5baa1e5.el7
+  libglvnd-glx.x86_64 1:1.0.1-0.8.git5baa1e5.el7
+  libjpeg-turbo.x86_64 0:1.2.90-8.el7
+  libpciaccess.x86_64 0:0.14-1.el7
+  libpng.x86_64 2:1.5.13-8.el7
+  libthai.x86_64 0:0.1.14-9.el7
+  libtiff.x86_64 0:4.0.3-35.el7
+  libtirpc.x86_64 0:0.2.4-0.16.el7
+  libwayland-client.x86_64 0:1.15.0-1.el7
+  libwayland-server.x86_64 0:1.15.0-1.el7
+  libxcb.x86_64 0:1.13-1.el7
+  libxshmfence.x86_64 0:1.2-1.el7
+  libxslt.x86_64 0:1.1.28-6.el7
+  lksctp-tools.x86_64 0:1.0.17-2.el7
+  mariadb.x86_64 1:5.5.68-1.el7
+  mariadb-libs.x86_64 1:5.5.68-1.el7
+  mesa-libEGL.x86_64 0:18.3.4-12.el7_9
+  mesa-libGL.x86_64 0:18.3.4-12.el7_9
+  mesa-libgbm.x86_64 0:18.3.4-12.el7_9
+  mesa-libglapi.x86_64 0:18.3.4-12.el7_9
+  pango.x86_64 0:1.42.4-4.el7_7
+  pcsc-lite-libs.x86_64 0:1.8.8-8.el7
+  perl.x86_64 4:5.16.3-299.el7_9
+  perl-Carp.noarch 0:1.26-244.el7
+  perl-Compress-Raw-Bzip2.x86_64 0:2.061-3.el7
+  perl-Compress-Raw-Zlib.x86_64 1:2.061-4.el7
+  perl-DBD-MySQL.x86_64 0:4.023-6.el7
+  perl-DBI.x86_64 0:1.627-4.el7
+  perl-Data-Dumper.x86_64 0:2.145-3.el7
+  perl-Encode.x86_64 0:2.51-7.el7
+  perl-Exporter.noarch 0:5.68-3.el7
+  perl-File-Path.noarch 0:2.09-2.el7
+  perl-File-Temp.noarch 0:0.23.01-3.el7
+  perl-Filter.x86_64 0:1.49-3.el7
+  perl-Getopt-Long.noarch 0:2.40-3.el7
+  perl-HTTP-Tiny.noarch 0:0.033-3.el7
+  perl-IO-Compress.noarch 0:2.061-2.el7
+  perl-Net-Daemon.noarch 0:0.48-5.el7
+  perl-PathTools.x86_64 0:3.40-5.el7
+  perl-PlRPC.noarch 0:0.2020-14.el7
+  perl-Pod-Escapes.noarch 1:1.04-299.el7_9
+  perl-Pod-Perldoc.noarch 0:3.20-4.el7
+  perl-Pod-Simple.noarch 1:3.28-4.el7
+  perl-Pod-Usage.noarch 0:1.63-3.el7
+  perl-Scalar-List-Utils.x86_64 0:1.27-248.el7
+  perl-Socket.x86_64 0:2.010-5.el7
+  perl-Storable.x86_64 0:2.45-3.el7
+  perl-Text-ParseWords.noarch 0:3.29-4.el7
+  perl-Time-HiRes.x86_64 4:1.9725-3.el7
+  perl-Time-Local.noarch 0:1.2300-2.el7
+  perl-constant.noarch 0:1.27-2.el7
+  perl-libs.x86_64 4:5.16.3-299.el7_9
+  perl-macros.x86_64 4:5.16.3-299.el7_9
+  perl-parent.noarch 1:0.225-244.el7
+  perl-podlators.noarch 0:2.5.1-3.el7
+  perl-threads.x86_64 0:1.87-4.el7
+  perl-threads-shared.x86_64 0:1.43-6.el7
+  pixman.x86_64 0:0.34.0-1.el7
+  python-backports.x86_64 0:1.0-8.el7
+  python-backports-ssl_match_hostname.noarch 0:3.5.0.1-1.el7
+  python-ipaddress.noarch 0:1.0.16-2.el7
+  python-javapackages.noarch 0:3.4.1-11.el7
+  python-lxml.x86_64 0:3.2.1-4.el7
+  python-meld3.x86_64 0:0.6.10-1.el7
+  python-setuptools.noarch 0:0.9.8-7.el7
+  python3-libs.x86_64 0:3.6.8-18.el7
+  python3-pip.noarch 0:9.0.3-8.el7
+  python3-setuptools.noarch 0:39.2.0-10.el7
+  ttmkfdir.x86_64 0:3.0.9-42.el7
+  tzdata-java.noarch 0:2022a-1.el7
+  xorg-x11-font-utils.x86_64 1:7.5-21.el7
+  xorg-x11-fonts-Type1.noarch 0:7.5-9.el7
+
+Complete!
+Loaded plugins: fastestmirror, ovl
+Cleaning repos: base epel extras updates
+Cleaning up list of fastest mirrors
+Removing intermediate container f7129e2584af
+ ---> 85060ea64d82
+Step 3/21 : ARG MYSQL_ROOT_PASSWORD
+ ---> Running in a30bbd8b7efa
+Removing intermediate container a30bbd8b7efa
+ ---> c6677f018605
+Step 4/21 : RUN /usr/bin/mysql_install_db --user=mysql --force     && chown -R mysql:mysql /var/lib/mysql
+ ---> Running in 09d2f07c2470
+Installing MariaDB/MySQL system tables in '/var/lib/mysql' ...
+220508 13:03:23 [Note] /usr/libexec/mysqld (mysqld 5.5.68-MariaDB) starting as process 32 ...
+OK
+Filling help tables...
+220508 13:03:23 [Note] /usr/libexec/mysqld (mysqld 5.5.68-MariaDB) starting as process 40 ...
+OK
+
+To start mysqld at boot time you have to copy
+support-files/mysql.server to the right place for your system
+
+PLEASE REMEMBER TO SET A PASSWORD FOR THE MariaDB root USER !
+To do so, start the server, then issue the following commands:
+
+'/usr/bin/mysqladmin' -u root password 'new-password'
+'/usr/bin/mysqladmin' -u root -h 09d2f07c2470 password 'new-password'
+
+Alternatively you can run:
+'/usr/bin/mysql_secure_installation'
+
+which will also give you the option of removing the test
+databases and anonymous user created by default.  This is
+strongly recommended for production servers.
+
+See the MariaDB Knowledgebase at http://mariadb.com/kb or the
+MySQL manual for more instructions.
+
+You can start the MariaDB daemon with:
+cd '/usr' ; /usr/bin/mysqld_safe --datadir='/var/lib/mysql'
+
+You can test the MariaDB daemon with mysql-test-run.pl
+cd '/usr/mysql-test' ; perl mysql-test-run.pl
+
+Please report any problems at http://mariadb.org/jira
+
+The latest information about MariaDB is available at http://mariadb.org/.
+You can find additional information about the MySQL part at:
+http://dev.mysql.com
+Consider joining MariaDB's strong and vibrant community:
+https://mariadb.org/get-involved/
+
+Removing intermediate container 09d2f07c2470
+ ---> 6bfed1350955
+Step 5/21 : COPY schema.sql /schema.sql
+ ---> 639058e15de6
+Step 6/21 : COPY *SNAPSHOT.jar /app.jar
+ ---> 7b9f69c78710
+Step 7/21 : RUN echo -e "/usr/bin/mysqladmin --no-defaults --port=3306 --user=root password '${MYSQL_ROOT_PASSWORD}'\n" > /start-front-end.sh
+ ---> Running in 7efe2cf26f7b
+Removing intermediate container 7efe2cf26f7b
+ ---> a37b8e7c9b9c
+Step 8/21 : RUN echo -e "/usr/bin/mysql -v -u root -p${MYSQL_ROOT_PASSWORD} < /schema.sql\n" >> /start-front-end.sh
+ ---> Running in e87fad0a248b
+Removing intermediate container e87fad0a248b
+ ---> 96ae9029dccf
+Step 9/21 : RUN echo -e "/usr/bin/java -jar /app.jar\n" >> /start-front-end.sh
+ ---> Running in 851eda10cd02
+Removing intermediate container 851eda10cd02
+ ---> 551a03dd6b3e
+Step 10/21 : RUN chmod u+x /start-front-end.sh
+ ---> Running in 27f67189fe45
+Removing intermediate container 27f67189fe45
+ ---> d10a30b8f40e
+Step 11/21 : COPY main.py /main.py
+ ---> 69cc2cde5720
+Step 12/21 : COPY config.json /config.json
+ ---> 01f904de2d01
+Step 13/21 : RUN ln -sf /usr/bin/python3.6 /usr/local/bin/python
+ ---> Running in 8684825a4e1c
+Removing intermediate container 8684825a4e1c
+ ---> 0525c30771f2
+Step 14/21 : ENV PYTHONIOENCODING=utf-8
+ ---> Running in 7f4128600bb9
+Removing intermediate container 7f4128600bb9
+ ---> 08a48fd209e8
+Step 15/21 : RUN echo -e "* * * * * root /usr/local/bin/python /main.py\n" > /etc/cron.d/backend
+ ---> Running in 8da3dc57e88a
+Removing intermediate container 8da3dc57e88a
+ ---> cb147efe2218
+Step 16/21 : EXPOSE 8080
+ ---> Running in bf31db365e4c
+Removing intermediate container bf31db365e4c
+ ---> dcc9477091b1
+Step 17/21 : EXPOSE 8001
+ ---> Running in c5cc75e1c887
+Removing intermediate container c5cc75e1c887
+ ---> 46ca3106a07a
+Step 18/21 : VOLUME ["/var/lib/mysql/"]
+ ---> Running in 7da8b68400dc
+Removing intermediate container 7da8b68400dc
+ ---> 925a8e72e0e5
+Step 19/21 : VOLUME ["/chargement"]
+ ---> Running in b553a84d6a7b
+Removing intermediate container b553a84d6a7b
+ ---> ff249d4518f5
+Step 20/21 : COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+ ---> fcffaa2a9e93
+Step 21/21 : CMD ["/usr/bin/supervisord", "-n","-e","debug","-c", "/etc/supervisor/conf.d/supervisord.conf"]
+ ---> Running in 2becd2ca919e
+Removing intermediate container 2becd2ca919e
+ ---> c8f33733fa5e
+Successfully built c8f33733fa5e
+Successfully tagged appex-supervisor:latest
+Total reclaimed space: 0B

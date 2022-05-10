@@ -1,0 +1,11 @@
+[vagrant@node-server ~]$ sudo docker service create --replicas=2 --name hello-front --publish published=8080,target=5000 flask-app
+image flask-app:latest could not be accessed on a registry to record
+its digest. Each node will access flask-app:latest independently,
+possibly leading to different nodes running different
+versions of the image.
+
+jkkxguqzdsbq8zjz6wkzylki3
+overall progress: 2 out of 2 tasks
+1/2: running   [==================================================>]
+2/2: running   [==================================================>]
+verify: Service converged

@@ -1,0 +1,2188 @@
+$ vagrant up
+Bringing machine 'node-server' up with 'virtualbox' provider...
+Bringing machine 'node-client-1' up with 'virtualbox' provider...
+Bringing machine 'node-client-2' up with 'virtualbox' provider...
+==> node-server: Importing base box 'rockylinux/8'...
+==> node-server: Matching MAC address for NAT networking...
+==> node-server: Checking if box 'rockylinux/8' version '4.0.0' is up to date...
+==> node-server: Setting the name of the VM: node-server
+==> node-server: Clearing any previously set network interfaces...
+==> node-server: Preparing network interfaces based on configuration...
+    node-server: Adapter 1: nat
+    node-server: Adapter 2: hostonly
+==> node-server: Forwarding ports...
+    node-server: 22 (guest) => 2222 (host) (adapter 1)
+==> node-server: Running 'pre-boot' VM customizations...
+==> node-server: Booting VM...
+==> node-server: Waiting for machine to boot. This may take a few minutes...
+    node-server: SSH address: 127.0.0.1:2222
+    node-server: SSH username: vagrant
+    node-server: SSH auth method: private key
+    node-server:
+    node-server: Vagrant insecure key detected. Vagrant will automatically replace
+    node-server: this with a newly generated keypair for better security.
+    node-server:
+    node-server: Inserting generated public key within guest...
+    node-server: Removing insecure key from the guest if it's present...
+    node-server: Key inserted! Disconnecting and reconnecting using new SSH key...
+==> node-server: Machine booted and ready!
+==> node-server: Checking for guest additions in VM...
+==> node-server: Setting hostname...
+==> node-server: Configuring and enabling network interfaces...
+==> node-server: Mounting shared folders...
+    node-server: /vagrant => C:/temp/vm-vagrant-docker/docker-exemples-edition3-code/chapitre11
+==> node-server: Running provisioner: shell...
+    node-server: Running: C:/Users/pycloux/AppData/Local/Temp/vagrant-shell20220510-17756-1647z           eb.sh
+    node-server: Rocky Linux 8 - AppStream                       8.7 MB/s |  10 MB     00:01
+    node-server: Rocky Linux 8 - BaseOS                          8.6 MB/s | 7.7 MB     00:00
+    node-server: Rocky Linux 8 - Extras                           20 kB/s |  12 kB     00:00
+    node-server: Last metadata expiration check: 0:00:01 ago on Mon 09 May 2022 10:37:41 PM UTC           .
+    node-server: Dependencies resolved.
+    node-server: ==============================================================================           ==
+    node-server:  Package         Architecture Version                        Repository    Siz           e
+    node-server: ==============================================================================           ==
+    node-server: Installing:
+    node-server:  net-tools       x86_64       2.0-0.52.20160912git.el8       baseos       321            k
+    node-server:
+    node-server: Transaction Summary
+    node-server: ==============================================================================           ==
+    node-server: Install  1 Package
+    node-server:
+    node-server: Total download size: 321 k
+    node-server: Installed size: 942 k
+    node-server: Downloading Packages:
+    node-server: net-tools-2.0-0.52.20160912git.el8.x86_64.rpm   1.3 MB/s | 321 kB     00:00
+    node-server: ------------------------------------------------------------------------------           --
+    node-server: Total                                           605 kB/s | 321 kB     00:00
+    node-server: Running transaction check
+    node-server: Transaction check succeeded.
+    node-server: Running transaction test
+    node-server: Transaction test succeeded.
+    node-server: Running transaction
+    node-server:   Preparing        :                                                        1/           1
+    node-server:   Installing       : net-tools-2.0-0.52.20160912git.el8.x86_64              1/           1
+    node-server:   Running scriptlet: net-tools-2.0-0.52.20160912git.el8.x86_64              1/           1
+    node-server:   Verifying        : net-tools-2.0-0.52.20160912git.el8.x86_64              1/           1
+    node-server:
+    node-server: Installed:
+    node-server:   net-tools-2.0-0.52.20160912git.el8.x86_64
+    node-server:
+    node-server: Complete!
+    node-server: Last metadata expiration check: 0:00:04 ago on Mon 09 May 2022 10:37:41 PM UTC           .
+    node-server: Dependencies resolved.
+    node-server: ==============================================================================           ===========
+    node-server:  Package                  Arch    Version                                Repo                   Size
+    node-server: ==============================================================================           ===========
+    node-server: Installing:
+    node-server:  git                      x86_64  2.27.0-1.el8                           appst           ream  163 k
+    node-server: Installing dependencies:
+    node-server:  emacs-filesystem         noarch  1:26.1-7.el8                           baseo           s      69 k
+    node-server:  git-core                 x86_64  2.27.0-1.el8                           appst           ream  5.7 M
+    node-server:  git-core-doc             noarch  2.27.0-1.el8                           appst           ream  2.5 M
+    node-server:  perl-Carp                noarch  1.42-396.el8                           baseo           s      29 k
+    node-server:  perl-Data-Dumper         x86_64  2.167-399.el8                          baseo           s      57 k
+    node-server:  perl-Digest              noarch  1.17-395.el8                           appst           ream   26 k
+    node-server:  perl-Digest-MD5          x86_64  2.55-396.el8                           appst           ream   36 k
+    node-server:  perl-Encode              x86_64  4:2.97-3.el8                           baseo           s     1.5 M
+    node-server:  perl-Errno               x86_64  1.28-420.el8                           baseo           s      75 k
+    node-server:  perl-Error               noarch  1:0.17025-2.el8                        appst           ream   45 k
+    node-server:  perl-Exporter            noarch  5.72-396.el8                           baseo           s      33 k
+    node-server:  perl-File-Path           noarch  2.15-2.el8                             baseo           s      37 k
+    node-server:  perl-File-Temp           noarch  0.230.600-1.el8                        baseo           s      62 k
+    node-server:  perl-Getopt-Long         noarch  1:2.50-4.el8                           baseo           s      62 k
+    node-server:  perl-Git                 noarch  2.27.0-1.el8                           appst           ream   76 k
+    node-server:  perl-HTTP-Tiny           noarch  0.074-1.el8                            baseo           s      57 k
+    node-server:  perl-IO                  x86_64  1.38-420.el8                           baseo           s     141 k
+    node-server:  perl-MIME-Base64         x86_64  3.15-396.el8                           baseo           s      30 k
+    node-server:  perl-Net-SSLeay          x86_64  1.88-1.module+el8.4.0+512+d4f0fc54     appst           ream  378 k
+    node-server:  perl-PathTools           x86_64  3.74-1.el8                             baseo           s      89 k
+    node-server:  perl-Pod-Escapes         noarch  1:1.07-395.el8                         baseo           s      19 k
+    node-server:  perl-Pod-Perldoc         noarch  3.28-396.el8                           baseo           s      85 k
+    node-server:  perl-Pod-Simple          noarch  1:3.35-395.el8                         baseo           s     212 k
+    node-server:  perl-Pod-Usage           noarch  4:1.69-395.el8                         baseo           s      33 k
+    node-server:  perl-Scalar-List-Utils   x86_64  3:1.49-2.el8                           baseo           s      67 k
+    node-server:  perl-Socket              x86_64  4:2.027-3.el8                          baseo           s      58 k
+    node-server:  perl-Storable            x86_64  1:3.11-3.el8                           baseo           s      97 k
+    node-server:  perl-Term-ANSIColor      noarch  4.06-396.el8                           baseo           s      45 k
+    node-server:  perl-Term-Cap            noarch  1.17-395.el8                           baseo           s      22 k
+    node-server:  perl-TermReadKey         x86_64  2.37-7.el8                             appst           ream   39 k
+    node-server:  perl-Text-ParseWords     noarch  3.30-395.el8                           baseo           s      17 k
+    node-server:  perl-Text-Tabs+Wrap      noarch  2013.0523-395.el8                      baseo           s      23 k
+    node-server:  perl-Time-Local          noarch  1:1.280-1.el8                          baseo           s      32 k
+    node-server:  perl-URI                 noarch  1.73-3.el8                             appst           ream  115 k
+    node-server:  perl-Unicode-Normalize   x86_64  1.25-396.el8                           baseo           s      81 k
+    node-server:  perl-constant            noarch  1.33-396.el8                           baseo           s      24 k
+    node-server:  perl-interpreter         x86_64  4:5.26.3-420.el8                       baseo           s     6.3 M
+    node-server:  perl-libnet              noarch  3.11-3.el8                             appst           ream  120 k
+    node-server:  perl-libs                x86_64  4:5.26.3-420.el8                       baseo           s     1.6 M
+    node-server:  perl-macros              x86_64  4:5.26.3-420.el8                       baseo           s      71 k
+    node-server:  perl-parent              noarch  1:0.237-1.el8                          baseo           s      19 k
+    node-server:  perl-podlators           noarch  4.11-1.el8                             baseo           s     117 k
+    node-server:  perl-threads             x86_64  1:2.21-2.el8                           baseo           s      60 k
+    node-server:  perl-threads-shared      x86_64  1.58-2.el8                             baseo           s      47 k
+    node-server: Installing weak dependencies:
+    node-server:  perl-IO-Socket-IP        noarch  0.39-5.el8                             appst           ream   46 k
+    node-server:  perl-IO-Socket-SSL       noarch  2.066-4.module+el8.4.0+512+d4f0fc54    appst           ream  297 k
+    node-server:  perl-Mozilla-CA          noarch  20160104-7.module+el8.4.0+529+e3b3e624 appst           ream   14 k
+    node-server:
+    node-server: Transaction Summary
+    node-server: ==============================================================================           ===========
+    node-server: Install  48 Packages
+    node-server:
+    node-server: Total download size: 21 M
+    node-server: Installed size: 80 M
+    node-server: Downloading Packages:
+    node-server: (1/48): git-2.27.0-1.el8.x86_64.rpm             774 kB/s | 163 kB     00:00
+    node-server: (2/48): perl-Digest-1.17-395.el8.noarch.rpm     877 kB/s |  26 kB     00:00
+    node-server: (3/48): perl-Digest-MD5-2.55-396.el8.x86_64.rpm 1.3 MB/s |  36 kB     00:00
+    node-server: (4/48): perl-Error-0.17025-2.el8.noarch.rpm     930 kB/s |  45 kB     00:00
+    node-server: (5/48): perl-Git-2.27.0-1.el8.noarch.rpm        597 kB/s |  76 kB     00:00
+    node-server: (6/48): git-core-doc-2.27.0-1.el8.noarch.rpm    5.3 MB/s | 2.5 MB     00:00
+    node-server: (7/48): git-core-2.27.0-1.el8.x86_64.rpm         11 MB/s | 5.7 MB     00:00
+    node-server: (8/48): perl-IO-Socket-IP-0.39-5.el8.noarch.rpm 640 kB/s |  46 kB     00:00
+    node-server: (9/48): perl-IO-Socket-SSL-2.066-4.module+el8.4 5.7 MB/s | 297 kB     00:00
+    node-server: (10/48): perl-TermReadKey-2.37-7.el8.x86_64.rpm 1.5 MB/s |  39 kB     00:00
+    node-server: (11/48): perl-Mozilla-CA-20160104-7.module+el8. 408 kB/s |  14 kB     00:00
+    node-server: (12/48): perl-Net-SSLeay-1.88-1.module+el8.4.0+ 9.7 MB/s | 378 kB     00:00
+    node-server: (13/48): perl-URI-1.73-3.el8.noarch.rpm         3.4 MB/s | 115 kB     00:00
+    node-server: (14/48): perl-libnet-3.11-3.el8.noarch.rpm      3.6 MB/s | 120 kB     00:00
+    node-server: (15/48): emacs-filesystem-26.1-7.el8.noarch.rpm 2.3 MB/s |  69 kB     00:00
+    node-server: (16/48): perl-Carp-1.42-396.el8.noarch.rpm      935 kB/s |  29 kB     00:00
+    node-server: (17/48): perl-Data-Dumper-2.167-399.el8.x86_64. 1.9 MB/s |  57 kB     00:00
+    node-server: (18/48): perl-Encode-2.97-3.el8.x86_64.rpm       19 MB/s | 1.5 MB     00:00
+    node-server: (19/48): perl-Exporter-5.72-396.el8.noarch.rpm  680 kB/s |  33 kB     00:00
+    node-server: (20/48): perl-Errno-1.28-420.el8.x86_64.rpm     1.4 MB/s |  75 kB     00:00
+    node-server: (21/48): perl-Getopt-Long-2.50-4.el8.noarch.rpm 2.1 MB/s |  62 kB     00:00
+    node-server: (22/48): perl-File-Temp-0.230.600-1.el8.noarch. 1.9 MB/s |  62 kB     00:00
+    node-server: (23/48): perl-File-Path-2.15-2.el8.noarch.rpm   1.1 MB/s |  37 kB     00:00
+    node-server: (24/48): perl-HTTP-Tiny-0.074-1.el8.noarch.rpm  2.0 MB/s |  57 kB     00:00
+    node-server: (25/48): perl-IO-1.38-420.el8.x86_64.rpm        4.8 MB/s | 141 kB     00:00
+    node-server: (26/48): perl-MIME-Base64-3.15-396.el8.x86_64.r 1.4 MB/s |  30 kB     00:00
+    node-server: (27/48): perl-Pod-Escapes-1.07-395.el8.noarch.r 777 kB/s |  19 kB     00:00
+    node-server: (28/48): perl-PathTools-3.74-1.el8.x86_64.rpm   3.0 MB/s |  89 kB     00:00
+    node-server: (29/48): perl-Pod-Perldoc-3.28-396.el8.noarch.r 2.8 MB/s |  85 kB     00:00
+    node-server: (30/48): perl-Pod-Simple-3.35-395.el8.noarch.rp 6.8 MB/s | 212 kB     00:00
+    node-server: (31/48): perl-Pod-Usage-1.69-395.el8.noarch.rpm 1.1 MB/s |  33 kB     00:00
+    node-server: (32/48): perl-Scalar-List-Utils-1.49-2.el8.x86_ 2.6 MB/s |  67 kB     00:00
+    node-server: (33/48): perl-Socket-2.027-3.el8.x86_64.rpm     1.8 MB/s |  58 kB     00:00
+    node-server: (34/48): perl-Storable-3.11-3.el8.x86_64.rpm    2.8 MB/s |  97 kB     00:00
+    node-server: (35/48): perl-Term-ANSIColor-4.06-396.el8.noarc 1.0 MB/s |  45 kB     00:00
+    node-server: (36/48): perl-Term-Cap-1.17-395.el8.noarch.rpm  933 kB/s |  22 kB     00:00
+    node-server: (37/48): perl-Text-Tabs+Wrap-2013.0523-395.el8. 1.1 MB/s |  23 kB     00:00
+    node-server: (38/48): perl-Text-ParseWords-3.30-395.el8.noar 754 kB/s |  17 kB     00:00
+    node-server: (39/48): perl-Time-Local-1.280-1.el8.noarch.rpm 1.1 MB/s |  32 kB     00:00
+    node-server: (40/48): perl-Unicode-Normalize-1.25-396.el8.x8 2.7 MB/s |  81 kB     00:00
+    node-server: (41/48): perl-constant-1.33-396.el8.noarch.rpm  850 kB/s |  24 kB     00:00
+    node-server: (42/48): perl-macros-5.26.3-420.el8.x86_64.rpm  855 kB/s |  71 kB     00:00
+    node-server: (43/48): perl-parent-0.237-1.el8.noarch.rpm     225 kB/s |  19 kB     00:00
+    node-server: (44/48): perl-interpreter-5.26.3-420.el8.x86_64  25 MB/s | 6.3 MB     00:00
+    node-server: (45/48): perl-podlators-4.11-1.el8.noarch.rpm   1.5 MB/s | 117 kB     00:00
+    node-server: (46/48): perl-threads-2.21-2.el8.x86_64.rpm     2.3 MB/s |  60 kB     00:00
+    node-server: (47/48): perl-threads-shared-1.58-2.el8.x86_64. 1.4 MB/s |  47 kB     00:00
+    node-server: (48/48): perl-libs-5.26.3-420.el8.x86_64.rpm    4.0 MB/s | 1.6 MB     00:00
+    node-server: ------------------------------------------------------------------------------           --
+    node-server: Total                                            11 MB/s |  21 MB     00:01
+    node-server: Running transaction check
+    node-server: Transaction check succeeded.
+    node-server: Running transaction test
+    node-server: Transaction test succeeded.
+    node-server: Running transaction
+    node-server:   Preparing        :                                                        1/           1
+    node-server:   Installing       : git-core-2.27.0-1.el8.x86_64                          1/4           8
+    node-server:   Installing       : git-core-doc-2.27.0-1.el8.noarch                      2/4           8
+    node-server:   Installing       : perl-Digest-1.17-395.el8.noarch                       3/4           8
+    node-server:   Installing       : perl-Digest-MD5-2.55-396.el8.x86_64                   4/4           8
+    node-server:   Installing       : perl-Data-Dumper-2.167-399.el8.x86_64                 5/4           8
+    node-server:   Installing       : perl-libnet-3.11-3.el8.noarch                         6/4           8
+    node-server:   Installing       : perl-Net-SSLeay-1.88-1.module+el8.4.0+512+d4f0fc54    7/4           8
+    node-server:   Installing       : perl-URI-1.73-3.el8.noarch                            8/4           8
+    node-server:   Installing       : perl-Pod-Escapes-1:1.07-395.el8.noarch                9/4           8
+    node-server:   Installing       : perl-Mozilla-CA-20160104-7.module+el8.4.0+529+e3b3   10/4           8
+    node-server:   Installing       : perl-IO-Socket-IP-0.39-5.el8.noarch                  11/4           8
+    node-server:   Installing       : perl-Time-Local-1:1.280-1.el8.noarch                 12/4           8
+    node-server:   Installing       : perl-IO-Socket-SSL-2.066-4.module+el8.4.0+512+d4f0   13/4           8
+    node-server:   Installing       : perl-Term-ANSIColor-4.06-396.el8.noarch              14/4           8
+    node-server:   Installing       : perl-Term-Cap-1.17-395.el8.noarch                    15/4           8
+    node-server:   Installing       : perl-File-Temp-0.230.600-1.el8.noarch                16/4           8
+    node-server:   Installing       : perl-Pod-Simple-1:3.35-395.el8.noarch                17/4           8
+    node-server:   Installing       : perl-HTTP-Tiny-0.074-1.el8.noarch                    18/4           8
+    node-server:   Installing       : perl-podlators-4.11-1.el8.noarch                     19/4           8
+    node-server:   Installing       : perl-Pod-Perldoc-3.28-396.el8.noarch                 20/4           8
+    node-server:   Installing       : perl-Text-ParseWords-3.30-395.el8.noarch             21/4           8
+    node-server:   Installing       : perl-Pod-Usage-4:1.69-395.el8.noarch                 22/4           8
+    node-server:   Installing       : perl-MIME-Base64-3.15-396.el8.x86_64                 23/4           8
+    node-server:   Installing       : perl-Storable-1:3.11-3.el8.x86_64                    24/4           8
+    node-server:   Installing       : perl-Getopt-Long-1:2.50-4.el8.noarch                 25/4           8
+    node-server:   Installing       : perl-Errno-1.28-420.el8.x86_64                       26/4           8
+    node-server:   Installing       : perl-Socket-4:2.027-3.el8.x86_64                     27/4           8
+    node-server:   Installing       : perl-Encode-4:2.97-3.el8.x86_64                      28/4           8
+    node-server:   Installing       : perl-Carp-1.42-396.el8.noarch                        29/4           8
+    node-server:   Installing       : perl-Exporter-5.72-396.el8.noarch                    30/4           8
+    node-server:   Installing       : perl-libs-4:5.26.3-420.el8.x86_64                    31/4           8
+    node-server:   Installing       : perl-Scalar-List-Utils-3:1.49-2.el8.x86_64           32/4           8
+    node-server:   Installing       : perl-parent-1:0.237-1.el8.noarch                     33/4           8
+    node-server:   Installing       : perl-macros-4:5.26.3-420.el8.x86_64                  34/4           8
+    node-server:   Installing       : perl-Text-Tabs+Wrap-2013.0523-395.el8.noarch         35/4           8
+    node-server:   Installing       : perl-Unicode-Normalize-1.25-396.el8.x86_64           36/4           8
+    node-server:   Installing       : perl-File-Path-2.15-2.el8.noarch                     37/4           8
+    node-server:   Installing       : perl-IO-1.38-420.el8.x86_64                          38/4           8
+    node-server:   Installing       : perl-PathTools-3.74-1.el8.x86_64                     39/4           8
+    node-server:   Installing       : perl-constant-1.33-396.el8.noarch                    40/4           8
+    node-server:   Installing       : perl-threads-1:2.21-2.el8.x86_64                     41/4           8
+    node-server:   Installing       : perl-threads-shared-1.58-2.el8.x86_64                42/4           8
+    node-server:   Installing       : perl-interpreter-4:5.26.3-420.el8.x86_64             43/4           8
+    node-server:   Installing       : perl-Error-1:0.17025-2.el8.noarch                    44/4           8
+    node-server:   Installing       : perl-TermReadKey-2.37-7.el8.x86_64                   45/4           8
+    node-server:   Installing       : emacs-filesystem-1:26.1-7.el8.noarch                 46/4           8
+    node-server:   Installing       : perl-Git-2.27.0-1.el8.noarch                         47/4           8
+    node-server:   Installing       : git-2.27.0-1.el8.x86_64                              48/4           8
+    node-server:   Running scriptlet: git-2.27.0-1.el8.x86_64                              48/4           8
+    node-server:   Verifying        : git-2.27.0-1.el8.x86_64                               1/4           8
+    node-server:   Verifying        : git-core-2.27.0-1.el8.x86_64                          2/4           8
+    node-server:   Verifying        : git-core-doc-2.27.0-1.el8.noarch                      3/4           8
+    node-server:   Verifying        : perl-Digest-1.17-395.el8.noarch                       4/4           8
+    node-server:   Verifying        : perl-Digest-MD5-2.55-396.el8.x86_64                   5/4           8
+    node-server:   Verifying        : perl-Error-1:0.17025-2.el8.noarch                     6/4           8
+    node-server:   Verifying        : perl-Git-2.27.0-1.el8.noarch                          7/4           8
+    node-server:   Verifying        : perl-IO-Socket-IP-0.39-5.el8.noarch                   8/4           8
+    node-server:   Verifying        : perl-IO-Socket-SSL-2.066-4.module+el8.4.0+512+d4f0    9/4           8
+    node-server:   Verifying        : perl-Mozilla-CA-20160104-7.module+el8.4.0+529+e3b3   10/4           8
+    node-server:   Verifying        : perl-Net-SSLeay-1.88-1.module+el8.4.0+512+d4f0fc54   11/4           8
+    node-server:   Verifying        : perl-TermReadKey-2.37-7.el8.x86_64                   12/4           8
+    node-server:   Verifying        : perl-URI-1.73-3.el8.noarch                           13/4           8
+    node-server:   Verifying        : perl-libnet-3.11-3.el8.noarch                        14/4           8
+    node-server:   Verifying        : emacs-filesystem-1:26.1-7.el8.noarch                 15/4           8
+    node-server:   Verifying        : perl-Carp-1.42-396.el8.noarch                        16/4           8
+    node-server:   Verifying        : perl-Data-Dumper-2.167-399.el8.x86_64                17/4           8
+    node-server:   Verifying        : perl-Encode-4:2.97-3.el8.x86_64                      18/4           8
+    node-server:   Verifying        : perl-Errno-1.28-420.el8.x86_64                       19/4           8
+    node-server:   Verifying        : perl-Exporter-5.72-396.el8.noarch                    20/4           8
+    node-server:   Verifying        : perl-File-Path-2.15-2.el8.noarch                     21/4           8
+    node-server:   Verifying        : perl-File-Temp-0.230.600-1.el8.noarch                22/4           8
+    node-server:   Verifying        : perl-Getopt-Long-1:2.50-4.el8.noarch                 23/4           8
+    node-server:   Verifying        : perl-HTTP-Tiny-0.074-1.el8.noarch                    24/4           8
+    node-server:   Verifying        : perl-IO-1.38-420.el8.x86_64                          25/4           8
+    node-server:   Verifying        : perl-MIME-Base64-3.15-396.el8.x86_64                 26/4           8
+    node-server:   Verifying        : perl-PathTools-3.74-1.el8.x86_64                     27/4           8
+    node-server:   Verifying        : perl-Pod-Escapes-1:1.07-395.el8.noarch               28/4           8
+    node-server:   Verifying        : perl-Pod-Perldoc-3.28-396.el8.noarch                 29/4           8
+    node-server:   Verifying        : perl-Pod-Simple-1:3.35-395.el8.noarch                30/4           8
+    node-server:   Verifying        : perl-Pod-Usage-4:1.69-395.el8.noarch                 31/4           8
+    node-server:   Verifying        : perl-Scalar-List-Utils-3:1.49-2.el8.x86_64           32/4           8
+    node-server:   Verifying        : perl-Socket-4:2.027-3.el8.x86_64                     33/4           8
+    node-server:   Verifying        : perl-Storable-1:3.11-3.el8.x86_64                    34/4           8
+    node-server:   Verifying        : perl-Term-ANSIColor-4.06-396.el8.noarch              35/4           8
+    node-server:   Verifying        : perl-Term-Cap-1.17-395.el8.noarch                    36/4           8
+    node-server:   Verifying        : perl-Text-ParseWords-3.30-395.el8.noarch             37/4           8
+    node-server:   Verifying        : perl-Text-Tabs+Wrap-2013.0523-395.el8.noarch         38/4           8
+    node-server:   Verifying        : perl-Time-Local-1:1.280-1.el8.noarch                 39/4           8
+    node-server:   Verifying        : perl-Unicode-Normalize-1.25-396.el8.x86_64           40/4           8
+    node-server:   Verifying        : perl-constant-1.33-396.el8.noarch                    41/4           8
+    node-server:   Verifying        : perl-interpreter-4:5.26.3-420.el8.x86_64             42/4           8
+    node-server:   Verifying        : perl-libs-4:5.26.3-420.el8.x86_64                    43/4           8
+    node-server:   Verifying        : perl-macros-4:5.26.3-420.el8.x86_64                  44/4           8
+    node-server:   Verifying        : perl-parent-1:0.237-1.el8.noarch                     45/4           8
+    node-server:   Verifying        : perl-podlators-4.11-1.el8.noarch                     46/4           8
+    node-server:   Verifying        : perl-threads-1:2.21-2.el8.x86_64                     47/4           8
+    node-server:   Verifying        : perl-threads-shared-1.58-2.el8.x86_64                48/4           8
+    node-server:
+    node-server: Installed:
+    node-server:   emacs-filesystem-1:26.1-7.el8.noarch
+    node-server:   git-2.27.0-1.el8.x86_64
+    node-server:   git-core-2.27.0-1.el8.x86_64
+    node-server:   git-core-doc-2.27.0-1.el8.noarch
+    node-server:   perl-Carp-1.42-396.el8.noarch
+    node-server:   perl-Data-Dumper-2.167-399.el8.x86_64
+    node-server:   perl-Digest-1.17-395.el8.noarch
+    node-server:   perl-Digest-MD5-2.55-396.el8.x86_64
+    node-server:   perl-Encode-4:2.97-3.el8.x86_64
+    node-server:   perl-Errno-1.28-420.el8.x86_64
+    node-server:   perl-Error-1:0.17025-2.el8.noarch
+    node-server:   perl-Exporter-5.72-396.el8.noarch
+    node-server:   perl-File-Path-2.15-2.el8.noarch
+    node-server:   perl-File-Temp-0.230.600-1.el8.noarch
+    node-server:   perl-Getopt-Long-1:2.50-4.el8.noarch
+    node-server:   perl-Git-2.27.0-1.el8.noarch
+    node-server:   perl-HTTP-Tiny-0.074-1.el8.noarch
+    node-server:   perl-IO-1.38-420.el8.x86_64
+    node-server:   perl-IO-Socket-IP-0.39-5.el8.noarch
+    node-server:   perl-IO-Socket-SSL-2.066-4.module+el8.4.0+512+d4f0fc54.noarch
+    node-server:   perl-MIME-Base64-3.15-396.el8.x86_64
+    node-server:   perl-Mozilla-CA-20160104-7.module+el8.4.0+529+e3b3e624.noarch
+    node-server:   perl-Net-SSLeay-1.88-1.module+el8.4.0+512+d4f0fc54.x86_64
+    node-server:   perl-PathTools-3.74-1.el8.x86_64
+    node-server:   perl-Pod-Escapes-1:1.07-395.el8.noarch
+    node-server:   perl-Pod-Perldoc-3.28-396.el8.noarch
+    node-server:   perl-Pod-Simple-1:3.35-395.el8.noarch
+    node-server:   perl-Pod-Usage-4:1.69-395.el8.noarch
+    node-server:   perl-Scalar-List-Utils-3:1.49-2.el8.x86_64
+    node-server:   perl-Socket-4:2.027-3.el8.x86_64
+    node-server:   perl-Storable-1:3.11-3.el8.x86_64
+    node-server:   perl-Term-ANSIColor-4.06-396.el8.noarch
+    node-server:   perl-Term-Cap-1.17-395.el8.noarch
+    node-server:   perl-TermReadKey-2.37-7.el8.x86_64
+    node-server:   perl-Text-ParseWords-3.30-395.el8.noarch
+    node-server:   perl-Text-Tabs+Wrap-2013.0523-395.el8.noarch
+    node-server:   perl-Time-Local-1:1.280-1.el8.noarch
+    node-server:   perl-URI-1.73-3.el8.noarch
+    node-server:   perl-Unicode-Normalize-1.25-396.el8.x86_64
+    node-server:   perl-constant-1.33-396.el8.noarch
+    node-server:   perl-interpreter-4:5.26.3-420.el8.x86_64
+    node-server:   perl-libnet-3.11-3.el8.noarch
+    node-server:   perl-libs-4:5.26.3-420.el8.x86_64
+    node-server:   perl-macros-4:5.26.3-420.el8.x86_64
+    node-server:   perl-parent-1:0.237-1.el8.noarch
+    node-server:   perl-podlators-4.11-1.el8.noarch
+    node-server:   perl-threads-1:2.21-2.el8.x86_64
+    node-server:   perl-threads-shared-1.58-2.el8.x86_64
+    node-server:
+    node-server: Complete!
+    node-server: Last metadata expiration check: 0:00:14 ago on Mon 09 May 2022 10:37:41 PM UTC           .
+    node-server: Dependencies resolved.
+    node-server: ==============================================================================           ==
+    node-server:  Package           Architecture   Version               Repository         Siz           e
+    node-server: ==============================================================================           ==
+    node-server: Installing:
+    node-server:  nmap              x86_64         2:7.70-6.el8          appstream         5.8            M
+    node-server: Installing dependencies:
+    node-server:  nmap-ncat         x86_64         2:7.70-6.el8          appstream         236            k
+    node-server:
+    node-server: Transaction Summary
+    node-server: ==============================================================================           ==
+    node-server: Install  2 Packages
+    node-server:
+    node-server: Total download size: 6.0 M
+    node-server: Installed size: 24 M
+    node-server: Downloading Packages:
+    node-server: (1/2): nmap-ncat-7.70-6.el8.x86_64.rpm          921 kB/s | 236 kB     00:00
+    node-server: (2/2): nmap-7.70-6.el8.x86_64.rpm               7.0 MB/s | 5.8 MB     00:00
+    node-server: ------------------------------------------------------------------------------           --
+    node-server: Total                                           5.4 MB/s | 6.0 MB     00:01
+    node-server: Running transaction check
+    node-server: Transaction check succeeded.
+    node-server: Running transaction test
+    node-server: Transaction test succeeded.
+    node-server: Running transaction
+    node-server:   Preparing        :                                                        1/           1
+    node-server:   Installing       : nmap-ncat-2:7.70-6.el8.x86_64                          1/           2
+    node-server:   Running scriptlet: nmap-ncat-2:7.70-6.el8.x86_64                          1/           2
+    node-server:   Installing       : nmap-2:7.70-6.el8.x86_64                               2/           2
+    node-server:   Running scriptlet: nmap-2:7.70-6.el8.x86_64                               2/           2
+    node-server:   Verifying        : nmap-2:7.70-6.el8.x86_64                               1/           2
+    node-server:   Verifying        : nmap-ncat-2:7.70-6.el8.x86_64                          2/           2
+    node-server:
+    node-server: Installed:
+    node-server:   nmap-2:7.70-6.el8.x86_64             nmap-ncat-2:7.70-6.el8.x86_64
+    node-server:
+    node-server: Complete!
+    node-server: Adding repo from: https://download.docker.com/linux/centos/docker-ce.repo
+    node-server: Docker CE Stable - x86_64                        86 kB/s |  24 kB     00:00
+    node-server: Last metadata expiration check: 0:00:01 ago on Mon 09 May 2022 10:38:00 PM UTC           .
+    node-server: Dependencies resolved.
+    node-server: ==============================================================================           =========================
+    node-server:  Package                        Arch    Version                                            Repository         Size
+    node-server: ==============================================================================           =========================
+    node-server: Installing:
+    node-server:  docker-ce                      x86_64  3:20.10.12-3.el8                                   docker-ce-stable   22 M
+    node-server: Upgrading:
+    node-server:  policycoreutils                x86_64  2.9-16.el8                                         baseos            372 k
+    node-server: Installing dependencies:
+    node-server:  checkpolicy                    x86_64  2.9-1.el8                                          baseos            345 k
+    node-server:  container-selinux              noarch  2:2.173.0-1.module+el8.5.0+735+2f24313           8 appstream          56 k
+    node-server:  containerd.io                  x86_64  1.6.4-3.1.el8                                      docker-ce-stable   33 M
+    node-server:  docker-ce-cli                  x86_64  1:20.10.15-3.el8                                   docker-ce-stable   29 M
+    node-server:  docker-ce-rootless-extras      x86_64  20.10.15-3.el8                                     docker-ce-stable  4.7 M
+    node-server:  docker-scan-plugin             x86_64  0.17.0-3.el8                                       docker-ce-stable  3.8 M
+    node-server:  fuse-overlayfs                 x86_64  1.8-1.module+el8.5.0+735+2f243138                  appstream          72 k
+    node-server:  fuse3                          x86_64  3.2.1-12.el8                                       baseos             49 k
+    node-server:  fuse3-libs                     x86_64  3.2.1-12.el8                                       baseos             93 k
+    node-server:  libcgroup                      x86_64  0.41-19.el8                                        baseos             69 k
+    node-server:  libslirp                       x86_64  4.4.0-1.module+el8.5.0+710+4c471e88                appstream          69 k
+    node-server:  policycoreutils-python-utils   noarch  2.9-16.el8                                         baseos            251 k
+    node-server:  python3-audit                  x86_64  3.0-0.17.20191104git1c2f876.el8.1                  baseos             85 k
+    node-server:  python3-libsemanage            x86_64  2.9-6.el8                                          baseos            126 k
+    node-server:  python3-policycoreutils        noarch  2.9-16.el8                                         baseos            2.2 M
+    node-server:  python3-setools                x86_64  4.3.0-2.el8                                        baseos            625 k
+    node-server:  slirp4netns                    x86_64  1.1.8-1.module+el8.5.0+710+4c471e88                appstream          50 k
+    node-server: Enabling module streams:
+    node-server:  container-tools                        rhel8
+    node-server:
+    node-server: Transaction Summary
+    node-server: ==============================================================================           =========================
+    node-server: Install  18 Packages
+    node-server: Upgrade   1 Package
+    node-server:
+    node-server: Total download size: 97 M
+    node-server: Downloading Packages:
+    node-server: (1/19): libslirp-4.4.0-1.module+el8.5.0+710+4c4 297 kB/s |  69 kB     00:00
+    node-server: (2/19): container-selinux-2.173.0-1.module+el8. 237 kB/s |  56 kB     00:00
+    node-server: (3/19): fuse-overlayfs-1.8-1.module+el8.5.0+735 303 kB/s |  72 kB     00:00
+    node-server: (4/19): slirp4netns-1.1.8-1.module+el8.5.0+710+ 2.0 MB/s |  50 kB     00:00
+    node-server: (5/19): fuse3-3.2.1-12.el8.x86_64.rpm           1.7 MB/s |  49 kB     00:00
+    node-server: (6/19): fuse3-libs-3.2.1-12.el8.x86_64.rpm      3.1 MB/s |  93 kB     00:00
+    node-server: (7/19): libcgroup-0.41-19.el8.x86_64.rpm        2.1 MB/s |  69 kB     00:00
+    node-server: (8/19): python3-audit-3.0-0.17.20191104git1c2f8 2.5 MB/s |  85 kB     00:00
+    node-server: (9/19): checkpolicy-2.9-1.el8.x86_64.rpm        2.9 MB/s | 345 kB     00:00
+    node-server: (10/19): policycoreutils-python-utils-2.9-16.el 3.1 MB/s | 251 kB     00:00
+    node-server: (11/19): python3-libsemanage-2.9-6.el8.x86_64.r 2.2 MB/s | 126 kB     00:00
+    node-server: (12/19): python3-setools-4.3.0-2.el8.x86_64.rpm 3.8 MB/s | 625 kB     00:00
+    node-server: (13/19): python3-policycoreutils-2.9-16.el8.noa 6.2 MB/s | 2.2 MB     00:00
+    node-server: (14/19): containerd.io-1.6.4-3.1.el8.x86_64.rpm 7.2 MB/s |  33 MB     00:04
+    node-server: (15/19): docker-ce-20.10.12-3.el8.x86_64.rpm    4.8 MB/s |  22 MB     00:04
+    node-server: (16/19): docker-ce-rootless-extras-20.10.15-3.e  13 MB/s | 4.7 MB     00:00
+    node-server: (17/19): docker-scan-plugin-0.17.0-3.el8.x86_64 9.0 MB/s | 3.8 MB     00:00
+    node-server: (18/19): policycoreutils-2.9-16.el8.x86_64.rpm  1.7 MB/s | 372 kB     00:00
+    node-server: (19/19): docker-ce-cli-20.10.15-3.el8.x86_64.rp 5.8 MB/s |  29 MB     00:05
+    node-server: ------------------------------------------------------------------------------           --
+    node-server: Total                                            15 MB/s |  97 MB     00:06
+    node-server: warning: /var/cache/dnf/docker-ce-stable-fa9dc42ab4cec2f4/packages/containerd.           io-1.6.4-3.1.el8.x86_64.rpm: Header V4 RSA/SHA512 Signature, key ID 621e9f35: NOKEY
+    node-server: Docker CE Stable - x86_64                        13 kB/s | 1.6 kB     00:00
+    node-server: Importing GPG key 0x621E9F35:
+    node-server:  Userid     : "Docker Release (CE rpm) <docker@docker.com>"
+    node-server:  Fingerprint: 060A 61C5 1B55 8A7F 742B 77AA C52F EB6B 621E 9F35
+    node-server:  From       : https://download.docker.com/linux/centos/gpg
+    node-server: Key imported successfully
+    node-server: Running transaction check
+    node-server: Transaction check succeeded.
+    node-server: Running transaction test
+    node-server: Transaction test succeeded.
+    node-server: Running transaction
+    node-server:   Preparing        :                                                        1/           1
+    node-server:   Running scriptlet: docker-scan-plugin-0.17.0-3.el8.x86_64                 1/           1
+    node-server:   Installing       : docker-scan-plugin-0.17.0-3.el8.x86_64                1/2           0
+    node-server:   Running scriptlet: docker-scan-plugin-0.17.0-3.el8.x86_64                1/2           0
+    node-server:   Installing       : docker-ce-cli-1:20.10.15-3.el8.x86_64                 2/2           0
+    node-server:   Running scriptlet: docker-ce-cli-1:20.10.15-3.el8.x86_64                 2/2           0
+    node-server:   Upgrading        : policycoreutils-2.9-16.el8.x86_64                     3/2           0
+    node-server:   Running scriptlet: policycoreutils-2.9-16.el8.x86_64                     3/2           0
+    node-server:   Installing       : python3-setools-4.3.0-2.el8.x86_64                    4/2           0
+    node-server:   Installing       : python3-libsemanage-2.9-6.el8.x86_64                  5/2           0
+    node-server:   Installing       : python3-audit-3.0-0.17.20191104git1c2f876.el8.1.x8    6/2           0
+    node-server:   Running scriptlet: libcgroup-0.41-19.el8.x86_64                          7/2           0
+    node-server:   Installing       : libcgroup-0.41-19.el8.x86_64                          7/2           0
+    node-server:   Running scriptlet: libcgroup-0.41-19.el8.x86_64                          7/2           0
+    node-server:   Installing       : fuse3-libs-3.2.1-12.el8.x86_64                        8/2           0
+    node-server:   Running scriptlet: fuse3-libs-3.2.1-12.el8.x86_64                        8/2           0
+    node-server:   Installing       : fuse3-3.2.1-12.el8.x86_64                             9/2           0
+    node-server:   Installing       : fuse-overlayfs-1.8-1.module+el8.5.0+735+2f243138.x   10/2           0
+    node-server:   Running scriptlet: fuse-overlayfs-1.8-1.module+el8.5.0+735+2f243138.x   10/2           0
+    node-server:   Installing       : checkpolicy-2.9-1.el8.x86_64                         11/2           0
+    node-server:   Installing       : python3-policycoreutils-2.9-16.el8.noarch            12/2           0
+    node-server:   Installing       : policycoreutils-python-utils-2.9-16.el8.noarch       13/2           0
+    node-server:   Running scriptlet: container-selinux-2:2.173.0-1.module+el8.5.0+735+2   14/2           0
+    node-server:   Installing       : container-selinux-2:2.173.0-1.module+el8.5.0+735+2   14/2           0
+    node-server:   Running scriptlet: container-selinux-2:2.173.0-1.module+el8.5.0+735+2   14/2           0
+    node-server:   Installing       : containerd.io-1.6.4-3.1.el8.x86_64                   15/2           0
+    node-server:   Running scriptlet: containerd.io-1.6.4-3.1.el8.x86_64                   15/2           0
+    node-server:   Installing       : libslirp-4.4.0-1.module+el8.5.0+710+4c471e88.x86_6   16/2           0
+    node-server:   Installing       : slirp4netns-1.1.8-1.module+el8.5.0+710+4c471e88.x8   17/2           0
+    node-server:   Installing       : docker-ce-rootless-extras-20.10.15-3.el8.x86_64      18/2           0
+    node-server:   Running scriptlet: docker-ce-rootless-extras-20.10.15-3.el8.x86_64      18/2           0
+    node-server:   Installing       : docker-ce-3:20.10.12-3.el8.x86_64                    19/2           0
+    node-server:   Running scriptlet: docker-ce-3:20.10.12-3.el8.x86_64                    19/2           0
+    node-server:   Running scriptlet: policycoreutils-2.9-14.el8.x86_64                    20/2           0
+    node-server:   Cleanup          : policycoreutils-2.9-14.el8.x86_64                    20/2           0
+    node-server:   Running scriptlet: container-selinux-2:2.173.0-1.module+el8.5.0+735+2   20/2           0
+    node-server:   Running scriptlet: policycoreutils-2.9-14.el8.x86_64                    20/2           0
+    node-server:   Verifying        : container-selinux-2:2.173.0-1.module+el8.5.0+735+2    1/2           0
+    node-server:   Verifying        : fuse-overlayfs-1.8-1.module+el8.5.0+735+2f243138.x    2/2           0
+    node-server:   Verifying        : libslirp-4.4.0-1.module+el8.5.0+710+4c471e88.x86_6    3/2           0
+    node-server:   Verifying        : slirp4netns-1.1.8-1.module+el8.5.0+710+4c471e88.x8    4/2           0
+    node-server:   Verifying        : checkpolicy-2.9-1.el8.x86_64                          5/2           0
+    node-server:   Verifying        : fuse3-3.2.1-12.el8.x86_64                             6/2           0
+    node-server:   Verifying        : fuse3-libs-3.2.1-12.el8.x86_64                        7/2           0
+    node-server:   Verifying        : libcgroup-0.41-19.el8.x86_64                          8/2           0
+    node-server:   Verifying        : policycoreutils-python-utils-2.9-16.el8.noarch        9/2           0
+    node-server:   Verifying        : python3-audit-3.0-0.17.20191104git1c2f876.el8.1.x8   10/2           0
+    node-server:   Verifying        : python3-libsemanage-2.9-6.el8.x86_64                 11/2           0
+    node-server:   Verifying        : python3-policycoreutils-2.9-16.el8.noarch            12/2           0
+    node-server:   Verifying        : python3-setools-4.3.0-2.el8.x86_64                   13/2           0
+    node-server:   Verifying        : containerd.io-1.6.4-3.1.el8.x86_64                   14/2           0
+    node-server:   Verifying        : docker-ce-3:20.10.12-3.el8.x86_64                    15/2           0
+    node-server:   Verifying        : docker-ce-cli-1:20.10.15-3.el8.x86_64                16/2           0
+    node-server:   Verifying        : docker-ce-rootless-extras-20.10.15-3.el8.x86_64      17/2           0
+    node-server:   Verifying        : docker-scan-plugin-0.17.0-3.el8.x86_64               18/2           0
+    node-server:   Verifying        : policycoreutils-2.9-16.el8.x86_64                    19/2           0
+    node-server:   Verifying        : policycoreutils-2.9-14.el8.x86_64                    20/2           0
+    node-server:
+    node-server: Upgraded:
+    node-server:   policycoreutils-2.9-16.el8.x86_64
+    node-server: Installed:
+    node-server:   checkpolicy-2.9-1.el8.x86_64
+    node-server:   container-selinux-2:2.173.0-1.module+el8.5.0+735+2f243138.noarch
+    node-server:   containerd.io-1.6.4-3.1.el8.x86_64
+    node-server:   docker-ce-3:20.10.12-3.el8.x86_64
+    node-server:   docker-ce-cli-1:20.10.15-3.el8.x86_64
+    node-server:   docker-ce-rootless-extras-20.10.15-3.el8.x86_64
+    node-server:   docker-scan-plugin-0.17.0-3.el8.x86_64
+    node-server:   fuse-overlayfs-1.8-1.module+el8.5.0+735+2f243138.x86_64
+    node-server:   fuse3-3.2.1-12.el8.x86_64
+    node-server:   fuse3-libs-3.2.1-12.el8.x86_64
+    node-server:   libcgroup-0.41-19.el8.x86_64
+    node-server:   libslirp-4.4.0-1.module+el8.5.0+710+4c471e88.x86_64
+    node-server:   policycoreutils-python-utils-2.9-16.el8.noarch
+    node-server:   python3-audit-3.0-0.17.20191104git1c2f876.el8.1.x86_64
+    node-server:   python3-libsemanage-2.9-6.el8.x86_64
+    node-server:   python3-policycoreutils-2.9-16.el8.noarch
+    node-server:   python3-setools-4.3.0-2.el8.x86_64
+    node-server:   slirp4netns-1.1.8-1.module+el8.5.0+710+4c471e88.x86_64
+    node-server:
+    node-server: Complete!
+    node-server: Created symlink /etc/systemd/system/multi-user.target.wants/docker.service → /           usr/lib/systemd/system/docker.service.
+    node-server: Last metadata expiration check: 0:01:34 ago on Mon 09 May 2022 10:38:00 PM UTC           .
+    node-server: Package yum-utils-4.0.18-4.el8.noarch is already installed.
+    node-server: Dependencies resolved.
+    node-server: ==============================================================================           ==
+    node-server:  Package                      Arch       Version               Repository  Siz           e
+    node-server: ==============================================================================           ==
+    node-server: Upgrading:
+    node-server:  dnf-plugins-core             noarch     4.0.21-4.el8_5        baseos      69            k
+    node-server:  python3-dnf-plugins-core     noarch     4.0.21-4.el8_5        baseos     233            k
+    node-server:  yum-utils                    noarch     4.0.21-4.el8_5        baseos      71            k
+    node-server:
+    node-server: Transaction Summary
+    node-server: ==============================================================================           ==
+    node-server: Upgrade  3 Packages
+    node-server:
+    node-server: Total download size: 374 k
+    node-server: Downloading Packages:
+    node-server: (1/3): dnf-plugins-core-4.0.21-4.el8_5.noarch.r 353 kB/s |  69 kB     00:00
+    node-server: (2/3): yum-utils-4.0.21-4.el8_5.noarch.rpm      305 kB/s |  71 kB     00:00
+    node-server: (3/3): python3-dnf-plugins-core-4.0.21-4.el8_5. 946 kB/s | 233 kB     00:00
+    node-server: ------------------------------------------------------------------------------           --
+    node-server: Total                                           529 kB/s | 374 kB     00:00
+    node-server: Running transaction check
+    node-server: Transaction check succeeded.
+    node-server: Running transaction test
+    node-server: Transaction test succeeded.
+    node-server: Running transaction
+    node-server:   Preparing        :                                                        1/           1
+    node-server:   Upgrading        : python3-dnf-plugins-core-4.0.21-4.el8_5.noarch         1/           6
+    node-server:   Upgrading        : dnf-plugins-core-4.0.21-4.el8_5.noarch                 2/           6
+    node-server:   Upgrading        : yum-utils-4.0.21-4.el8_5.noarch                        3/           6
+    node-server:   Cleanup          : yum-utils-4.0.18-4.el8.noarch                          4/           6
+    node-server:   Cleanup          : dnf-plugins-core-4.0.18-4.el8.noarch                   5/           6
+    node-server:   Cleanup          : python3-dnf-plugins-core-4.0.18-4.el8.noarch           6/           6
+    node-server:   Running scriptlet: python3-dnf-plugins-core-4.0.18-4.el8.noarch           6/           6
+    node-server:   Verifying        : dnf-plugins-core-4.0.21-4.el8_5.noarch                 1/           6
+    node-server:   Verifying        : dnf-plugins-core-4.0.18-4.el8.noarch                   2/           6
+    node-server:   Verifying        : python3-dnf-plugins-core-4.0.21-4.el8_5.noarch         3/           6
+    node-server:   Verifying        : python3-dnf-plugins-core-4.0.18-4.el8.noarch           4/           6
+    node-server:   Verifying        : yum-utils-4.0.21-4.el8_5.noarch                        5/           6
+    node-server:   Verifying        : yum-utils-4.0.18-4.el8.noarch                          6/           6
+    node-server:
+    node-server: Upgraded:
+    node-server:   dnf-plugins-core-4.0.21-4.el8_5.noarch
+    node-server:   python3-dnf-plugins-core-4.0.21-4.el8_5.noarch
+    node-server:   yum-utils-4.0.21-4.el8_5.noarch
+    node-server:
+    node-server: Complete!
+    node-server: Adding repo from: https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo
+    node-server: Hashicorp Stable - x86_64                       1.4 MB/s | 696 kB     00:00
+    node-server: Last metadata expiration check: 0:00:01 ago on Mon 09 May 2022 10:39:38 PM UTC           .
+    node-server: Dependencies resolved.
+    node-server: ==============================================================================           ==
+    node-server:  Package         Architecture     Version             Repository           Siz           e
+    node-server: ==============================================================================           ==
+    node-server: Installing:
+    node-server:  nomad           x86_64           1.2.6-1             hashicorp            27            M
+    node-server:
+    node-server: Transaction Summary
+    node-server: ==============================================================================           ==
+    node-server: Install  1 Package
+    node-server:
+    node-server: Total download size: 27 M
+    node-server: Installed size: 84 M
+    node-server: Downloading Packages:
+    node-server: nomad-1.2.6-1.x86_64.rpm                         14 MB/s |  27 MB     00:01
+    node-server: ------------------------------------------------------------------------------           --
+    node-server: Total                                            14 MB/s |  27 MB     00:01
+    node-server: warning: /var/cache/dnf/hashicorp-164999f2fbadbd87/packages/nomad-1.2.6-1.x86_           64.rpm: Header V4 RSA/SHA512 Signature, key ID a3219f7b: NOKEY
+    node-server: Hashicorp Stable - x86_64                        22 kB/s | 3.1 kB     00:00
+    node-server: Importing GPG key 0xA3219F7B:
+    node-server:  Userid     : "HashiCorp Security (HashiCorp Package Signing) <security+packag           ing@hashicorp.com>"
+    node-server:  Fingerprint: E8A0 32E0 94D8 EB4E A189 D270 DA41 8C88 A321 9F7B
+    node-server:  From       : https://rpm.releases.hashicorp.com/gpg
+    node-server: Key imported successfully
+    node-server: Running transaction check
+    node-server: Transaction check succeeded.
+    node-server: Running transaction test
+    node-server: Transaction test succeeded.
+    node-server: Running transaction
+    node-server:   Preparing        :                                                        1/           1
+    node-server:   Running scriptlet: nomad-1.2.6-1.x86_64                                   1/           1
+    node-server:   Installing       : nomad-1.2.6-1.x86_64                                   1/           1
+    node-server:   Running scriptlet: nomad-1.2.6-1.x86_64                                   1/           1
+    node-server:   Verifying        : nomad-1.2.6-1.x86_64                                   1/           1
+    node-server:
+    node-server: Installed:
+    node-server:   nomad-1.2.6-1.x86_64
+    node-server:
+    node-server: Complete!
+    node-server: Last metadata expiration check: 0:00:08 ago on Mon 09 May 2022 10:39:38 PM UTC           .
+    node-server: Dependencies resolved.
+    node-server: ==============================================================================           ==
+    node-server:  Package           Architecture    Version                Repository       Siz           e
+    node-server: ==============================================================================           ==
+    node-server: Installing:
+    node-server:  dos2unix          x86_64          7.4.0-3.el8            baseos          240            k
+    node-server:
+    node-server: Transaction Summary
+    node-server: ==============================================================================           ==
+    node-server: Install  1 Package
+    node-server:
+    node-server: Total download size: 240 k
+    node-server: Installed size: 663 k
+    node-server: Downloading Packages:
+    node-server: dos2unix-7.4.0-3.el8.x86_64.rpm                 1.1 MB/s | 240 kB     00:00
+    node-server: ------------------------------------------------------------------------------           --
+    node-server: Total                                           489 kB/s | 240 kB     00:00
+    node-server: Running transaction check
+    node-server: Transaction check succeeded.
+    node-server: Running transaction test
+    node-server: Transaction test succeeded.
+    node-server: Running transaction
+    node-server:   Preparing        :                                                        1/           1
+    node-server:   Installing       : dos2unix-7.4.0-3.el8.x86_64                            1/           1
+    node-server:   Running scriptlet: dos2unix-7.4.0-3.el8.x86_64                            1/           1
+    node-server:   Verifying        : dos2unix-7.4.0-3.el8.x86_64                            1/           1
+    node-server:
+    node-server: Installed:
+    node-server:   dos2unix-7.4.0-3.el8.x86_64
+    node-server:
+    node-server: Complete!
+    node-server: Sending build context to Docker daemon  9.216kB
+    node-server: Step 1/6 : FROM python:3.10.1-slim-bullseye
+    node-server: 3.10.1-slim-bullseye: Pulling from library/python
+    node-server: a2abf6c4d29d: Pulling fs layer
+    node-server: 27003db43ed4: Pulling fs layer
+    node-server: 58c2647bdcdf: Pulling fs layer
+    node-server: 1809d7e69691: Pulling fs layer
+    node-server: 0daa42a9c7ff: Pulling fs layer
+    node-server: 1809d7e69691: Waiting
+    node-server: 0daa42a9c7ff: Waiting
+    node-server: 27003db43ed4: Verifying Checksum
+    node-server: 27003db43ed4: Download complete
+    node-server: 58c2647bdcdf: Verifying Checksum
+    node-server: 58c2647bdcdf: Download complete
+    node-server: a2abf6c4d29d: Verifying Checksum
+    node-server: a2abf6c4d29d: Download complete
+    node-server: 1809d7e69691: Verifying Checksum
+    node-server: 1809d7e69691: Download complete
+    node-server: 0daa42a9c7ff: Verifying Checksum
+    node-server: 0daa42a9c7ff: Download complete
+    node-server: a2abf6c4d29d: Pull complete
+    node-server: 27003db43ed4: Pull complete
+    node-server: 58c2647bdcdf: Pull complete
+    node-server: 1809d7e69691: Pull complete
+    node-server: 0daa42a9c7ff: Pull complete
+    node-server: Digest: sha256:dd3016f846b8f88d8f6c28b43f1da899f07259121aff403091e6f89a703c3d3           6
+    node-server: Status: Downloaded newer image for python:3.10.1-slim-bullseye
+    node-server:  ---> 58d8fd9767c5
+    node-server: Step 2/6 : WORKDIR /app
+    node-server:  ---> Running in 3791fa7875c7
+    node-server: Removing intermediate container 3791fa7875c7
+    node-server:  ---> caf116c2f3da
+    node-server: Step 3/6 : RUN pip3 install Flask
+    node-server:  ---> Running in 12b20a54d5b7
+    node-server: Collecting Flask
+    node-server:   Downloading Flask-2.1.2-py3-none-any.whl (95 kB)
+    node-server: Collecting Jinja2>=3.0
+    node-server:   Downloading Jinja2-3.1.2-py3-none-any.whl (133 kB)
+    node-server: Collecting itsdangerous>=2.0
+    node-server:   Downloading itsdangerous-2.1.2-py3-none-any.whl (15 kB)
+    node-server: Collecting Werkzeug>=2.0
+    node-server:   Downloading Werkzeug-2.1.2-py3-none-any.whl (224 kB)
+    node-server: Collecting click>=8.0
+    node-server:   Downloading click-8.1.3-py3-none-any.whl (96 kB)
+    node-server: Collecting MarkupSafe>=2.0
+    node-server:   Downloading MarkupSafe-2.1.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014           _x86_64.whl (25 kB)
+    node-server: Installing collected packages: MarkupSafe, Werkzeug, Jinja2, itsdangerous, cli           ck, Flask
+    node-server: Successfully installed Flask-2.1.2 Jinja2-3.1.2 MarkupSafe-2.1.1 Werkzeug-2.1.           2 click-8.1.3 itsdangerous-2.1.2
+    node-server: WARNING: Running pip as the 'root' user can result in broken permissions and c           onflicting behaviour with the system package manager. It is recommended to use a virtual enviro           nment instead: https://pip.pypa.io/warnings/venv
+    node-server: WARNING: You are using pip version 21.2.4; however, version 22.0.4 is availabl           e.
+    node-server: You should consider upgrading via the '/usr/local/bin/python -m pip install --           upgrade pip' command.
+    node-server: Removing intermediate container 12b20a54d5b7
+    node-server:  ---> fb64f2e3739e
+    node-server: Step 4/6 : RUN pip3 install requests
+    node-server:  ---> Running in 6d03ad8d2cb8
+    node-server: Collecting requests
+    node-server:   Downloading requests-2.27.1-py2.py3-none-any.whl (63 kB)
+    node-server: Collecting charset-normalizer~=2.0.0
+    node-server:   Downloading charset_normalizer-2.0.12-py3-none-any.whl (39 kB)
+    node-server: Collecting urllib3<1.27,>=1.21.1
+    node-server:   Downloading urllib3-1.26.9-py2.py3-none-any.whl (138 kB)
+    node-server: Collecting idna<4,>=2.5
+    node-server:   Downloading idna-3.3-py3-none-any.whl (61 kB)
+    node-server: Collecting certifi>=2017.4.17
+    node-server:   Downloading certifi-2021.10.8-py2.py3-none-any.whl (149 kB)
+    node-server: Installing collected packages: urllib3, idna, charset-normalizer, certifi, req           uests
+    node-server: Successfully installed certifi-2021.10.8 charset-normalizer-2.0.12 idna-3.3 re           quests-2.27.1 urllib3-1.26.9
+    node-server: WARNING: Running pip as the 'root' user can result in broken permissions and c           onflicting behaviour with the system package manager. It is recommended to use a virtual enviro           nment instead: https://pip.pypa.io/warnings/venv
+    node-server: WARNING: You are using pip version 21.2.4; however, version 22.0.4 is availabl           e.
+    node-server: You should consider upgrading via the '/usr/local/bin/python -m pip install --           upgrade pip' command.
+    node-server: Removing intermediate container 6d03ad8d2cb8
+    node-server:  ---> 6bcc071eb815
+    node-server: Step 5/6 : COPY app.py app.py
+    node-server:  ---> 75a52509c639
+    node-server: Step 6/6 : CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0"]
+    node-server:  ---> Running in 367cf40f5b2e
+    node-server: Removing intermediate container 367cf40f5b2e
+    node-server:  ---> 5efd072ed8e4
+    node-server: Successfully built 5efd072ed8e4
+    node-server: Successfully tagged flask-app:latest
+==> node-client-1: Importing base box 'rockylinux/8'...
+==> node-client-1: Matching MAC address for NAT networking...
+==> node-client-1: Checking if box 'rockylinux/8' version '4.0.0' is up to date...
+==> node-client-1: Setting the name of the VM: node-client-1
+==> node-client-1: Fixed port collision for 22 => 2222. Now on port 2200.
+==> node-client-1: Clearing any previously set network interfaces...
+==> node-client-1: Preparing network interfaces based on configuration...
+    node-client-1: Adapter 1: nat
+    node-client-1: Adapter 2: hostonly
+==> node-client-1: Forwarding ports...
+    node-client-1: 22 (guest) => 2200 (host) (adapter 1)
+==> node-client-1: Running 'pre-boot' VM customizations...
+==> node-client-1: Booting VM...
+==> node-client-1: Waiting for machine to boot. This may take a few minutes...
+    node-client-1: SSH address: 127.0.0.1:2200
+    node-client-1: SSH username: vagrant
+    node-client-1: SSH auth method: private key
+    node-client-1:
+    node-client-1: Vagrant insecure key detected. Vagrant will automatically replace
+    node-client-1: this with a newly generated keypair for better security.
+    node-client-1:
+    node-client-1: Inserting generated public key within guest...
+    node-client-1: Removing insecure key from the guest if it's present...
+    node-client-1: Key inserted! Disconnecting and reconnecting using new SSH key...
+==> node-client-1: Machine booted and ready!
+==> node-client-1: Checking for guest additions in VM...
+==> node-client-1: Setting hostname...
+==> node-client-1: Configuring and enabling network interfaces...
+==> node-client-1: Mounting shared folders...
+    node-client-1: /vagrant => C:/temp/vm-vagrant-docker/docker-exemples-edition3-code/chapitre           11
+==> node-client-1: Running provisioner: shell...
+    node-client-1: Running: C:/Users/pycloux/AppData/Local/Temp/vagrant-shell20220510-17756-aar           p9g.sh
+    node-client-1: Rocky Linux 8 - AppStream                       4.3 MB/s |  10 MB     00:02
+    node-client-1: Rocky Linux 8 - BaseOS                          6.5 MB/s | 7.7 MB     00:01
+    node-client-1: Rocky Linux 8 - Extras                           20 kB/s |  12 kB     00:00
+    node-client-1: Dependencies resolved.
+    node-client-1: ============================================================================           ====
+    node-client-1:  Package         Architecture Version                        Repository    S           ize
+    node-client-1: ============================================================================           ====
+    node-client-1: Installing:
+    node-client-1:  net-tools       x86_64       2.0-0.52.20160912git.el8       baseos       32           1 k
+    node-client-1:
+    node-client-1: Transaction Summary
+    node-client-1: ============================================================================           ====
+    node-client-1: Install  1 Package
+    node-client-1:
+    node-client-1: Total download size: 321 k
+    node-client-1: Installed size: 942 k
+    node-client-1: Downloading Packages:
+    node-client-1: net-tools-2.0-0.52.20160912git.el8.x86_64.rpm   1.4 MB/s | 321 kB     00:00
+    node-client-1: ----------------------------------------------------------------------------           ----
+    node-client-1: Total                                           611 kB/s | 321 kB     00:00
+    node-client-1: Running transaction check
+    node-client-1: Transaction check succeeded.
+    node-client-1: Running transaction test
+    node-client-1: Transaction test succeeded.
+    node-client-1: Running transaction
+    node-client-1:   Preparing        :                                                                   1/1
+    node-client-1:   Installing       : net-tools-2.0-0.52.20160912git.el8.x86_64                         1/1
+    node-client-1:   Running scriptlet: net-tools-2.0-0.52.20160912git.el8.x86_64                         1/1
+    node-client-1:   Verifying        : net-tools-2.0-0.52.20160912git.el8.x86_64                         1/1
+    node-client-1:
+    node-client-1: Installed:
+    node-client-1:   net-tools-2.0-0.52.20160912git.el8.x86_64
+    node-client-1:
+    node-client-1: Complete!
+    node-client-1: Last metadata expiration check: 0:00:04 ago on Mon 09 May 2022 10:41:01 PM U           TC.
+    node-client-1: Dependencies resolved.
+    node-client-1: ============================================================================           =============
+    node-client-1:  Package                  Arch    Version                                Rep           o        Size
+    node-client-1: ============================================================================           =============
+    node-client-1: Installing:
+    node-client-1:  git                      x86_64  2.27.0-1.el8                           app           stream  163 k
+    node-client-1: Installing dependencies:
+    node-client-1:  emacs-filesystem         noarch  1:26.1-7.el8                           bas           eos      69 k
+    node-client-1:  git-core                 x86_64  2.27.0-1.el8                           app           stream  5.7 M
+    node-client-1:  git-core-doc             noarch  2.27.0-1.el8                           app           stream  2.5 M
+    node-client-1:  perl-Carp                noarch  1.42-396.el8                           bas           eos      29 k
+    node-client-1:  perl-Data-Dumper         x86_64  2.167-399.el8                          bas           eos      57 k
+    node-client-1:  perl-Digest              noarch  1.17-395.el8                           app           stream   26 k
+    node-client-1:  perl-Digest-MD5          x86_64  2.55-396.el8                           app           stream   36 k
+    node-client-1:  perl-Encode              x86_64  4:2.97-3.el8                           bas           eos     1.5 M
+    node-client-1:  perl-Errno               x86_64  1.28-420.el8                           bas           eos      75 k
+    node-client-1:  perl-Error               noarch  1:0.17025-2.el8                        app           stream   45 k
+    node-client-1:  perl-Exporter            noarch  5.72-396.el8                           bas           eos      33 k
+    node-client-1:  perl-File-Path           noarch  2.15-2.el8                             bas           eos      37 k
+    node-client-1:  perl-File-Temp           noarch  0.230.600-1.el8                        bas           eos      62 k
+    node-client-1:  perl-Getopt-Long         noarch  1:2.50-4.el8                           bas           eos      62 k
+    node-client-1:  perl-Git                 noarch  2.27.0-1.el8                           app           stream   76 k
+    node-client-1:  perl-HTTP-Tiny           noarch  0.074-1.el8                            bas           eos      57 k
+    node-client-1:  perl-IO                  x86_64  1.38-420.el8                           bas           eos     141 k
+    node-client-1:  perl-MIME-Base64         x86_64  3.15-396.el8                           bas           eos      30 k
+    node-client-1:  perl-Net-SSLeay          x86_64  1.88-1.module+el8.4.0+512+d4f0fc54     app           stream  378 k
+    node-client-1:  perl-PathTools           x86_64  3.74-1.el8                             bas           eos      89 k
+    node-client-1:  perl-Pod-Escapes         noarch  1:1.07-395.el8                         bas           eos      19 k
+    node-client-1:  perl-Pod-Perldoc         noarch  3.28-396.el8                           bas           eos      85 k
+    node-client-1:  perl-Pod-Simple          noarch  1:3.35-395.el8                         bas           eos     212 k
+    node-client-1:  perl-Pod-Usage           noarch  4:1.69-395.el8                         bas           eos      33 k
+    node-client-1:  perl-Scalar-List-Utils   x86_64  3:1.49-2.el8                           bas           eos      67 k
+    node-client-1:  perl-Socket              x86_64  4:2.027-3.el8                          bas           eos      58 k
+    node-client-1:  perl-Storable            x86_64  1:3.11-3.el8                           bas           eos      97 k
+    node-client-1:  perl-Term-ANSIColor      noarch  4.06-396.el8                           bas           eos      45 k
+    node-client-1:  perl-Term-Cap            noarch  1.17-395.el8                           bas           eos      22 k
+    node-client-1:  perl-TermReadKey         x86_64  2.37-7.el8                             app           stream   39 k
+    node-client-1:  perl-Text-ParseWords     noarch  3.30-395.el8                           bas           eos      17 k
+    node-client-1:  perl-Text-Tabs+Wrap      noarch  2013.0523-395.el8                      bas           eos      23 k
+    node-client-1:  perl-Time-Local          noarch  1:1.280-1.el8                          bas           eos      32 k
+    node-client-1:  perl-URI                 noarch  1.73-3.el8                             app           stream  115 k
+    node-client-1:  perl-Unicode-Normalize   x86_64  1.25-396.el8                           bas           eos      81 k
+    node-client-1:  perl-constant            noarch  1.33-396.el8                           bas           eos      24 k
+    node-client-1:  perl-interpreter         x86_64  4:5.26.3-420.el8                       bas           eos     6.3 M
+    node-client-1:  perl-libnet              noarch  3.11-3.el8                             app           stream  120 k
+    node-client-1:  perl-libs                x86_64  4:5.26.3-420.el8                       bas           eos     1.6 M
+    node-client-1:  perl-macros              x86_64  4:5.26.3-420.el8                       bas           eos      71 k
+    node-client-1:  perl-parent              noarch  1:0.237-1.el8                          bas           eos      19 k
+    node-client-1:  perl-podlators           noarch  4.11-1.el8                             bas           eos     117 k
+    node-client-1:  perl-threads             x86_64  1:2.21-2.el8                           bas           eos      60 k
+    node-client-1:  perl-threads-shared      x86_64  1.58-2.el8                             bas           eos      47 k
+    node-client-1: Installing weak dependencies:
+    node-client-1:  perl-IO-Socket-IP        noarch  0.39-5.el8                             app           stream   46 k
+    node-client-1:  perl-IO-Socket-SSL       noarch  2.066-4.module+el8.4.0+512+d4f0fc54    app           stream  297 k
+    node-client-1:  perl-Mozilla-CA          noarch  20160104-7.module+el8.4.0+529+e3b3e624 app           stream   14 k
+    node-client-1:
+    node-client-1: Transaction Summary
+    node-client-1: ============================================================================           =============
+    node-client-1: Install  48 Packages
+    node-client-1:
+    node-client-1: Total download size: 21 M
+    node-client-1: Installed size: 80 M
+    node-client-1: Downloading Packages:
+    node-client-1: (1/48): git-2.27.0-1.el8.x86_64.rpm             755 kB/s | 163 kB     00:00
+    node-client-1: (2/48): perl-Digest-1.17-395.el8.noarch.rpm     843 kB/s |  26 kB     00:00
+    node-client-1: (3/48): perl-Digest-MD5-2.55-396.el8.x86_64.rpm 1.4 MB/s |  36 kB     00:00
+    node-client-1: (4/48): perl-Error-0.17025-2.el8.noarch.rpm     1.3 MB/s |  45 kB     00:00
+    node-client-1: (5/48): perl-Git-2.27.0-1.el8.noarch.rpm        2.6 MB/s |  76 kB     00:00
+    node-client-1: (6/48): perl-IO-Socket-IP-0.39-5.el8.noarch.rpm 1.5 MB/s |  46 kB     00:00
+    node-client-1: (7/48): perl-IO-Socket-SSL-2.066-4.module+el8.4 3.7 MB/s | 297 kB     00:00
+    node-client-1: (8/48): perl-Mozilla-CA-20160104-7.module+el8.4 472 kB/s |  14 kB     00:00
+    node-client-1: (9/48): perl-Net-SSLeay-1.88-1.module+el8.4.0+5 4.3 MB/s | 378 kB     00:00
+    node-client-1: (10/48): git-core-doc-2.27.0-1.el8.noarch.rpm   4.1 MB/s | 2.5 MB     00:00
+    node-client-1: (11/48): perl-TermReadKey-2.37-7.el8.x86_64.rpm 893 kB/s |  39 kB     00:00
+    node-client-1: (12/48): perl-URI-1.73-3.el8.noarch.rpm         4.6 MB/s | 115 kB     00:00
+    node-client-1: (13/48): perl-libnet-3.11-3.el8.noarch.rpm      3.3 MB/s | 120 kB     00:00
+    node-client-1: (14/48): emacs-filesystem-26.1-7.el8.noarch.rpm 2.1 MB/s |  69 kB     00:00
+    node-client-1: (15/48): perl-Carp-1.42-396.el8.noarch.rpm      1.3 MB/s |  29 kB     00:00
+    node-client-1: (16/48): perl-Data-Dumper-2.167-399.el8.x86_64. 1.9 MB/s |  57 kB     00:00
+    node-client-1: (17/48): perl-Errno-1.28-420.el8.x86_64.rpm     2.7 MB/s |  75 kB     00:00
+    node-client-1: (18/48): perl-Exporter-5.72-396.el8.noarch.rpm  859 kB/s |  33 kB     00:00
+    node-client-1: (19/48): perl-File-Path-2.15-2.el8.noarch.rpm   1.0 MB/s |  37 kB     00:00
+    node-client-1: (20/48): perl-File-Temp-0.230.600-1.el8.noarch. 1.9 MB/s |  62 kB     00:00
+    node-client-1: (21/48): perl-Getopt-Long-2.50-4.el8.noarch.rpm 2.0 MB/s |  62 kB     00:00
+    node-client-1: (22/48): perl-Encode-2.97-3.el8.x86_64.rpm      6.3 MB/s | 1.5 MB     00:00
+    node-client-1: (23/48): perl-HTTP-Tiny-0.074-1.el8.noarch.rpm  1.7 MB/s |  57 kB     00:00
+    node-client-1: (24/48): perl-MIME-Base64-3.15-396.el8.x86_64.r 1.4 MB/s |  30 kB     00:00
+    node-client-1: (25/48): perl-IO-1.38-420.el8.x86_64.rpm        4.6 MB/s | 141 kB     00:00
+    node-client-1: (26/48): perl-PathTools-3.74-1.el8.x86_64.rpm   3.4 MB/s |  89 kB     00:00
+    node-client-1: (27/48): perl-Pod-Escapes-1.07-395.el8.noarch.r 724 kB/s |  19 kB     00:00
+    node-client-1: (28/48): git-core-2.27.0-1.el8.x86_64.rpm       5.7 MB/s | 5.7 MB     00:00
+    node-client-1: (29/48): perl-Pod-Perldoc-3.28-396.el8.noarch.r 2.3 MB/s |  85 kB     00:00
+    node-client-1: (30/48): perl-Pod-Simple-3.35-395.el8.noarch.rp 5.3 MB/s | 212 kB     00:00
+    node-client-1: (31/48): perl-Pod-Usage-1.69-395.el8.noarch.rpm 1.3 MB/s |  33 kB     00:00
+    node-client-1: (32/48): perl-Scalar-List-Utils-1.49-2.el8.x86_ 2.8 MB/s |  67 kB     00:00
+    node-client-1: (33/48): perl-Socket-2.027-3.el8.x86_64.rpm     2.1 MB/s |  58 kB     00:00
+    node-client-1: (34/48): perl-Term-ANSIColor-4.06-396.el8.noarc 2.0 MB/s |  45 kB     00:00
+    node-client-1: (35/48): perl-Storable-3.11-3.el8.x86_64.rpm    3.8 MB/s |  97 kB     00:00
+    node-client-1: (36/48): perl-Term-Cap-1.17-395.el8.noarch.rpm  837 kB/s |  22 kB     00:00
+    node-client-1: (37/48): perl-Text-ParseWords-3.30-395.el8.noar 794 kB/s |  17 kB     00:00
+    node-client-1: (38/48): perl-Text-Tabs+Wrap-2013.0523-395.el8. 1.2 MB/s |  23 kB     00:00
+    node-client-1: (39/48): perl-Time-Local-1.280-1.el8.noarch.rpm 1.2 MB/s |  32 kB     00:00
+    node-client-1: (40/48): perl-Unicode-Normalize-1.25-396.el8.x8 2.9 MB/s |  81 kB     00:00
+    node-client-1: (41/48): perl-constant-1.33-396.el8.noarch.rpm  835 kB/s |  24 kB     00:00
+    node-client-1: (42/48): perl-macros-5.26.3-420.el8.x86_64.rpm  2.2 MB/s |  71 kB     00:00
+    node-client-1: (43/48): perl-parent-0.237-1.el8.noarch.rpm     674 kB/s |  19 kB     00:00
+    node-client-1: (44/48): perl-podlators-4.11-1.el8.noarch.rpm   4.2 MB/s | 117 kB     00:00
+    node-client-1: (45/48): perl-threads-2.21-2.el8.x86_64.rpm     1.9 MB/s |  60 kB     00:00
+    node-client-1: (46/48): perl-threads-shared-1.58-2.el8.x86_64. 1.5 MB/s |  47 kB     00:00
+    node-client-1: (47/48): perl-libs-5.26.3-420.el8.x86_64.rpm    7.1 MB/s | 1.6 MB     00:00
+    node-client-1: (48/48): perl-interpreter-5.26.3-420.el8.x86_64 8.4 MB/s | 6.3 MB     00:00
+    node-client-1: ----------------------------------------------------------------------------           ----
+    node-client-1: Total                                           8.6 MB/s |  21 MB     00:02
+    node-client-1: Running transaction check
+    node-client-1: Transaction check succeeded.
+    node-client-1: Running transaction test
+    node-client-1: Transaction test succeeded.
+    node-client-1: Running transaction
+    node-client-1:   Preparing        :                                                                   1/1
+    node-client-1:   Installing       : git-core-2.27.0-1.el8.x86_64                          1           /48
+    node-client-1:   Installing       : git-core-doc-2.27.0-1.el8.noarch                      2           /48
+    node-client-1:   Installing       : perl-Digest-1.17-395.el8.noarch                       3           /48
+    node-client-1:   Installing       : perl-Digest-MD5-2.55-396.el8.x86_64                   4           /48
+    node-client-1:   Installing       : perl-Data-Dumper-2.167-399.el8.x86_64                 5           /48
+    node-client-1:   Installing       : perl-libnet-3.11-3.el8.noarch                         6           /48
+    node-client-1:   Installing       : perl-Net-SSLeay-1.88-1.module+el8.4.0+512+d4f0fc54    7           /48
+    node-client-1:   Installing       : perl-URI-1.73-3.el8.noarch                            8           /48
+    node-client-1:   Installing       : perl-Pod-Escapes-1:1.07-395.el8.noarch                9           /48
+    node-client-1:   Installing       : perl-Mozilla-CA-20160104-7.module+el8.4.0+529+e3b3   10           /48
+    node-client-1:   Installing       : perl-IO-Socket-IP-0.39-5.el8.noarch                  11           /48
+    node-client-1:   Installing       : perl-Time-Local-1:1.280-1.el8.noarch                 12           /48
+    node-client-1:   Installing       : perl-IO-Socket-SSL-2.066-4.module+el8.4.0+512+d4f0   13           /48
+    node-client-1:   Installing       : perl-Term-ANSIColor-4.06-396.el8.noarch              14           /48
+    node-client-1:   Installing       : perl-Term-Cap-1.17-395.el8.noarch                    15           /48
+    node-client-1:   Installing       : perl-File-Temp-0.230.600-1.el8.noarch                16           /48
+    node-client-1:   Installing       : perl-Pod-Simple-1:3.35-395.el8.noarch                17           /48
+    node-client-1:   Installing       : perl-HTTP-Tiny-0.074-1.el8.noarch                    18           /48
+    node-client-1:   Installing       : perl-podlators-4.11-1.el8.noarch                     19           /48
+    node-client-1:   Installing       : perl-Pod-Perldoc-3.28-396.el8.noarch                 20           /48
+    node-client-1:   Installing       : perl-Text-ParseWords-3.30-395.el8.noarch             21           /48
+    node-client-1:   Installing       : perl-Pod-Usage-4:1.69-395.el8.noarch                 22           /48
+    node-client-1:   Installing       : perl-MIME-Base64-3.15-396.el8.x86_64                 23           /48
+    node-client-1:   Installing       : perl-Storable-1:3.11-3.el8.x86_64                    24           /48
+    node-client-1:   Installing       : perl-Getopt-Long-1:2.50-4.el8.noarch                 25           /48
+    node-client-1:   Installing       : perl-Errno-1.28-420.el8.x86_64                       26           /48
+    node-client-1:   Installing       : perl-Socket-4:2.027-3.el8.x86_64                     27           /48
+    node-client-1:   Installing       : perl-Encode-4:2.97-3.el8.x86_64                      28           /48
+    node-client-1:   Installing       : perl-Carp-1.42-396.el8.noarch                        29           /48
+    node-client-1:   Installing       : perl-Exporter-5.72-396.el8.noarch                    30           /48
+    node-client-1:   Installing       : perl-libs-4:5.26.3-420.el8.x86_64                    31           /48
+    node-client-1:   Installing       : perl-Scalar-List-Utils-3:1.49-2.el8.x86_64           32           /48
+    node-client-1:   Installing       : perl-parent-1:0.237-1.el8.noarch                     33           /48
+    node-client-1:   Installing       : perl-macros-4:5.26.3-420.el8.x86_64                  34           /48
+    node-client-1:   Installing       : perl-Text-Tabs+Wrap-2013.0523-395.el8.noarch         35           /48
+    node-client-1:   Installing       : perl-Unicode-Normalize-1.25-396.el8.x86_64           36           /48
+    node-client-1:   Installing       : perl-File-Path-2.15-2.el8.noarch                     37           /48
+    node-client-1:   Installing       : perl-IO-1.38-420.el8.x86_64                          38           /48
+    node-client-1:   Installing       : perl-PathTools-3.74-1.el8.x86_64                     39           /48
+    node-client-1:   Installing       : perl-constant-1.33-396.el8.noarch                    40           /48
+    node-client-1:   Installing       : perl-threads-1:2.21-2.el8.x86_64                     41           /48
+    node-client-1:   Installing       : perl-threads-shared-1.58-2.el8.x86_64                42           /48
+    node-client-1:   Installing       : perl-interpreter-4:5.26.3-420.el8.x86_64             43           /48
+    node-client-1:   Installing       : perl-Error-1:0.17025-2.el8.noarch                    44           /48
+    node-client-1:   Installing       : perl-TermReadKey-2.37-7.el8.x86_64                   45           /48
+    node-client-1:   Installing       : emacs-filesystem-1:26.1-7.el8.noarch                 46           /48
+    node-client-1:   Installing       : perl-Git-2.27.0-1.el8.noarch                         47           /48
+    node-client-1:   Installing       : git-2.27.0-1.el8.x86_64                              48           /48
+    node-client-1:   Running scriptlet: git-2.27.0-1.el8.x86_64                              48           /48
+    node-client-1:   Verifying        : git-2.27.0-1.el8.x86_64                               1           /48
+    node-client-1:   Verifying        : git-core-2.27.0-1.el8.x86_64                          2           /48
+    node-client-1:   Verifying        : git-core-doc-2.27.0-1.el8.noarch                      3           /48
+    node-client-1:   Verifying        : perl-Digest-1.17-395.el8.noarch                       4           /48
+    node-client-1:   Verifying        : perl-Digest-MD5-2.55-396.el8.x86_64                   5           /48
+    node-client-1:   Verifying        : perl-Error-1:0.17025-2.el8.noarch                     6           /48
+    node-client-1:   Verifying        : perl-Git-2.27.0-1.el8.noarch                          7           /48
+    node-client-1:   Verifying        : perl-IO-Socket-IP-0.39-5.el8.noarch                   8           /48
+    node-client-1:   Verifying        : perl-IO-Socket-SSL-2.066-4.module+el8.4.0+512+d4f0    9           /48
+    node-client-1:   Verifying        : perl-Mozilla-CA-20160104-7.module+el8.4.0+529+e3b3   10           /48
+    node-client-1:   Verifying        : perl-Net-SSLeay-1.88-1.module+el8.4.0+512+d4f0fc54   11           /48
+    node-client-1:   Verifying        : perl-TermReadKey-2.37-7.el8.x86_64                   12           /48
+    node-client-1:   Verifying        : perl-URI-1.73-3.el8.noarch                           13           /48
+    node-client-1:   Verifying        : perl-libnet-3.11-3.el8.noarch                        14           /48
+    node-client-1:   Verifying        : emacs-filesystem-1:26.1-7.el8.noarch                 15           /48
+    node-client-1:   Verifying        : perl-Carp-1.42-396.el8.noarch                        16           /48
+    node-client-1:   Verifying        : perl-Data-Dumper-2.167-399.el8.x86_64                17           /48
+    node-client-1:   Verifying        : perl-Encode-4:2.97-3.el8.x86_64                      18           /48
+    node-client-1:   Verifying        : perl-Errno-1.28-420.el8.x86_64                       19           /48
+    node-client-1:   Verifying        : perl-Exporter-5.72-396.el8.noarch                    20           /48
+    node-client-1:   Verifying        : perl-File-Path-2.15-2.el8.noarch                     21           /48
+    node-client-1:   Verifying        : perl-File-Temp-0.230.600-1.el8.noarch                22           /48
+    node-client-1:   Verifying        : perl-Getopt-Long-1:2.50-4.el8.noarch                 23           /48
+    node-client-1:   Verifying        : perl-HTTP-Tiny-0.074-1.el8.noarch                    24           /48
+    node-client-1:   Verifying        : perl-IO-1.38-420.el8.x86_64                          25           /48
+    node-client-1:   Verifying        : perl-MIME-Base64-3.15-396.el8.x86_64                 26           /48
+    node-client-1:   Verifying        : perl-PathTools-3.74-1.el8.x86_64                     27           /48
+    node-client-1:   Verifying        : perl-Pod-Escapes-1:1.07-395.el8.noarch               28           /48
+    node-client-1:   Verifying        : perl-Pod-Perldoc-3.28-396.el8.noarch                 29           /48
+    node-client-1:   Verifying        : perl-Pod-Simple-1:3.35-395.el8.noarch                30           /48
+    node-client-1:   Verifying        : perl-Pod-Usage-4:1.69-395.el8.noarch                 31           /48
+    node-client-1:   Verifying        : perl-Scalar-List-Utils-3:1.49-2.el8.x86_64           32           /48
+    node-client-1:   Verifying        : perl-Socket-4:2.027-3.el8.x86_64                     33           /48
+    node-client-1:   Verifying        : perl-Storable-1:3.11-3.el8.x86_64                    34           /48
+    node-client-1:   Verifying        : perl-Term-ANSIColor-4.06-396.el8.noarch              35           /48
+    node-client-1:   Verifying        : perl-Term-Cap-1.17-395.el8.noarch                    36           /48
+    node-client-1:   Verifying        : perl-Text-ParseWords-3.30-395.el8.noarch             37           /48
+    node-client-1:   Verifying        : perl-Text-Tabs+Wrap-2013.0523-395.el8.noarch         38           /48
+    node-client-1:   Verifying        : perl-Time-Local-1:1.280-1.el8.noarch                 39           /48
+    node-client-1:   Verifying        : perl-Unicode-Normalize-1.25-396.el8.x86_64           40           /48
+    node-client-1:   Verifying        : perl-constant-1.33-396.el8.noarch                    41           /48
+    node-client-1:   Verifying        : perl-interpreter-4:5.26.3-420.el8.x86_64             42           /48
+    node-client-1:   Verifying        : perl-libs-4:5.26.3-420.el8.x86_64                    43           /48
+    node-client-1:   Verifying        : perl-macros-4:5.26.3-420.el8.x86_64                  44           /48
+    node-client-1:   Verifying        : perl-parent-1:0.237-1.el8.noarch                     45           /48
+    node-client-1:   Verifying        : perl-podlators-4.11-1.el8.noarch                     46           /48
+    node-client-1:   Verifying        : perl-threads-1:2.21-2.el8.x86_64                     47           /48
+    node-client-1:   Verifying        : perl-threads-shared-1.58-2.el8.x86_64                48           /48
+    node-client-1:
+    node-client-1: Installed:
+    node-client-1:   emacs-filesystem-1:26.1-7.el8.noarch
+    node-client-1:   git-2.27.0-1.el8.x86_64
+    node-client-1:   git-core-2.27.0-1.el8.x86_64
+    node-client-1:   git-core-doc-2.27.0-1.el8.noarch
+    node-client-1:   perl-Carp-1.42-396.el8.noarch
+    node-client-1:   perl-Data-Dumper-2.167-399.el8.x86_64
+    node-client-1:   perl-Digest-1.17-395.el8.noarch
+    node-client-1:   perl-Digest-MD5-2.55-396.el8.x86_64
+    node-client-1:   perl-Encode-4:2.97-3.el8.x86_64
+    node-client-1:   perl-Errno-1.28-420.el8.x86_64
+    node-client-1:   perl-Error-1:0.17025-2.el8.noarch
+    node-client-1:   perl-Exporter-5.72-396.el8.noarch
+    node-client-1:   perl-File-Path-2.15-2.el8.noarch
+    node-client-1:   perl-File-Temp-0.230.600-1.el8.noarch
+    node-client-1:   perl-Getopt-Long-1:2.50-4.el8.noarch
+    node-client-1:   perl-Git-2.27.0-1.el8.noarch
+    node-client-1:   perl-HTTP-Tiny-0.074-1.el8.noarch
+    node-client-1:   perl-IO-1.38-420.el8.x86_64
+    node-client-1:   perl-IO-Socket-IP-0.39-5.el8.noarch
+    node-client-1:   perl-IO-Socket-SSL-2.066-4.module+el8.4.0+512+d4f0fc54.noarch
+    node-client-1:   perl-MIME-Base64-3.15-396.el8.x86_64
+    node-client-1:   perl-Mozilla-CA-20160104-7.module+el8.4.0+529+e3b3e624.noarch
+    node-client-1:   perl-Net-SSLeay-1.88-1.module+el8.4.0+512+d4f0fc54.x86_64
+    node-client-1:   perl-PathTools-3.74-1.el8.x86_64
+    node-client-1:   perl-Pod-Escapes-1:1.07-395.el8.noarch
+    node-client-1:   perl-Pod-Perldoc-3.28-396.el8.noarch
+    node-client-1:   perl-Pod-Simple-1:3.35-395.el8.noarch
+    node-client-1:   perl-Pod-Usage-4:1.69-395.el8.noarch
+    node-client-1:   perl-Scalar-List-Utils-3:1.49-2.el8.x86_64
+    node-client-1:   perl-Socket-4:2.027-3.el8.x86_64
+    node-client-1:   perl-Storable-1:3.11-3.el8.x86_64
+    node-client-1:   perl-Term-ANSIColor-4.06-396.el8.noarch
+    node-client-1:   perl-Term-Cap-1.17-395.el8.noarch
+    node-client-1:   perl-TermReadKey-2.37-7.el8.x86_64
+    node-client-1:   perl-Text-ParseWords-3.30-395.el8.noarch
+    node-client-1:   perl-Text-Tabs+Wrap-2013.0523-395.el8.noarch
+    node-client-1:   perl-Time-Local-1:1.280-1.el8.noarch
+    node-client-1:   perl-URI-1.73-3.el8.noarch
+    node-client-1:   perl-Unicode-Normalize-1.25-396.el8.x86_64
+    node-client-1:   perl-constant-1.33-396.el8.noarch
+    node-client-1:   perl-interpreter-4:5.26.3-420.el8.x86_64
+    node-client-1:   perl-libnet-3.11-3.el8.noarch
+    node-client-1:   perl-libs-4:5.26.3-420.el8.x86_64
+    node-client-1:   perl-macros-4:5.26.3-420.el8.x86_64
+    node-client-1:   perl-parent-1:0.237-1.el8.noarch
+    node-client-1:   perl-podlators-4.11-1.el8.noarch
+    node-client-1:   perl-threads-1:2.21-2.el8.x86_64
+    node-client-1:   perl-threads-shared-1.58-2.el8.x86_64
+    node-client-1:
+    node-client-1: Complete!
+    node-client-1: Last metadata expiration check: 0:00:15 ago on Mon 09 May 2022 10:41:01 PM U           TC.
+    node-client-1: Dependencies resolved.
+    node-client-1: ============================================================================           ====
+    node-client-1:  Package           Architecture   Version               Repository         S           ize
+    node-client-1: ============================================================================           ====
+    node-client-1: Installing:
+    node-client-1:  nmap              x86_64         2:7.70-6.el8          appstream         5.           8 M
+    node-client-1: Installing dependencies:
+    node-client-1:  nmap-ncat         x86_64         2:7.70-6.el8          appstream         23           6 k
+    node-client-1:
+    node-client-1: Transaction Summary
+    node-client-1: ============================================================================           ====
+    node-client-1: Install  2 Packages
+    node-client-1:
+    node-client-1: Total download size: 6.0 M
+    node-client-1: Installed size: 24 M
+    node-client-1: Downloading Packages:
+    node-client-1: (1/2): nmap-ncat-7.70-6.el8.x86_64.rpm          1.0 MB/s | 236 kB     00:00
+    node-client-1: (2/2): nmap-7.70-6.el8.x86_64.rpm               6.8 MB/s | 5.8 MB     00:00
+    node-client-1: ----------------------------------------------------------------------------           ----
+    node-client-1: Total                                           5.3 MB/s | 6.0 MB     00:01
+    node-client-1: Running transaction check
+    node-client-1: Transaction check succeeded.
+    node-client-1: Running transaction test
+    node-client-1: Transaction test succeeded.
+    node-client-1: Running transaction
+    node-client-1:   Preparing        :                                                                   1/1
+    node-client-1:   Installing       : nmap-ncat-2:7.70-6.el8.x86_64                                     1/2
+    node-client-1:   Running scriptlet: nmap-ncat-2:7.70-6.el8.x86_64                                     1/2
+    node-client-1:   Installing       : nmap-2:7.70-6.el8.x86_64                                          2/2
+    node-client-1:   Running scriptlet: nmap-2:7.70-6.el8.x86_64                                          2/2
+    node-client-1:   Verifying        : nmap-2:7.70-6.el8.x86_64                                          1/2
+    node-client-1:   Verifying        : nmap-ncat-2:7.70-6.el8.x86_64                                     2/2
+    node-client-1:
+    node-client-1: Installed:
+    node-client-1:   nmap-2:7.70-6.el8.x86_64             nmap-ncat-2:7.70-6.el8.x86_64
+    node-client-1:
+    node-client-1: Complete!
+    node-client-1: Adding repo from: https://download.docker.com/linux/centos/docker-ce.repo
+    node-client-1: Docker CE Stable - x86_64                        86 kB/s |  24 kB     00:00
+    node-client-1: Dependencies resolved.
+    node-client-1: ============================================================================           ===========================
+    node-client-1:  Package                        Arch    Version                                            Repository         Size
+    node-client-1: ============================================================================           ===========================
+    node-client-1: Installing:
+    node-client-1:  docker-ce                      x86_64  3:20.10.12-3.el8                                   docker-ce-stable   22 M
+    node-client-1: Upgrading:
+    node-client-1:  policycoreutils                x86_64  2.9-16.el8                                         baseos            372 k
+    node-client-1: Installing dependencies:
+    node-client-1:  checkpolicy                    x86_64  2.9-1.el8                                          baseos            345 k
+    node-client-1:  container-selinux              noarch  2:2.173.0-1.module+el8.5.0+735+2f243           138 appstream          56 k
+    node-client-1:  containerd.io                  x86_64  1.6.4-3.1.el8                                      docker-ce-stable   33 M
+    node-client-1:  docker-ce-cli                  x86_64  1:20.10.15-3.el8                                   docker-ce-stable   29 M
+    node-client-1:  docker-ce-rootless-extras      x86_64  20.10.15-3.el8                                     docker-ce-stable  4.7 M
+    node-client-1:  docker-scan-plugin             x86_64  0.17.0-3.el8                                       docker-ce-stable  3.8 M
+    node-client-1:  fuse-overlayfs                 x86_64  1.8-1.module+el8.5.0+735+2f243138                  appstream          72 k
+    node-client-1:  fuse3                          x86_64  3.2.1-12.el8                                       baseos             49 k
+    node-client-1:  fuse3-libs                     x86_64  3.2.1-12.el8                                       baseos             93 k
+    node-client-1:  libcgroup                      x86_64  0.41-19.el8                                        baseos             69 k
+    node-client-1:  libslirp                       x86_64  4.4.0-1.module+el8.5.0+710+4c471e88                appstream          69 k
+    node-client-1:  policycoreutils-python-utils   noarch  2.9-16.el8                                         baseos            251 k
+    node-client-1:  python3-audit                  x86_64  3.0-0.17.20191104git1c2f876.el8.1                  baseos             85 k
+    node-client-1:  python3-libsemanage            x86_64  2.9-6.el8                                          baseos            126 k
+    node-client-1:  python3-policycoreutils        noarch  2.9-16.el8                                         baseos            2.2 M
+    node-client-1:  python3-setools                x86_64  4.3.0-2.el8                                        baseos            625 k
+    node-client-1:  slirp4netns                    x86_64  1.1.8-1.module+el8.5.0+710+4c471e88                appstream          50 k
+    node-client-1: Enabling module streams:
+    node-client-1:  container-tools                        rhel8
+    node-client-1:
+    node-client-1: Transaction Summary
+    node-client-1: ============================================================================           ===========================
+    node-client-1: Install  18 Packages
+    node-client-1: Upgrade   1 Package
+    node-client-1:
+    node-client-1: Total download size: 97 M
+    node-client-1: Downloading Packages:
+    node-client-1: (1/19): container-selinux-2.173.0-1.module+el8. 312 kB/s |  56 kB     00:00
+    node-client-1: (2/19): fuse-overlayfs-1.8-1.module+el8.5.0+735 399 kB/s |  72 kB     00:00
+    node-client-1: (3/19): libslirp-4.4.0-1.module+el8.5.0+710+4c4 378 kB/s |  69 kB     00:00
+    node-client-1: (4/19): slirp4netns-1.1.8-1.module+el8.5.0+710+ 2.3 MB/s |  50 kB     00:00
+    node-client-1: (5/19): fuse3-3.2.1-12.el8.x86_64.rpm           1.4 MB/s |  49 kB     00:00
+    node-client-1: (6/19): fuse3-libs-3.2.1-12.el8.x86_64.rpm      3.5 MB/s |  93 kB     00:00
+    node-client-1: (7/19): libcgroup-0.41-19.el8.x86_64.rpm        2.9 MB/s |  69 kB     00:00
+    node-client-1: (8/19): python3-audit-3.0-0.17.20191104git1c2f8 3.2 MB/s |  85 kB     00:00
+    node-client-1: (9/19): checkpolicy-2.9-1.el8.x86_64.rpm        3.6 MB/s | 345 kB     00:00
+    node-client-1: (10/19): policycoreutils-python-utils-2.9-16.el 3.8 MB/s | 251 kB     00:00
+    node-client-1: (11/19): python3-libsemanage-2.9-6.el8.x86_64.r 2.8 MB/s | 126 kB     00:00
+    node-client-1: (12/19): python3-setools-4.3.0-2.el8.x86_64.rpm 4.8 MB/s | 625 kB     00:00
+    node-client-1: (13/19): python3-policycoreutils-2.9-16.el8.noa 6.5 MB/s | 2.2 MB     00:00
+    node-client-1: (14/19): docker-ce-20.10.12-3.el8.x86_64.rpm    5.3 MB/s |  22 MB     00:04
+    node-client-1: (15/19): docker-ce-rootless-extras-20.10.15-3.e 7.7 MB/s | 4.7 MB     00:00
+    node-client-1: (16/19): docker-ce-cli-20.10.15-3.el8.x86_64.rp 6.3 MB/s |  29 MB     00:04
+    node-client-1: (17/19): containerd.io-1.6.4-3.1.el8.x86_64.rpm 6.3 MB/s |  33 MB     00:05
+    node-client-1: (18/19): policycoreutils-2.9-16.el8.x86_64.rpm  1.5 MB/s | 372 kB     00:00
+    node-client-1: (19/19): docker-scan-plugin-0.17.0-3.el8.x86_64 9.3 MB/s | 3.8 MB     00:00
+    node-client-1: ----------------------------------------------------------------------------           ----
+    node-client-1: Total                                            16 MB/s |  97 MB     00:06
+    node-client-1: warning: /var/cache/dnf/docker-ce-stable-fa9dc42ab4cec2f4/packages/container           d.io-1.6.4-3.1.el8.x86_64.rpm: Header V4 RSA/SHA512 Signature, key ID 621e9f35: NOKEY
+    node-client-1: Docker CE Stable - x86_64                        14 kB/s | 1.6 kB     00:00
+    node-client-1: Importing GPG key 0x621E9F35:
+    node-client-1:  Userid     : "Docker Release (CE rpm) <docker@docker.com>"
+    node-client-1:  Fingerprint: 060A 61C5 1B55 8A7F 742B 77AA C52F EB6B 621E 9F35
+    node-client-1:  From       : https://download.docker.com/linux/centos/gpg
+    node-client-1: Key imported successfully
+    node-client-1: Running transaction check
+    node-client-1: Transaction check succeeded.
+    node-client-1: Running transaction test
+    node-client-1: Transaction test succeeded.
+    node-client-1: Running transaction
+    node-client-1:   Preparing        :                                                                   1/1
+    node-client-1:   Running scriptlet: docker-scan-plugin-0.17.0-3.el8.x86_64                            1/1
+    node-client-1:   Installing       : docker-scan-plugin-0.17.0-3.el8.x86_64                1           /20
+    node-client-1:   Running scriptlet: docker-scan-plugin-0.17.0-3.el8.x86_64                1           /20
+    node-client-1:   Installing       : docker-ce-cli-1:20.10.15-3.el8.x86_64                 2           /20
+    node-client-1:   Running scriptlet: docker-ce-cli-1:20.10.15-3.el8.x86_64                 2           /20
+    node-client-1:   Upgrading        : policycoreutils-2.9-16.el8.x86_64                     3           /20
+    node-client-1:   Running scriptlet: policycoreutils-2.9-16.el8.x86_64                     3           /20
+    node-client-1:   Installing       : python3-setools-4.3.0-2.el8.x86_64                    4           /20
+    node-client-1:   Installing       : python3-libsemanage-2.9-6.el8.x86_64                  5           /20
+    node-client-1:   Installing       : python3-audit-3.0-0.17.20191104git1c2f876.el8.1.x8    6           /20
+    node-client-1:   Running scriptlet: libcgroup-0.41-19.el8.x86_64                          7           /20
+    node-client-1:   Installing       : libcgroup-0.41-19.el8.x86_64                          7           /20
+    node-client-1:   Running scriptlet: libcgroup-0.41-19.el8.x86_64                          7           /20
+    node-client-1:   Installing       : fuse3-libs-3.2.1-12.el8.x86_64                        8           /20
+    node-client-1:   Running scriptlet: fuse3-libs-3.2.1-12.el8.x86_64                        8           /20
+    node-client-1:   Installing       : fuse3-3.2.1-12.el8.x86_64                             9           /20
+    node-client-1:   Installing       : fuse-overlayfs-1.8-1.module+el8.5.0+735+2f243138.x   10           /20
+    node-client-1:   Running scriptlet: fuse-overlayfs-1.8-1.module+el8.5.0+735+2f243138.x   10           /20
+    node-client-1:   Installing       : checkpolicy-2.9-1.el8.x86_64                         11           /20
+    node-client-1:   Installing       : python3-policycoreutils-2.9-16.el8.noarch            12           /20
+    node-client-1:   Installing       : policycoreutils-python-utils-2.9-16.el8.noarch       13           /20
+    node-client-1:   Running scriptlet: container-selinux-2:2.173.0-1.module+el8.5.0+735+2   14           /20
+    node-client-1:   Installing       : container-selinux-2:2.173.0-1.module+el8.5.0+735+2   14           /20
+    node-client-1:   Running scriptlet: container-selinux-2:2.173.0-1.module+el8.5.0+735+2   14           /20
+    node-client-1:   Installing       : containerd.io-1.6.4-3.1.el8.x86_64                   15           /20
+    node-client-1:   Running scriptlet: containerd.io-1.6.4-3.1.el8.x86_64                   15           /20
+    node-client-1:   Installing       : libslirp-4.4.0-1.module+el8.5.0+710+4c471e88.x86_6   16           /20
+    node-client-1:   Installing       : slirp4netns-1.1.8-1.module+el8.5.0+710+4c471e88.x8   17           /20
+    node-client-1:   Installing       : docker-ce-rootless-extras-20.10.15-3.el8.x86_64      18           /20
+    node-client-1:   Running scriptlet: docker-ce-rootless-extras-20.10.15-3.el8.x86_64      18           /20
+    node-client-1:   Installing       : docker-ce-3:20.10.12-3.el8.x86_64                    19           /20
+    node-client-1:   Running scriptlet: docker-ce-3:20.10.12-3.el8.x86_64                    19           /20
+    node-client-1:   Running scriptlet: policycoreutils-2.9-14.el8.x86_64                    20           /20
+    node-client-1:   Cleanup          : policycoreutils-2.9-14.el8.x86_64                    20           /20
+    node-client-1:   Running scriptlet: container-selinux-2:2.173.0-1.module+el8.5.0+735+2   20/20
+    node-client-1:   Running scriptlet: policycoreutils-2.9-14.el8.x86_64                    20/20
+    node-client-1:   Verifying        : container-selinux-2:2.173.0-1.module+el8.5.0+735+2    1/20
+    node-client-1:   Verifying        : fuse-overlayfs-1.8-1.module+el8.5.0+735+2f243138.x    2/20
+    node-client-1:   Verifying        : libslirp-4.4.0-1.module+el8.5.0+710+4c471e88.x86_6    3/20
+    node-client-1:   Verifying        : slirp4netns-1.1.8-1.module+el8.5.0+710+4c471e88.x8    4/20
+    node-client-1:   Verifying        : checkpolicy-2.9-1.el8.x86_64                          5/20
+    node-client-1:   Verifying        : fuse3-3.2.1-12.el8.x86_64                             6/20
+    node-client-1:   Verifying        : fuse3-libs-3.2.1-12.el8.x86_64                        7/20
+    node-client-1:   Verifying        : libcgroup-0.41-19.el8.x86_64                          8/20
+    node-client-1:   Verifying        : policycoreutils-python-utils-2.9-16.el8.noarch        9/20
+    node-client-1:   Verifying        : python3-audit-3.0-0.17.20191104git1c2f876.el8.1.x8   10/20
+    node-client-1:   Verifying        : python3-libsemanage-2.9-6.el8.x86_64                 11/20
+    node-client-1:   Verifying        : python3-policycoreutils-2.9-16.el8.noarch            12/20
+    node-client-1:   Verifying        : python3-setools-4.3.0-2.el8.x86_64                   13/20
+    node-client-1:   Verifying        : containerd.io-1.6.4-3.1.el8.x86_64                   14/20
+    node-client-1:   Verifying        : docker-ce-3:20.10.12-3.el8.x86_64                    15/20
+    node-client-1:   Verifying        : docker-ce-cli-1:20.10.15-3.el8.x86_64                16/20
+    node-client-1:   Verifying        : docker-ce-rootless-extras-20.10.15-3.el8.x86_64      17/20
+    node-client-1:   Verifying        : docker-scan-plugin-0.17.0-3.el8.x86_64               18/20
+    node-client-1:   Verifying        : policycoreutils-2.9-16.el8.x86_64                    19/20
+    node-client-1:   Verifying        : policycoreutils-2.9-14.el8.x86_64                    20/20
+    node-client-1:
+    node-client-1: Upgraded:
+    node-client-1:   policycoreutils-2.9-16.el8.x86_64
+    node-client-1: Installed:
+    node-client-1:   checkpolicy-2.9-1.el8.x86_64
+    node-client-1:   container-selinux-2:2.173.0-1.module+el8.5.0+735+2f243138.noarch
+    node-client-1:   containerd.io-1.6.4-3.1.el8.x86_64
+    node-client-1:   docker-ce-3:20.10.12-3.el8.x86_64
+    node-client-1:   docker-ce-cli-1:20.10.15-3.el8.x86_64
+    node-client-1:   docker-ce-rootless-extras-20.10.15-3.el8.x86_64
+    node-client-1:   docker-scan-plugin-0.17.0-3.el8.x86_64
+    node-client-1:   fuse-overlayfs-1.8-1.module+el8.5.0+735+2f243138.x86_64
+    node-client-1:   fuse3-3.2.1-12.el8.x86_64
+    node-client-1:   fuse3-libs-3.2.1-12.el8.x86_64
+    node-client-1:   libcgroup-0.41-19.el8.x86_64
+    node-client-1:   libslirp-4.4.0-1.module+el8.5.0+710+4c471e88.x86_64
+    node-client-1:   policycoreutils-python-utils-2.9-16.el8.noarch
+    node-client-1:   python3-audit-3.0-0.17.20191104git1c2f876.el8.1.x86_64
+    node-client-1:   python3-libsemanage-2.9-6.el8.x86_64
+    node-client-1:   python3-policycoreutils-2.9-16.el8.noarch
+    node-client-1:   python3-setools-4.3.0-2.el8.x86_64
+    node-client-1:   slirp4netns-1.1.8-1.module+el8.5.0+710+4c471e88.x86_64
+    node-client-1:
+    node-client-1: Complete!
+    node-client-1: Created symlink /etc/systemd/system/multi-user.target.wants/docker.service → /usr/lib/systemd/system/docker.service.
+    node-client-1: Last metadata expiration check: 0:01:35 ago on Mon 09 May 2022 10:41:22 PM UTC.
+    node-client-1: Package yum-utils-4.0.18-4.el8.noarch is already installed.
+    node-client-1: Dependencies resolved.
+    node-client-1: ================================================================================
+    node-client-1:  Package                      Arch       Version               Repository  Size
+    node-client-1: ================================================================================
+    node-client-1: Upgrading:
+    node-client-1:  dnf-plugins-core             noarch     4.0.21-4.el8_5        baseos      69 k
+    node-client-1:  python3-dnf-plugins-core     noarch     4.0.21-4.el8_5        baseos     233 k
+    node-client-1:  yum-utils                    noarch     4.0.21-4.el8_5        baseos      71 k
+    node-client-1:
+    node-client-1: Transaction Summary
+    node-client-1: ================================================================================
+    node-client-1: Upgrade  3 Packages
+    node-client-1:
+    node-client-1: Total download size: 374 k
+    node-client-1: Downloading Packages:
+    node-client-1: (1/3): dnf-plugins-core-4.0.21-4.el8_5.noarch.r 329 kB/s |  69 kB     00:00
+    node-client-1: (2/3): yum-utils-4.0.21-4.el8_5.noarch.rpm      289 kB/s |  71 kB     00:00
+    node-client-1: (3/3): python3-dnf-plugins-core-4.0.21-4.el8_5. 828 kB/s | 233 kB     00:00
+    node-client-1: --------------------------------------------------------------------------------
+    node-client-1: Total                                           167 kB/s | 374 kB     00:02
+    node-client-1: Running transaction check
+    node-client-1: Transaction check succeeded.
+    node-client-1: Running transaction test
+    node-client-1: Transaction test succeeded.
+    node-client-1: Running transaction
+    node-client-1:   Preparing        :                                                        1/1
+    node-client-1:   Upgrading        : python3-dnf-plugins-core-4.0.21-4.el8_5.noarch         1/6
+    node-client-1:   Upgrading        : dnf-plugins-core-4.0.21-4.el8_5.noarch                 2/6
+    node-client-1:   Upgrading        : yum-utils-4.0.21-4.el8_5.noarch                        3/6
+    node-client-1:   Cleanup          : yum-utils-4.0.18-4.el8.noarch                          4/6
+    node-client-1:   Cleanup          : dnf-plugins-core-4.0.18-4.el8.noarch                   5/6
+    node-client-1:   Cleanup          : python3-dnf-plugins-core-4.0.18-4.el8.noarch           6/6
+    node-client-1:   Running scriptlet: python3-dnf-plugins-core-4.0.18-4.el8.noarch           6/6
+    node-client-1:   Verifying        : dnf-plugins-core-4.0.21-4.el8_5.noarch                 1/6
+    node-client-1:   Verifying        : dnf-plugins-core-4.0.18-4.el8.noarch                   2/6
+    node-client-1:   Verifying        : python3-dnf-plugins-core-4.0.21-4.el8_5.noarch         3/6
+    node-client-1:   Verifying        : python3-dnf-plugins-core-4.0.18-4.el8.noarch           4/6
+    node-client-1:   Verifying        : yum-utils-4.0.21-4.el8_5.noarch                        5/6
+    node-client-1:   Verifying        : yum-utils-4.0.18-4.el8.noarch                          6/6
+    node-client-1:
+    node-client-1: Upgraded:
+    node-client-1:   dnf-plugins-core-4.0.21-4.el8_5.noarch
+    node-client-1:   python3-dnf-plugins-core-4.0.21-4.el8_5.noarch
+    node-client-1:   yum-utils-4.0.21-4.el8_5.noarch
+    node-client-1:
+    node-client-1: Complete!
+    node-client-1: Adding repo from: https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo
+    node-client-1: Hashicorp Stable - x86_64                       2.0 MB/s | 696 kB     00:00
+    node-client-1: Dependencies resolved.
+    node-client-1: ================================================================================
+    node-client-1:  Package         Architecture     Version             Repository           Size
+    node-client-1: ================================================================================
+    node-client-1: Installing:
+    node-client-1:  nomad           x86_64           1.2.6-1             hashicorp            27 M
+    node-client-1:
+    node-client-1: Transaction Summary
+    node-client-1: ================================================================================
+    node-client-1: Install  1 Package
+    node-client-1:
+    node-client-1: Total download size: 27 M
+    node-client-1: Installed size: 84 M
+    node-client-1: Downloading Packages:
+    node-client-1: nomad-1.2.6-1.x86_64.rpm                         24 MB/s |  27 MB     00:01
+    node-client-1: --------------------------------------------------------------------------------
+    node-client-1: Total                                            24 MB/s |  27 MB     00:01
+    node-client-1: warning: /var/cache/dnf/hashicorp-164999f2fbadbd87/packages/nomad-1.2.6-1.x86_64.rpm: Header V4 RSA/SHA512 Signature, key ID a3219f7b: NOKEY
+    node-client-1: Hashicorp Stable - x86_64                        24 kB/s | 3.1 kB     00:00
+    node-client-1: Importing GPG key 0xA3219F7B:
+    node-client-1:  Userid     : "HashiCorp Security (HashiCorp Package Signing) <security+packaging@hashicorp.com>"
+    node-client-1:  Fingerprint: E8A0 32E0 94D8 EB4E A189 D270 DA41 8C88 A321 9F7B
+    node-client-1:  From       : https://rpm.releases.hashicorp.com/gpg
+    node-client-1: Key imported successfully
+    node-client-1: Running transaction check
+    node-client-1: Transaction check succeeded.
+    node-client-1: Running transaction test
+    node-client-1: Transaction test succeeded.
+    node-client-1: Running transaction
+    node-client-1:   Preparing        :                                                        1/1
+    node-client-1:   Running scriptlet: nomad-1.2.6-1.x86_64                                   1/1
+    node-client-1:   Installing       : nomad-1.2.6-1.x86_64                                   1/1
+    node-client-1:   Running scriptlet: nomad-1.2.6-1.x86_64                                   1/1
+    node-client-1:   Verifying        : nomad-1.2.6-1.x86_64                                   1/1
+    node-client-1:
+    node-client-1: Installed:
+    node-client-1:   nomad-1.2.6-1.x86_64
+    node-client-1:
+    node-client-1: Complete!
+    node-client-1: Last metadata expiration check: 0:00:07 ago on Mon 09 May 2022 10:43:03 PM UTC.
+    node-client-1: Dependencies resolved.
+    node-client-1: ================================================================================
+    node-client-1:  Package           Architecture    Version                Repository       Size
+    node-client-1: ================================================================================
+    node-client-1: Installing:
+    node-client-1:  dos2unix          x86_64          7.4.0-3.el8            baseos          240 k
+    node-client-1:
+    node-client-1: Transaction Summary
+    node-client-1: ================================================================================
+    node-client-1: Install  1 Package
+    node-client-1:
+    node-client-1: Total download size: 240 k
+    node-client-1: Installed size: 663 k
+    node-client-1: Downloading Packages:
+    node-client-1: dos2unix-7.4.0-3.el8.x86_64.rpm                 1.1 MB/s | 240 kB     00:00
+    node-client-1: --------------------------------------------------------------------------------
+    node-client-1: Total                                           484 kB/s | 240 kB     00:00
+    node-client-1: Running transaction check
+    node-client-1: Transaction check succeeded.
+    node-client-1: Running transaction test
+    node-client-1: Transaction test succeeded.
+    node-client-1: Running transaction
+    node-client-1:   Preparing        :                                                        1/1
+    node-client-1:   Installing       : dos2unix-7.4.0-3.el8.x86_64                            1/1
+    node-client-1:   Running scriptlet: dos2unix-7.4.0-3.el8.x86_64                            1/1
+    node-client-1:   Verifying        : dos2unix-7.4.0-3.el8.x86_64                            1/1
+    node-client-1:
+    node-client-1: Installed:
+    node-client-1:   dos2unix-7.4.0-3.el8.x86_64
+    node-client-1:
+    node-client-1: Complete!
+    node-client-1: Sending build context to Docker daemon  9.216kB
+    node-client-1: Step 1/6 : FROM python:3.10.1-slim-bullseye
+    node-client-1: 3.10.1-slim-bullseye: Pulling from library/python
+    node-client-1: a2abf6c4d29d: Pulling fs layer
+    node-client-1: 27003db43ed4: Pulling fs layer
+    node-client-1: 58c2647bdcdf: Pulling fs layer
+    node-client-1: 1809d7e69691: Pulling fs layer
+    node-client-1: 0daa42a9c7ff: Pulling fs layer
+    node-client-1: 1809d7e69691: Waiting
+    node-client-1: 0daa42a9c7ff: Waiting
+    node-client-1: 27003db43ed4: Verifying Checksum
+    node-client-1: 27003db43ed4: Download complete
+    node-client-1: 58c2647bdcdf: Verifying Checksum
+    node-client-1: 58c2647bdcdf: Download complete
+    node-client-1: 1809d7e69691: Verifying Checksum
+    node-client-1: 1809d7e69691: Download complete
+    node-client-1: a2abf6c4d29d: Verifying Checksum
+    node-client-1: a2abf6c4d29d: Download complete
+    node-client-1: 0daa42a9c7ff: Verifying Checksum
+    node-client-1: 0daa42a9c7ff: Download complete
+    node-client-1: a2abf6c4d29d: Pull complete
+    node-client-1: 27003db43ed4: Pull complete
+    node-client-1: 58c2647bdcdf: Pull complete
+    node-client-1: 1809d7e69691: Pull complete
+    node-client-1: 0daa42a9c7ff: Pull complete
+    node-client-1: Digest: sha256:dd3016f846b8f88d8f6c28b43f1da899f07259121aff403091e6f89a703c3d36
+    node-client-1: Status: Downloaded newer image for python:3.10.1-slim-bullseye
+    node-client-1:  ---> 58d8fd9767c5
+    node-client-1: Step 2/6 : WORKDIR /app
+    node-client-1:  ---> Running in 3d0fc3872d93
+    node-client-1: Removing intermediate container 3d0fc3872d93
+    node-client-1:  ---> 1279b00d4d3e
+    node-client-1: Step 3/6 : RUN pip3 install Flask
+    node-client-1:  ---> Running in 5736b39de0ed
+    node-client-1: Collecting Flask
+    node-client-1:   Downloading Flask-2.1.2-py3-none-any.whl (95 kB)
+    node-client-1: Collecting Jinja2>=3.0
+    node-client-1:   Downloading Jinja2-3.1.2-py3-none-any.whl (133 kB)
+    node-client-1: Collecting click>=8.0
+    node-client-1:   Downloading click-8.1.3-py3-none-any.whl (96 kB)
+    node-client-1: Collecting Werkzeug>=2.0
+    node-client-1:   Downloading Werkzeug-2.1.2-py3-none-any.whl (224 kB)
+    node-client-1: Collecting itsdangerous>=2.0
+    node-client-1:   Downloading itsdangerous-2.1.2-py3-none-any.whl (15 kB)
+    node-client-1: Collecting MarkupSafe>=2.0
+    node-client-1:   Downloading MarkupSafe-2.1.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (25 kB)
+    node-client-1: Installing collected packages: MarkupSafe, Werkzeug, Jinja2, itsdangerous, click, Flask
+    node-client-1: Successfully installed Flask-2.1.2 Jinja2-3.1.2 MarkupSafe-2.1.1 Werkzeug-2.1.2 click-8.1.3 itsdangerous-2.1.2
+    node-client-1: WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+    node-client-1: WARNING: You are using pip version 21.2.4; however, version 22.0.4 is available.
+    node-client-1: You should consider upgrading via the '/usr/local/bin/python -m pip install --upgrade pip' command.
+    node-client-1: Removing intermediate container 5736b39de0ed
+    node-client-1:  ---> 9c0fb1ad84dd
+    node-client-1: Step 4/6 : RUN pip3 install requests
+    node-client-1:  ---> Running in 16d11ef54b64
+    node-client-1: Collecting requests
+    node-client-1:   Downloading requests-2.27.1-py2.py3-none-any.whl (63 kB)
+    node-client-1: Collecting idna<4,>=2.5
+    node-client-1:   Downloading idna-3.3-py3-none-any.whl (61 kB)
+    node-client-1: Collecting charset-normalizer~=2.0.0
+    node-client-1:   Downloading charset_normalizer-2.0.12-py3-none-any.whl (39 kB)
+    node-client-1: Collecting certifi>=2017.4.17
+    node-client-1:   Downloading certifi-2021.10.8-py2.py3-none-any.whl (149 kB)
+    node-client-1: Collecting urllib3<1.27,>=1.21.1
+    node-client-1:   Downloading urllib3-1.26.9-py2.py3-none-any.whl (138 kB)
+    node-client-1: Installing collected packages: urllib3, idna, charset-normalizer, certifi, requests
+    node-client-1: WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+    node-client-1: Successfully installed certifi-2021.10.8 charset-normalizer-2.0.12 idna-3.3 requests-2.27.1 urllib3-1.26.9
+    node-client-1: WARNING: You are using pip version 21.2.4; however, version 22.0.4 is available.
+    node-client-1: You should consider upgrading via the '/usr/local/bin/python -m pip install --upgrade pip' command.
+    node-client-1: Removing intermediate container 16d11ef54b64
+    node-client-1:  ---> 8bb527b6fd9e
+    node-client-1: Step 5/6 : COPY app.py app.py
+    node-client-1:  ---> a50328c952f8
+    node-client-1: Step 6/6 : CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0"]
+    node-client-1:  ---> Running in 58a765a52c04
+    node-client-1: Removing intermediate container 58a765a52c04
+    node-client-1:  ---> b39cc3002aa3
+    node-client-1: Successfully built b39cc3002aa3
+    node-client-1: Successfully tagged flask-app:latest
+==> node-client-2: Importing base box 'rockylinux/8'...
+==> node-client-2: Matching MAC address for NAT networking...
+==> node-client-2: Checking if box 'rockylinux/8' version '4.0.0' is up to date...
+==> node-client-2: Setting the name of the VM: node-client-2
+==> node-client-2: Fixed port collision for 22 => 2222. Now on port 2201.
+==> node-client-2: Clearing any previously set network interfaces...
+==> node-client-2: Preparing network interfaces based on configuration...
+    node-client-2: Adapter 1: nat
+    node-client-2: Adapter 2: hostonly
+==> node-client-2: Forwarding ports...
+    node-client-2: 22 (guest) => 2201 (host) (adapter 1)
+==> node-client-2: Running 'pre-boot' VM customizations...
+==> node-client-2: Booting VM...
+==> node-client-2: Waiting for machine to boot. This may take a few minutes...
+    node-client-2: SSH address: 127.0.0.1:2201
+    node-client-2: SSH username: vagrant
+    node-client-2: SSH auth method: private key
+    node-client-2:
+    node-client-2: Vagrant insecure key detected. Vagrant will automatically replace
+    node-client-2: this with a newly generated keypair for better security.
+    node-client-2:
+    node-client-2: Inserting generated public key within guest...
+    node-client-2: Removing insecure key from the guest if it's present...
+    node-client-2: Key inserted! Disconnecting and reconnecting using new SSH key...
+==> node-client-2: Machine booted and ready!
+==> node-client-2: Checking for guest additions in VM...
+==> node-client-2: Setting hostname...
+==> node-client-2: Configuring and enabling network interfaces...
+==> node-client-2: Mounting shared folders...
+    node-client-2: /vagrant => C:/temp/vm-vagrant-docker/docker-exemples-edition3-code/chapitre11
+==> node-client-2: Running provisioner: shell...
+    node-client-2: Running: C:/Users/pycloux/AppData/Local/Temp/vagrant-shell20220510-17756-7q5djm.sh
+    node-client-2: Rocky Linux 8 - AppStream                       2.6 MB/s |  10 MB     00:04
+    node-client-2: Rocky Linux 8 - BaseOS                          4.3 MB/s | 7.7 MB     00:01
+    node-client-2: Rocky Linux 8 - Extras                           20 kB/s |  12 kB     00:00
+    node-client-2: Dependencies resolved.
+    node-client-2: ================================================================================
+    node-client-2:  Package         Architecture Version                        Repository    Size
+    node-client-2: ================================================================================
+    node-client-2: Installing:
+    node-client-2:  net-tools       x86_64       2.0-0.52.20160912git.el8       baseos       321 k
+    node-client-2:
+    node-client-2: Transaction Summary
+    node-client-2: ================================================================================
+    node-client-2: Install  1 Package
+    node-client-2:
+    node-client-2: Total download size: 321 k
+    node-client-2: Installed size: 942 k
+    node-client-2: Downloading Packages:
+    node-client-2: net-tools-2.0-0.52.20160912git.el8.x86_64.rpm   1.1 MB/s | 321 kB     00:00
+    node-client-2: --------------------------------------------------------------------------------
+    node-client-2: Total                                           548 kB/s | 321 kB     00:00
+    node-client-2: Running transaction check
+    node-client-2: Transaction check succeeded.
+    node-client-2: Running transaction test
+    node-client-2: Transaction test succeeded.
+    node-client-2: Running transaction
+    node-client-2:   Preparing        :                                                        1/1
+    node-client-2:   Installing       : net-tools-2.0-0.52.20160912git.el8.x86_64              1/1
+    node-client-2:   Running scriptlet: net-tools-2.0-0.52.20160912git.el8.x86_64              1/1
+    node-client-2:   Verifying        : net-tools-2.0-0.52.20160912git.el8.x86_64              1/1
+    node-client-2:
+    node-client-2: Installed:
+    node-client-2:   net-tools-2.0-0.52.20160912git.el8.x86_64
+    node-client-2:
+    node-client-2: Complete!
+    node-client-2: Last metadata expiration check: 0:00:04 ago on Mon 09 May 2022 10:44:26 PM UTC.
+    node-client-2: Dependencies resolved.
+    node-client-2: =========================================================================================
+    node-client-2:  Package                  Arch    Version                                Repo        Size
+    node-client-2: =========================================================================================
+    node-client-2: Installing:
+    node-client-2:  git                      x86_64  2.27.0-1.el8                           appstream  163 k
+    node-client-2: Installing dependencies:
+    node-client-2:  emacs-filesystem         noarch  1:26.1-7.el8                           baseos      69 k
+    node-client-2:  git-core                 x86_64  2.27.0-1.el8                           appstream  5.7 M
+    node-client-2:  git-core-doc             noarch  2.27.0-1.el8                           appstream  2.5 M
+    node-client-2:  perl-Carp                noarch  1.42-396.el8                           baseos      29 k
+    node-client-2:  perl-Data-Dumper         x86_64  2.167-399.el8                          baseos      57 k
+    node-client-2:  perl-Digest              noarch  1.17-395.el8                           appstream   26 k
+    node-client-2:  perl-Digest-MD5          x86_64  2.55-396.el8                           appstream   36 k
+    node-client-2:  perl-Encode              x86_64  4:2.97-3.el8                           baseos     1.5 M
+    node-client-2:  perl-Errno               x86_64  1.28-420.el8                           baseos      75 k
+    node-client-2:  perl-Error               noarch  1:0.17025-2.el8                        appstream   45 k
+    node-client-2:  perl-Exporter            noarch  5.72-396.el8                           baseos      33 k
+    node-client-2:  perl-File-Path           noarch  2.15-2.el8                             baseos      37 k
+    node-client-2:  perl-File-Temp           noarch  0.230.600-1.el8                        baseos      62 k
+    node-client-2:  perl-Getopt-Long         noarch  1:2.50-4.el8                           baseos      62 k
+    node-client-2:  perl-Git                 noarch  2.27.0-1.el8                           appstream   76 k
+    node-client-2:  perl-HTTP-Tiny           noarch  0.074-1.el8                            baseos      57 k
+    node-client-2:  perl-IO                  x86_64  1.38-420.el8                           baseos     141 k
+    node-client-2:  perl-MIME-Base64         x86_64  3.15-396.el8                           baseos      30 k
+    node-client-2:  perl-Net-SSLeay          x86_64  1.88-1.module+el8.4.0+512+d4f0fc54     appstream  378 k
+    node-client-2:  perl-PathTools           x86_64  3.74-1.el8                             baseos      89 k
+    node-client-2:  perl-Pod-Escapes         noarch  1:1.07-395.el8                         baseos      19 k
+    node-client-2:  perl-Pod-Perldoc         noarch  3.28-396.el8                           baseos      85 k
+    node-client-2:  perl-Pod-Simple          noarch  1:3.35-395.el8                         baseos     212 k
+    node-client-2:  perl-Pod-Usage           noarch  4:1.69-395.el8                         baseos      33 k
+    node-client-2:  perl-Scalar-List-Utils   x86_64  3:1.49-2.el8                           baseos      67 k
+    node-client-2:  perl-Socket              x86_64  4:2.027-3.el8                          baseos      58 k
+    node-client-2:  perl-Storable            x86_64  1:3.11-3.el8                           baseos      97 k
+    node-client-2:  perl-Term-ANSIColor      noarch  4.06-396.el8                           baseos      45 k
+    node-client-2:  perl-Term-Cap            noarch  1.17-395.el8                           baseos      22 k
+    node-client-2:  perl-TermReadKey         x86_64  2.37-7.el8                             appstream   39 k
+    node-client-2:  perl-Text-ParseWords     noarch  3.30-395.el8                           baseos      17 k
+    node-client-2:  perl-Text-Tabs+Wrap      noarch  2013.0523-395.el8                      baseos      23 k
+    node-client-2:  perl-Time-Local          noarch  1:1.280-1.el8                          baseos      32 k
+    node-client-2:  perl-URI                 noarch  1.73-3.el8                             appstream  115 k
+    node-client-2:  perl-Unicode-Normalize   x86_64  1.25-396.el8                           baseos      81 k
+    node-client-2:  perl-constant            noarch  1.33-396.el8                           baseos      24 k
+    node-client-2:  perl-interpreter         x86_64  4:5.26.3-420.el8                       baseos     6.3 M
+    node-client-2:  perl-libnet              noarch  3.11-3.el8                             appstream  120 k
+    node-client-2:  perl-libs                x86_64  4:5.26.3-420.el8                       baseos     1.6 M
+    node-client-2:  perl-macros              x86_64  4:5.26.3-420.el8                       baseos      71 k
+    node-client-2:  perl-parent              noarch  1:0.237-1.el8                          baseos      19 k
+    node-client-2:  perl-podlators           noarch  4.11-1.el8                             baseos     117 k
+    node-client-2:  perl-threads             x86_64  1:2.21-2.el8                           baseos      60 k
+    node-client-2:  perl-threads-shared      x86_64  1.58-2.el8                             baseos      47 k
+    node-client-2: Installing weak dependencies:
+    node-client-2:  perl-IO-Socket-IP        noarch  0.39-5.el8                             appstream   46 k
+    node-client-2:  perl-IO-Socket-SSL       noarch  2.066-4.module+el8.4.0+512+d4f0fc54    appstream  297 k
+    node-client-2:  perl-Mozilla-CA          noarch  20160104-7.module+el8.4.0+529+e3b3e624 appstream   14 k
+    node-client-2:
+    node-client-2: Transaction Summary
+    node-client-2: =========================================================================================
+    node-client-2: Install  48 Packages
+    node-client-2:
+    node-client-2: Total download size: 21 M
+    node-client-2: Installed size: 80 M
+    node-client-2: Downloading Packages:
+    node-client-2: (1/48): git-2.27.0-1.el8.x86_64.rpm             488 kB/s | 163 kB     00:00
+    node-client-2: (2/48): perl-Digest-1.17-395.el8.noarch.rpm     1.0 MB/s |  26 kB     00:00
+    node-client-2: (3/48): perl-Digest-MD5-2.55-396.el8.x86_64.rpm 1.3 MB/s |  36 kB     00:00
+    node-client-2: (4/48): perl-Error-0.17025-2.el8.noarch.rpm     1.3 MB/s |  45 kB     00:00
+    node-client-2: (5/48): perl-Git-2.27.0-1.el8.noarch.rpm        1.7 MB/s |  76 kB     00:00
+    node-client-2: (6/48): perl-IO-Socket-IP-0.39-5.el8.noarch.rpm 2.0 MB/s |  46 kB     00:00
+    node-client-2: (7/48): perl-IO-Socket-SSL-2.066-4.module+el8.4 1.7 MB/s | 297 kB     00:00
+    node-client-2: (8/48): perl-Mozilla-CA-20160104-7.module+el8.4 494 kB/s |  14 kB     00:00
+    node-client-2: (9/48): perl-Net-SSLeay-1.88-1.module+el8.4.0+5 2.1 MB/s | 378 kB     00:00
+    node-client-2: (10/48): perl-TermReadKey-2.37-7.el8.x86_64.rpm 1.6 MB/s |  39 kB     00:00
+    node-client-2: (11/48): perl-URI-1.73-3.el8.noarch.rpm         2.0 MB/s | 115 kB     00:00
+    node-client-2: (12/48): perl-libnet-3.11-3.el8.noarch.rpm      1.6 MB/s | 120 kB     00:00
+    node-client-2: (13/48): emacs-filesystem-26.1-7.el8.noarch.rpm 1.4 MB/s |  69 kB     00:00
+    node-client-2: (14/48): perl-Carp-1.42-396.el8.noarch.rpm      1.5 MB/s |  29 kB     00:00
+    node-client-2: (15/48): perl-Data-Dumper-2.167-399.el8.x86_64. 2.6 MB/s |  57 kB     00:00
+    node-client-2: (16/48): git-core-doc-2.27.0-1.el8.noarch.rpm   2.0 MB/s | 2.5 MB     00:01
+    node-client-2: (17/48): perl-Errno-1.28-420.el8.x86_64.rpm     1.6 MB/s |  75 kB     00:00
+    node-client-2: (18/48): perl-Exporter-5.72-396.el8.noarch.rpm  1.0 MB/s |  33 kB     00:00
+    node-client-2: (19/48): perl-File-Path-2.15-2.el8.noarch.rpm   1.4 MB/s |  37 kB     00:00
+    node-client-2: (20/48): perl-File-Temp-0.230.600-1.el8.noarch. 2.1 MB/s |  62 kB     00:00
+    node-client-2: (21/48): perl-Getopt-Long-2.50-4.el8.noarch.rpm 1.6 MB/s |  62 kB     00:00
+    node-client-2: (22/48): perl-HTTP-Tiny-0.074-1.el8.noarch.rpm  2.4 MB/s |  57 kB     00:00
+    node-client-2: (23/48): perl-IO-1.38-420.el8.x86_64.rpm        2.6 MB/s | 141 kB     00:00
+    node-client-2: (24/48): perl-MIME-Base64-3.15-396.el8.x86_64.r 1.1 MB/s |  30 kB     00:00
+    node-client-2: (25/48): perl-PathTools-3.74-1.el8.x86_64.rpm   2.1 MB/s |  89 kB     00:00
+    node-client-2: (26/48): perl-Pod-Escapes-1.07-395.el8.noarch.r 962 kB/s |  19 kB     00:00
+    node-client-2: (27/48): perl-Pod-Perldoc-3.28-396.el8.noarch.r 1.9 MB/s |  85 kB     00:00
+    node-client-2: (28/48): perl-Encode-2.97-3.el8.x86_64.rpm      2.8 MB/s | 1.5 MB     00:00
+    node-client-2: (29/48): perl-Pod-Usage-1.69-395.el8.noarch.rpm 1.2 MB/s |  33 kB     00:00
+    node-client-2: (30/48): perl-Pod-Simple-3.35-395.el8.noarch.rp 3.3 MB/s | 212 kB     00:00
+    node-client-2: (31/48): perl-Scalar-List-Utils-1.49-2.el8.x86_ 2.8 MB/s |  67 kB     00:00
+    node-client-2: (32/48): perl-Socket-2.027-3.el8.x86_64.rpm     2.1 MB/s |  58 kB     00:00
+    node-client-2: (33/48): perl-Term-ANSIColor-4.06-396.el8.noarc 1.6 MB/s |  45 kB     00:00
+    node-client-2: (34/48): perl-Storable-3.11-3.el8.x86_64.rpm    1.7 MB/s |  97 kB     00:00
+    node-client-2: (35/48): perl-Term-Cap-1.17-395.el8.noarch.rpm  1.1 MB/s |  22 kB     00:00
+    node-client-2: (36/48): perl-Text-ParseWords-3.30-395.el8.noar 792 kB/s |  17 kB     00:00
+    node-client-2: (37/48): perl-Text-Tabs+Wrap-2013.0523-395.el8. 1.0 MB/s |  23 kB     00:00
+    node-client-2: (38/48): perl-Time-Local-1.280-1.el8.noarch.rpm 835 kB/s |  32 kB     00:00
+    node-client-2: (39/48): perl-constant-1.33-396.el8.noarch.rpm  1.3 MB/s |  24 kB     00:00
+    node-client-2: (40/48): perl-Unicode-Normalize-1.25-396.el8.x8 1.7 MB/s |  81 kB     00:00
+    node-client-2: (41/48): git-core-2.27.0-1.el8.x86_64.rpm       2.9 MB/s | 5.7 MB     00:01
+    node-client-2: (42/48): perl-macros-5.26.3-420.el8.x86_64.rpm  2.9 MB/s |  71 kB     00:00
+    node-client-2: (43/48): perl-parent-0.237-1.el8.noarch.rpm     724 kB/s |  19 kB     00:00
+    node-client-2: (44/48): perl-podlators-4.11-1.el8.noarch.rpm   2.1 MB/s | 117 kB     00:00
+    node-client-2: (45/48): perl-threads-2.21-2.el8.x86_64.rpm     2.4 MB/s |  60 kB     00:00
+    node-client-2: (46/48): perl-threads-shared-1.58-2.el8.x86_64. 2.3 MB/s |  47 kB     00:00
+    node-client-2: (47/48): perl-libs-5.26.3-420.el8.x86_64.rpm    3.8 MB/s | 1.6 MB     00:00
+    node-client-2: (48/48): perl-interpreter-5.26.3-420.el8.x86_64 4.3 MB/s | 6.3 MB     00:01
+    node-client-2: --------------------------------------------------------------------------------
+    node-client-2: Total                                           5.3 MB/s |  21 MB     00:03
+    node-client-2: Running transaction check
+    node-client-2: Transaction check succeeded.
+    node-client-2: Running transaction test
+    node-client-2: Transaction test succeeded.
+    node-client-2: Running transaction
+    node-client-2:   Preparing        :                                                        1/1
+    node-client-2:   Installing       : git-core-2.27.0-1.el8.x86_64                          1/48
+    node-client-2:   Installing       : git-core-doc-2.27.0-1.el8.noarch                      2/48
+    node-client-2:   Installing       : perl-Digest-1.17-395.el8.noarch                       3/48
+    node-client-2:   Installing       : perl-Digest-MD5-2.55-396.el8.x86_64                   4/48
+    node-client-2:   Installing       : perl-Data-Dumper-2.167-399.el8.x86_64                 5/48
+    node-client-2:   Installing       : perl-libnet-3.11-3.el8.noarch                         6/48
+    node-client-2:   Installing       : perl-Net-SSLeay-1.88-1.module+el8.4.0+512+d4f0fc54    7/48
+    node-client-2:   Installing       : perl-URI-1.73-3.el8.noarch                            8/48
+    node-client-2:   Installing       : perl-Pod-Escapes-1:1.07-395.el8.noarch                9/48
+    node-client-2:   Installing       : perl-Mozilla-CA-20160104-7.module+el8.4.0+529+e3b3   10/48
+    node-client-2:   Installing       : perl-IO-Socket-IP-0.39-5.el8.noarch                  11/48
+    node-client-2:   Installing       : perl-Time-Local-1:1.280-1.el8.noarch                 12/48
+    node-client-2:   Installing       : perl-IO-Socket-SSL-2.066-4.module+el8.4.0+512+d4f0   13/48
+    node-client-2:   Installing       : perl-Term-ANSIColor-4.06-396.el8.noarch              14/48
+    node-client-2:   Installing       : perl-Term-Cap-1.17-395.el8.noarch                    15/48
+    node-client-2:   Installing       : perl-File-Temp-0.230.600-1.el8.noarch                16/48
+    node-client-2:   Installing       : perl-Pod-Simple-1:3.35-395.el8.noarch                17/48
+    node-client-2:   Installing       : perl-HTTP-Tiny-0.074-1.el8.noarch                    18/48
+    node-client-2:   Installing       : perl-podlators-4.11-1.el8.noarch                     19/48
+    node-client-2:   Installing       : perl-Pod-Perldoc-3.28-396.el8.noarch                 20/48
+    node-client-2:   Installing       : perl-Text-ParseWords-3.30-395.el8.noarch             21/48
+    node-client-2:   Installing       : perl-Pod-Usage-4:1.69-395.el8.noarch                 22/48
+    node-client-2:   Installing       : perl-MIME-Base64-3.15-396.el8.x86_64                 23/48
+    node-client-2:   Installing       : perl-Storable-1:3.11-3.el8.x86_64                    24/48
+    node-client-2:   Installing       : perl-Getopt-Long-1:2.50-4.el8.noarch                 25/48
+    node-client-2:   Installing       : perl-Errno-1.28-420.el8.x86_64                       26/48
+    node-client-2:   Installing       : perl-Socket-4:2.027-3.el8.x86_64                     27/48
+    node-client-2:   Installing       : perl-Encode-4:2.97-3.el8.x86_64                      28/48
+    node-client-2:   Installing       : perl-Carp-1.42-396.el8.noarch                        29/48
+    node-client-2:   Installing       : perl-Exporter-5.72-396.el8.noarch                    30/48
+    node-client-2:   Installing       : perl-libs-4:5.26.3-420.el8.x86_64                    31/48
+    node-client-2:   Installing       : perl-Scalar-List-Utils-3:1.49-2.el8.x86_64           32/48
+    node-client-2:   Installing       : perl-parent-1:0.237-1.el8.noarch                     33/48
+    node-client-2:   Installing       : perl-macros-4:5.26.3-420.el8.x86_64                  34/48
+    node-client-2:   Installing       : perl-Text-Tabs+Wrap-2013.0523-395.el8.noarch         35/48
+    node-client-2:   Installing       : perl-Unicode-Normalize-1.25-396.el8.x86_64           36/48
+    node-client-2:   Installing       : perl-File-Path-2.15-2.el8.noarch                     37/48
+    node-client-2:   Installing       : perl-IO-1.38-420.el8.x86_64                          38/48
+    node-client-2:   Installing       : perl-PathTools-3.74-1.el8.x86_64                     39/48
+    node-client-2:   Installing       : perl-constant-1.33-396.el8.noarch                    40/48
+    node-client-2:   Installing       : perl-threads-1:2.21-2.el8.x86_64                     41/48
+    node-client-2:   Installing       : perl-threads-shared-1.58-2.el8.x86_64                42/48
+    node-client-2:   Installing       : perl-interpreter-4:5.26.3-420.el8.x86_64             43/48
+    node-client-2:   Installing       : perl-Error-1:0.17025-2.el8.noarch                    44/48
+    node-client-2:   Installing       : perl-TermReadKey-2.37-7.el8.x86_64                   45/48
+    node-client-2:   Installing       : emacs-filesystem-1:26.1-7.el8.noarch                 46/48
+    node-client-2:   Installing       : perl-Git-2.27.0-1.el8.noarch                         47/48
+    node-client-2:   Installing       : git-2.27.0-1.el8.x86_64                              48/48
+    node-client-2:   Running scriptlet: git-2.27.0-1.el8.x86_64                              48/48
+    node-client-2:   Verifying        : git-2.27.0-1.el8.x86_64                               1/48
+    node-client-2:   Verifying        : git-core-2.27.0-1.el8.x86_64                          2/48
+    node-client-2:   Verifying        : git-core-doc-2.27.0-1.el8.noarch                      3/48
+    node-client-2:   Verifying        : perl-Digest-1.17-395.el8.noarch                       4/48
+    node-client-2:   Verifying        : perl-Digest-MD5-2.55-396.el8.x86_64                   5/48
+    node-client-2:   Verifying        : perl-Error-1:0.17025-2.el8.noarch                     6/48
+    node-client-2:   Verifying        : perl-Git-2.27.0-1.el8.noarch                          7/48
+    node-client-2:   Verifying        : perl-IO-Socket-IP-0.39-5.el8.noarch                   8/48
+    node-client-2:   Verifying        : perl-IO-Socket-SSL-2.066-4.module+el8.4.0+512+d4f0    9/48
+    node-client-2:   Verifying        : perl-Mozilla-CA-20160104-7.module+el8.4.0+529+e3b3   10/48
+    node-client-2:   Verifying        : perl-Net-SSLeay-1.88-1.module+el8.4.0+512+d4f0fc54   11/48
+    node-client-2:   Verifying        : perl-TermReadKey-2.37-7.el8.x86_64                   12/48
+    node-client-2:   Verifying        : perl-URI-1.73-3.el8.noarch                           13/48
+    node-client-2:   Verifying        : perl-libnet-3.11-3.el8.noarch                        14/48
+    node-client-2:   Verifying        : emacs-filesystem-1:26.1-7.el8.noarch                 15/48
+    node-client-2:   Verifying        : perl-Carp-1.42-396.el8.noarch                        16/48
+    node-client-2:   Verifying        : perl-Data-Dumper-2.167-399.el8.x86_64                17/48
+    node-client-2:   Verifying        : perl-Encode-4:2.97-3.el8.x86_64                      18/48
+    node-client-2:   Verifying        : perl-Errno-1.28-420.el8.x86_64                       19/48
+    node-client-2:   Verifying        : perl-Exporter-5.72-396.el8.noarch                    20/48
+    node-client-2:   Verifying        : perl-File-Path-2.15-2.el8.noarch                     21/48
+    node-client-2:   Verifying        : perl-File-Temp-0.230.600-1.el8.noarch                22/48
+    node-client-2:   Verifying        : perl-Getopt-Long-1:2.50-4.el8.noarch                 23/48
+    node-client-2:   Verifying        : perl-HTTP-Tiny-0.074-1.el8.noarch                    24/48
+    node-client-2:   Verifying        : perl-IO-1.38-420.el8.x86_64                          25/48
+    node-client-2:   Verifying        : perl-MIME-Base64-3.15-396.el8.x86_64                 26/48
+    node-client-2:   Verifying        : perl-PathTools-3.74-1.el8.x86_64                     27/48
+    node-client-2:   Verifying        : perl-Pod-Escapes-1:1.07-395.el8.noarch               28/48
+    node-client-2:   Verifying        : perl-Pod-Perldoc-3.28-396.el8.noarch                 29/48
+    node-client-2:   Verifying        : perl-Pod-Simple-1:3.35-395.el8.noarch                30/48
+    node-client-2:   Verifying        : perl-Pod-Usage-4:1.69-395.el8.noarch                 31/48
+    node-client-2:   Verifying        : perl-Scalar-List-Utils-3:1.49-2.el8.x86_64           32/48
+    node-client-2:   Verifying        : perl-Socket-4:2.027-3.el8.x86_64                     33/48
+    node-client-2:   Verifying        : perl-Storable-1:3.11-3.el8.x86_64                    34/48
+    node-client-2:   Verifying        : perl-Term-ANSIColor-4.06-396.el8.noarch              35/48
+    node-client-2:   Verifying        : perl-Term-Cap-1.17-395.el8.noarch                    36/48
+    node-client-2:   Verifying        : perl-Text-ParseWords-3.30-395.el8.noarch             37/48
+    node-client-2:   Verifying        : perl-Text-Tabs+Wrap-2013.0523-395.el8.noarch         38/48
+    node-client-2:   Verifying        : perl-Time-Local-1:1.280-1.el8.noarch                 39/48
+    node-client-2:   Verifying        : perl-Unicode-Normalize-1.25-396.el8.x86_64           40/48
+    node-client-2:   Verifying        : perl-constant-1.33-396.el8.noarch                    41/48
+    node-client-2:   Verifying        : perl-interpreter-4:5.26.3-420.el8.x86_64             42/48
+    node-client-2:   Verifying        : perl-libs-4:5.26.3-420.el8.x86_64                    43/48
+    node-client-2:   Verifying        : perl-macros-4:5.26.3-420.el8.x86_64                  44/48
+    node-client-2:   Verifying        : perl-parent-1:0.237-1.el8.noarch                     45/48
+    node-client-2:   Verifying        : perl-podlators-4.11-1.el8.noarch                     46/48
+    node-client-2:   Verifying        : perl-threads-1:2.21-2.el8.x86_64                     47/48
+    node-client-2:   Verifying        : perl-threads-shared-1.58-2.el8.x86_64                48/48
+    node-client-2:
+    node-client-2: Installed:
+    node-client-2:   emacs-filesystem-1:26.1-7.el8.noarch
+    node-client-2:   git-2.27.0-1.el8.x86_64
+    node-client-2:   git-core-2.27.0-1.el8.x86_64
+    node-client-2:   git-core-doc-2.27.0-1.el8.noarch
+    node-client-2:   perl-Carp-1.42-396.el8.noarch
+    node-client-2:   perl-Data-Dumper-2.167-399.el8.x86_64
+    node-client-2:   perl-Digest-1.17-395.el8.noarch
+    node-client-2:   perl-Digest-MD5-2.55-396.el8.x86_64
+    node-client-2:   perl-Encode-4:2.97-3.el8.x86_64
+    node-client-2:   perl-Errno-1.28-420.el8.x86_64
+    node-client-2:   perl-Error-1:0.17025-2.el8.noarch
+    node-client-2:   perl-Exporter-5.72-396.el8.noarch
+    node-client-2:   perl-File-Path-2.15-2.el8.noarch
+    node-client-2:   perl-File-Temp-0.230.600-1.el8.noarch
+    node-client-2:   perl-Getopt-Long-1:2.50-4.el8.noarch
+    node-client-2:   perl-Git-2.27.0-1.el8.noarch
+    node-client-2:   perl-HTTP-Tiny-0.074-1.el8.noarch
+    node-client-2:   perl-IO-1.38-420.el8.x86_64
+    node-client-2:   perl-IO-Socket-IP-0.39-5.el8.noarch
+    node-client-2:   perl-IO-Socket-SSL-2.066-4.module+el8.4.0+512+d4f0fc54.noarch
+    node-client-2:   perl-MIME-Base64-3.15-396.el8.x86_64
+    node-client-2:   perl-Mozilla-CA-20160104-7.module+el8.4.0+529+e3b3e624.noarch
+    node-client-2:   perl-Net-SSLeay-1.88-1.module+el8.4.0+512+d4f0fc54.x86_64
+    node-client-2:   perl-PathTools-3.74-1.el8.x86_64
+    node-client-2:   perl-Pod-Escapes-1:1.07-395.el8.noarch
+    node-client-2:   perl-Pod-Perldoc-3.28-396.el8.noarch
+    node-client-2:   perl-Pod-Simple-1:3.35-395.el8.noarch
+    node-client-2:   perl-Pod-Usage-4:1.69-395.el8.noarch
+    node-client-2:   perl-Scalar-List-Utils-3:1.49-2.el8.x86_64
+    node-client-2:   perl-Socket-4:2.027-3.el8.x86_64
+    node-client-2:   perl-Storable-1:3.11-3.el8.x86_64
+    node-client-2:   perl-Term-ANSIColor-4.06-396.el8.noarch
+    node-client-2:   perl-Term-Cap-1.17-395.el8.noarch
+    node-client-2:   perl-TermReadKey-2.37-7.el8.x86_64
+    node-client-2:   perl-Text-ParseWords-3.30-395.el8.noarch
+    node-client-2:   perl-Text-Tabs+Wrap-2013.0523-395.el8.noarch
+    node-client-2:   perl-Time-Local-1:1.280-1.el8.noarch
+    node-client-2:   perl-URI-1.73-3.el8.noarch
+    node-client-2:   perl-Unicode-Normalize-1.25-396.el8.x86_64
+    node-client-2:   perl-constant-1.33-396.el8.noarch
+    node-client-2:   perl-interpreter-4:5.26.3-420.el8.x86_64
+    node-client-2:   perl-libnet-3.11-3.el8.noarch
+    node-client-2:   perl-libs-4:5.26.3-420.el8.x86_64
+    node-client-2:   perl-macros-4:5.26.3-420.el8.x86_64
+    node-client-2:   perl-parent-1:0.237-1.el8.noarch
+    node-client-2:   perl-podlators-4.11-1.el8.noarch
+    node-client-2:   perl-threads-1:2.21-2.el8.x86_64
+    node-client-2:   perl-threads-shared-1.58-2.el8.x86_64
+    node-client-2:
+    node-client-2: Complete!
+    node-client-2: Last metadata expiration check: 0:00:17 ago on Mon 09 May 2022 10:44:26 PM UTC.
+    node-client-2: Dependencies resolved.
+    node-client-2: ================================================================================
+    node-client-2:  Package           Architecture   Version               Repository         Size
+    node-client-2: ================================================================================
+    node-client-2: Installing:
+    node-client-2:  nmap              x86_64         2:7.70-6.el8          appstream         5.8 M
+    node-client-2: Installing dependencies:
+    node-client-2:  nmap-ncat         x86_64         2:7.70-6.el8          appstream         236 k
+    node-client-2:
+    node-client-2: Transaction Summary
+    node-client-2: ================================================================================
+    node-client-2: Install  2 Packages
+    node-client-2:
+    node-client-2: Total download size: 6.0 M
+    node-client-2: Installed size: 24 M
+    node-client-2: Downloading Packages:
+    node-client-2: (1/2): nmap-ncat-7.70-6.el8.x86_64.rpm          986 kB/s | 236 kB     00:00
+    node-client-2: (2/2): nmap-7.70-6.el8.x86_64.rpm               4.7 MB/s | 5.8 MB     00:01
+    node-client-2: --------------------------------------------------------------------------------
+    node-client-2: Total                                           3.8 MB/s | 6.0 MB     00:01
+    node-client-2: Running transaction check
+    node-client-2: Transaction check succeeded.
+    node-client-2: Running transaction test
+    node-client-2: Transaction test succeeded.
+    node-client-2: Running transaction
+    node-client-2:   Preparing        :                                                        1/1
+    node-client-2:   Installing       : nmap-ncat-2:7.70-6.el8.x86_64                          1/2
+    node-client-2:   Running scriptlet: nmap-ncat-2:7.70-6.el8.x86_64                          1/2
+    node-client-2:   Installing       : nmap-2:7.70-6.el8.x86_64                               2/2
+    node-client-2:   Running scriptlet: nmap-2:7.70-6.el8.x86_64                               2/2
+    node-client-2:   Verifying        : nmap-2:7.70-6.el8.x86_64                               1/2
+    node-client-2:   Verifying        : nmap-ncat-2:7.70-6.el8.x86_64                          2/2
+    node-client-2:
+    node-client-2: Installed:
+    node-client-2:   nmap-2:7.70-6.el8.x86_64             nmap-ncat-2:7.70-6.el8.x86_64
+    node-client-2:
+    node-client-2: Complete!
+    node-client-2: Adding repo from: https://download.docker.com/linux/centos/docker-ce.repo
+    node-client-2: Docker CE Stable - x86_64                        95 kB/s |  24 kB     00:00
+    node-client-2: Dependencies resolved.
+    node-client-2: =======================================================================================================
+    node-client-2:  Package                        Arch    Version                                 Repository         Size
+    node-client-2: =======================================================================================================
+    node-client-2: Installing:
+    node-client-2:  docker-ce                      x86_64  3:20.10.12-3.el8                        docker-ce-stable   22 M
+    node-client-2: Upgrading:
+    node-client-2:  policycoreutils                x86_64  2.9-16.el8                              baseos            372 k
+    node-client-2: Installing dependencies:
+    node-client-2:  checkpolicy                    x86_64  2.9-1.el8                               baseos            345 k
+    node-client-2:  container-selinux              noarch  2:2.173.0-1.module+el8.5.0+735+2f243138 appstream          56 k
+    node-client-2:  containerd.io                  x86_64  1.6.4-3.1.el8                           docker-ce-stable   33 M
+    node-client-2:  docker-ce-cli                  x86_64  1:20.10.15-3.el8                        docker-ce-stable   29 M
+    node-client-2:  docker-ce-rootless-extras      x86_64  20.10.15-3.el8                          docker-ce-stable  4.7 M
+    node-client-2:  docker-scan-plugin             x86_64  0.17.0-3.el8                            docker-ce-stable  3.8 M
+    node-client-2:  fuse-overlayfs                 x86_64  1.8-1.module+el8.5.0+735+2f243138       appstream          72 k
+    node-client-2:  fuse3                          x86_64  3.2.1-12.el8                            baseos             49 k
+    node-client-2:  fuse3-libs                     x86_64  3.2.1-12.el8                            baseos             93 k
+    node-client-2:  libcgroup                      x86_64  0.41-19.el8                             baseos             69 k
+    node-client-2:  libslirp                       x86_64  4.4.0-1.module+el8.5.0+710+4c471e88     appstream          69 k
+    node-client-2:  policycoreutils-python-utils   noarch  2.9-16.el8                              baseos            251 k
+    node-client-2:  python3-audit                  x86_64  3.0-0.17.20191104git1c2f876.el8.1       baseos             85 k
+    node-client-2:  python3-libsemanage            x86_64  2.9-6.el8                               baseos            126 k
+    node-client-2:  python3-policycoreutils        noarch  2.9-16.el8                              baseos            2.2 M
+    node-client-2:  python3-setools                x86_64  4.3.0-2.el8                             baseos            625 k
+    node-client-2:  slirp4netns                    x86_64  1.1.8-1.module+el8.5.0+710+4c471e88     appstream          50 k
+    node-client-2: Enabling module streams:
+    node-client-2:  container-tools                        rhel8
+    node-client-2:
+    node-client-2: Transaction Summary
+    node-client-2: =======================================================================================================
+    node-client-2: Install  18 Packages
+    node-client-2: Upgrade   1 Package
+    node-client-2:
+    node-client-2: Total download size: 97 M
+    node-client-2: Downloading Packages:
+    node-client-2: (1/19): container-selinux-2.173.0-1.module+el8. 307 kB/s |  56 kB     00:00
+    node-client-2: (2/19): fuse-overlayfs-1.8-1.module+el8.5.0+735 393 kB/s |  72 kB     00:00
+    node-client-2: (3/19): libslirp-4.4.0-1.module+el8.5.0+710+4c4 352 kB/s |  69 kB     00:00
+    node-client-2: (4/19): slirp4netns-1.1.8-1.module+el8.5.0+710+ 1.7 MB/s |  50 kB     00:00
+    node-client-2: (5/19): fuse3-3.2.1-12.el8.x86_64.rpm           1.7 MB/s |  49 kB     00:00
+    node-client-2: (6/19): libcgroup-0.41-19.el8.x86_64.rpm        2.5 MB/s |  69 kB     00:00
+    node-client-2: (7/19): fuse3-libs-3.2.1-12.el8.x86_64.rpm      1.8 MB/s |  93 kB     00:00
+    node-client-2: (8/19): checkpolicy-2.9-1.el8.x86_64.rpm        3.2 MB/s | 345 kB     00:00
+    node-client-2: (9/19): python3-audit-3.0-0.17.20191104git1c2f8 2.0 MB/s |  85 kB     00:00
+    node-client-2: (10/19): policycoreutils-python-utils-2.9-16.el 2.9 MB/s | 251 kB     00:00
+    node-client-2: (11/19): python3-libsemanage-2.9-6.el8.x86_64.r 2.4 MB/s | 126 kB     00:00
+    node-client-2: (12/19): python3-setools-4.3.0-2.el8.x86_64.rpm 3.6 MB/s | 625 kB     00:00
+    node-client-2: (13/19): python3-policycoreutils-2.9-16.el8.noa 2.8 MB/s | 2.2 MB     00:00
+    node-client-2: (14/19): containerd.io-1.6.4-3.1.el8.x86_64.rpm  21 MB/s |  33 MB     00:01
+    node-client-2: (15/19): docker-ce-rootless-extras-20.10.15-3.e  22 MB/s | 4.7 MB     00:00
+    node-client-2: (16/19): docker-scan-plugin-0.17.0-3.el8.x86_64  20 MB/s | 3.8 MB     00:00
+    node-client-2: (17/19): policycoreutils-2.9-16.el8.x86_64.rpm  2.1 MB/s | 372 kB     00:00
+    node-client-2: (18/19): docker-ce-cli-20.10.15-3.el8.x86_64.rp  11 MB/s |  29 MB     00:02
+    node-client-2: (19/19): docker-ce-20.10.12-3.el8.x86_64.rpm    6.3 MB/s |  22 MB     00:03
+    node-client-2: --------------------------------------------------------------------------------
+    node-client-2: Total                                            21 MB/s |  97 MB     00:04
+    node-client-2: warning: /var/cache/dnf/docker-ce-stable-fa9dc42ab4cec2f4/packages/containerd.io-1.6.4-3.1.el8.x86_64.rpm: Header V4 RSA/SHA512 Signature, key ID 621e9f35: NOKEY
+    node-client-2: Docker CE Stable - x86_64                        13 kB/s | 1.6 kB     00:00
+    node-client-2: Importing GPG key 0x621E9F35:
+    node-client-2:  Userid     : "Docker Release (CE rpm) <docker@docker.com>"
+    node-client-2:  Fingerprint: 060A 61C5 1B55 8A7F 742B 77AA C52F EB6B 621E 9F35
+    node-client-2:  From       : https://download.docker.com/linux/centos/gpg
+    node-client-2: Key imported successfully
+    node-client-2: Running transaction check
+    node-client-2: Transaction check succeeded.
+    node-client-2: Running transaction test
+    node-client-2: Transaction test succeeded.
+    node-client-2: Running transaction
+    node-client-2:   Preparing        :                                                        1/1
+    node-client-2:   Running scriptlet: docker-scan-plugin-0.17.0-3.el8.x86_64                 1/1
+    node-client-2:   Installing       : docker-scan-plugin-0.17.0-3.el8.x86_64                1/20
+    node-client-2:   Running scriptlet: docker-scan-plugin-0.17.0-3.el8.x86_64                1/20
+    node-client-2:   Installing       : docker-ce-cli-1:20.10.15-3.el8.x86_64                 2/20
+    node-client-2:   Running scriptlet: docker-ce-cli-1:20.10.15-3.el8.x86_64                 2/20
+    node-client-2:   Upgrading        : policycoreutils-2.9-16.el8.x86_64                     3/20
+    node-client-2:   Running scriptlet: policycoreutils-2.9-16.el8.x86_64                     3/20
+    node-client-2:   Installing       : python3-setools-4.3.0-2.el8.x86_64                    4/20
+    node-client-2:   Installing       : python3-libsemanage-2.9-6.el8.x86_64                  5/20
+    node-client-2:   Installing       : python3-audit-3.0-0.17.20191104git1c2f876.el8.1.x8    6/20
+    node-client-2:   Running scriptlet: libcgroup-0.41-19.el8.x86_64                          7/20
+    node-client-2:   Installing       : libcgroup-0.41-19.el8.x86_64                          7/20
+    node-client-2:   Running scriptlet: libcgroup-0.41-19.el8.x86_64                          7/20
+    node-client-2:   Installing       : fuse3-libs-3.2.1-12.el8.x86_64                        8/20
+    node-client-2:   Running scriptlet: fuse3-libs-3.2.1-12.el8.x86_64                        8/20
+    node-client-2:   Installing       : fuse3-3.2.1-12.el8.x86_64                             9/20
+    node-client-2:   Installing       : fuse-overlayfs-1.8-1.module+el8.5.0+735+2f243138.x   10/20
+    node-client-2:   Running scriptlet: fuse-overlayfs-1.8-1.module+el8.5.0+735+2f243138.x   10/20
+    node-client-2:   Installing       : checkpolicy-2.9-1.el8.x86_64                         11/20
+    node-client-2:   Installing       : python3-policycoreutils-2.9-16.el8.noarch            12/20
+    node-client-2:   Installing       : policycoreutils-python-utils-2.9-16.el8.noarch       13/20
+    node-client-2:   Running scriptlet: container-selinux-2:2.173.0-1.module+el8.5.0+735+2   14/20
+    node-client-2:   Installing       : container-selinux-2:2.173.0-1.module+el8.5.0+735+2   14/20
+    node-client-2:   Running scriptlet: container-selinux-2:2.173.0-1.module+el8.5.0+735+2   14/20
+    node-client-2:   Installing       : containerd.io-1.6.4-3.1.el8.x86_64                   15/20
+    node-client-2:   Running scriptlet: containerd.io-1.6.4-3.1.el8.x86_64                   15/20
+    node-client-2:   Installing       : libslirp-4.4.0-1.module+el8.5.0+710+4c471e88.x86_6   16/20
+    node-client-2:   Installing       : slirp4netns-1.1.8-1.module+el8.5.0+710+4c471e88.x8   17/20
+    node-client-2:   Installing       : docker-ce-rootless-extras-20.10.15-3.el8.x86_64      18/20
+    node-client-2:   Running scriptlet: docker-ce-rootless-extras-20.10.15-3.el8.x86_64      18/20
+    node-client-2:   Installing       : docker-ce-3:20.10.12-3.el8.x86_64                    19/20
+    node-client-2:   Running scriptlet: docker-ce-3:20.10.12-3.el8.x86_64                    19/20
+    node-client-2:   Running scriptlet: policycoreutils-2.9-14.el8.x86_64                    20/20
+    node-client-2:   Cleanup          : policycoreutils-2.9-14.el8.x86_64                    20/20
+    node-client-2:   Running scriptlet: container-selinux-2:2.173.0-1.module+el8.5.0+735+2   20/20
+    node-client-2:   Running scriptlet: policycoreutils-2.9-14.el8.x86_64                    20/20
+    node-client-2:   Verifying        : container-selinux-2:2.173.0-1.module+el8.5.0+735+2    1/20
+    node-client-2:   Verifying        : fuse-overlayfs-1.8-1.module+el8.5.0+735+2f243138.x    2/20
+    node-client-2:   Verifying        : libslirp-4.4.0-1.module+el8.5.0+710+4c471e88.x86_6    3/20
+    node-client-2:   Verifying        : slirp4netns-1.1.8-1.module+el8.5.0+710+4c471e88.x8    4/20
+    node-client-2:   Verifying        : checkpolicy-2.9-1.el8.x86_64                          5/20
+    node-client-2:   Verifying        : fuse3-3.2.1-12.el8.x86_64                             6/20
+    node-client-2:   Verifying        : fuse3-libs-3.2.1-12.el8.x86_64                        7/20
+    node-client-2:   Verifying        : libcgroup-0.41-19.el8.x86_64                          8/20
+    node-client-2:   Verifying        : policycoreutils-python-utils-2.9-16.el8.noarch        9/20
+    node-client-2:   Verifying        : python3-audit-3.0-0.17.20191104git1c2f876.el8.1.x8   10/20
+    node-client-2:   Verifying        : python3-libsemanage-2.9-6.el8.x86_64                 11/20
+    node-client-2:   Verifying        : python3-policycoreutils-2.9-16.el8.noarch            12/20
+    node-client-2:   Verifying        : python3-setools-4.3.0-2.el8.x86_64                   13/20
+    node-client-2:   Verifying        : containerd.io-1.6.4-3.1.el8.x86_64                   14/20
+    node-client-2:   Verifying        : docker-ce-3:20.10.12-3.el8.x86_64                    15/20
+    node-client-2:   Verifying        : docker-ce-cli-1:20.10.15-3.el8.x86_64                16/20
+    node-client-2:   Verifying        : docker-ce-rootless-extras-20.10.15-3.el8.x86_64      17/20
+    node-client-2:   Verifying        : docker-scan-plugin-0.17.0-3.el8.x86_64               18/20
+    node-client-2:   Verifying        : policycoreutils-2.9-16.el8.x86_64                    19/20
+    node-client-2:   Verifying        : policycoreutils-2.9-14.el8.x86_64                    20/20
+    node-client-2:
+    node-client-2: Upgraded:
+    node-client-2:   policycoreutils-2.9-16.el8.x86_64
+    node-client-2: Installed:
+    node-client-2:   checkpolicy-2.9-1.el8.x86_64
+    node-client-2:   container-selinux-2:2.173.0-1.module+el8.5.0+735+2f243138.noarch
+    node-client-2:   containerd.io-1.6.4-3.1.el8.x86_64
+    node-client-2:   docker-ce-3:20.10.12-3.el8.x86_64
+    node-client-2:   docker-ce-cli-1:20.10.15-3.el8.x86_64
+    node-client-2:   docker-ce-rootless-extras-20.10.15-3.el8.x86_64
+    node-client-2:   docker-scan-plugin-0.17.0-3.el8.x86_64
+    node-client-2:   fuse-overlayfs-1.8-1.module+el8.5.0+735+2f243138.x86_64
+    node-client-2:   fuse3-3.2.1-12.el8.x86_64
+    node-client-2:   fuse3-libs-3.2.1-12.el8.x86_64
+    node-client-2:   libcgroup-0.41-19.el8.x86_64
+    node-client-2:   libslirp-4.4.0-1.module+el8.5.0+710+4c471e88.x86_64
+    node-client-2:   policycoreutils-python-utils-2.9-16.el8.noarch
+    node-client-2:   python3-audit-3.0-0.17.20191104git1c2f876.el8.1.x86_64
+    node-client-2:   python3-libsemanage-2.9-6.el8.x86_64
+    node-client-2:   python3-policycoreutils-2.9-16.el8.noarch
+    node-client-2:   python3-setools-4.3.0-2.el8.x86_64
+    node-client-2:   slirp4netns-1.1.8-1.module+el8.5.0+710+4c471e88.x86_64
+    node-client-2:
+    node-client-2: Complete!
+    node-client-2: Created symlink /etc/systemd/system/multi-user.target.wants/docker.service → /usr/lib/systemd/system/docker.service.
+    node-client-2: Last metadata expiration check: 0:01:33 ago on Mon 09 May 2022 10:44:49 PM UTC.
+    node-client-2: Package yum-utils-4.0.18-4.el8.noarch is already installed.
+    node-client-2: Dependencies resolved.
+    node-client-2: ================================================================================
+    node-client-2:  Package                      Arch       Version               Repository  Size
+    node-client-2: ================================================================================
+    node-client-2: Upgrading:
+    node-client-2:  dnf-plugins-core             noarch     4.0.21-4.el8_5        baseos      69 k
+    node-client-2:  python3-dnf-plugins-core     noarch     4.0.21-4.el8_5        baseos     233 k
+    node-client-2:  yum-utils                    noarch     4.0.21-4.el8_5        baseos      71 k
+    node-client-2:
+    node-client-2: Transaction Summary
+    node-client-2: ================================================================================
+    node-client-2: Upgrade  3 Packages
+    node-client-2:
+    node-client-2: Total download size: 374 k
+    node-client-2: Downloading Packages:
+    node-client-2: (1/3): dnf-plugins-core-4.0.21-4.el8_5.noarch.r 113 kB/s |  69 kB     00:00
+    node-client-2: (2/3): yum-utils-4.0.21-4.el8_5.noarch.rpm      117 kB/s |  71 kB     00:00
+    node-client-2: (3/3): python3-dnf-plugins-core-4.0.21-4.el8_5. 375 kB/s | 233 kB     00:00
+    node-client-2: --------------------------------------------------------------------------------
+    node-client-2: Total                                           349 kB/s | 374 kB     00:01
+    node-client-2: Running transaction check
+    node-client-2: Transaction check succeeded.
+    node-client-2: Running transaction test
+    node-client-2: Transaction test succeeded.
+    node-client-2: Running transaction
+    node-client-2:   Preparing        :                                                        1/1
+    node-client-2:   Upgrading        : python3-dnf-plugins-core-4.0.21-4.el8_5.noarch         1/6
+    node-client-2:   Upgrading        : dnf-plugins-core-4.0.21-4.el8_5.noarch                 2/6
+    node-client-2:   Upgrading        : yum-utils-4.0.21-4.el8_5.noarch                        3/6
+    node-client-2:   Cleanup          : yum-utils-4.0.18-4.el8.noarch                          4/6
+    node-client-2:   Cleanup          : dnf-plugins-core-4.0.18-4.el8.noarch                   5/6
+    node-client-2:   Cleanup          : python3-dnf-plugins-core-4.0.18-4.el8.noarch           6/6
+    node-client-2:   Running scriptlet: python3-dnf-plugins-core-4.0.18-4.el8.noarch           6/6
+    node-client-2:   Verifying        : dnf-plugins-core-4.0.21-4.el8_5.noarch                 1/6
+    node-client-2:   Verifying        : dnf-plugins-core-4.0.18-4.el8.noarch                   2/6
+    node-client-2:   Verifying        : python3-dnf-plugins-core-4.0.21-4.el8_5.noarch         3/6
+    node-client-2:   Verifying        : python3-dnf-plugins-core-4.0.18-4.el8.noarch           4/6
+    node-client-2:   Verifying        : yum-utils-4.0.21-4.el8_5.noarch                        5/6
+    node-client-2:   Verifying        : yum-utils-4.0.18-4.el8.noarch                          6/6
+    node-client-2:
+    node-client-2: Upgraded:
+    node-client-2:   dnf-plugins-core-4.0.21-4.el8_5.noarch
+    node-client-2:   python3-dnf-plugins-core-4.0.21-4.el8_5.noarch
+    node-client-2:   yum-utils-4.0.21-4.el8_5.noarch
+    node-client-2:
+    node-client-2: Complete!
+    node-client-2: Adding repo from: https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo
+    node-client-2: Hashicorp Stable - x86_64                       552 kB/s | 696 kB     00:01
+    node-client-2: Last metadata expiration check: 0:00:01 ago on Mon 09 May 2022 10:46:26 PM UTC.
+    node-client-2: Dependencies resolved.
+    node-client-2: ================================================================================
+    node-client-2:  Package         Architecture     Version             Repository           Size
+    node-client-2: ================================================================================
+    node-client-2: Installing:
+    node-client-2:  nomad           x86_64           1.2.6-1             hashicorp            27 M
+    node-client-2:
+    node-client-2: Transaction Summary
+    node-client-2: ================================================================================
+    node-client-2: Install  1 Package
+    node-client-2:
+    node-client-2: Total download size: 27 M
+    node-client-2: Installed size: 84 M
+    node-client-2: Downloading Packages:
+    node-client-2: nomad-1.2.6-1.x86_64.rpm                         22 MB/s |  27 MB     00:01
+    node-client-2: --------------------------------------------------------------------------------
+    node-client-2: Total                                            22 MB/s |  27 MB     00:01
+    node-client-2: warning: /var/cache/dnf/hashicorp-164999f2fbadbd87/packages/nomad-1.2.6-1.x86_64.rpm: Header V4 RSA/SHA512 Signature, key ID a3219f7b: NOKEY
+    node-client-2: Hashicorp Stable - x86_64                        26 kB/s | 3.1 kB     00:00
+    node-client-2: Importing GPG key 0xA3219F7B:
+    node-client-2:  Userid     : "HashiCorp Security (HashiCorp Package Signing) <security+packaging@hashicorp.com>"
+    node-client-2:  Fingerprint: E8A0 32E0 94D8 EB4E A189 D270 DA41 8C88 A321 9F7B
+    node-client-2:  From       : https://rpm.releases.hashicorp.com/gpg
+    node-client-2: Key imported successfully
+    node-client-2: Running transaction check
+    node-client-2: Transaction check succeeded.
+    node-client-2: Running transaction test
+    node-client-2: Transaction test succeeded.
+    node-client-2: Running transaction
+    node-client-2:   Preparing        :                                                        1/1
+    node-client-2:   Running scriptlet: nomad-1.2.6-1.x86_64                                   1/1
+    node-client-2:   Installing       : nomad-1.2.6-1.x86_64                                   1/1
+    node-client-2:   Running scriptlet: nomad-1.2.6-1.x86_64                                   1/1
+    node-client-2:   Verifying        : nomad-1.2.6-1.x86_64                                   1/1
+    node-client-2:
+    node-client-2: Installed:
+    node-client-2:   nomad-1.2.6-1.x86_64
+    node-client-2:
+    node-client-2: Complete!
+    node-client-2: Last metadata expiration check: 0:00:08 ago on Mon 09 May 2022 10:46:26 PM UTC.
+    node-client-2: Dependencies resolved.
+    node-client-2: ================================================================================
+    node-client-2:  Package           Architecture    Version                Repository       Size
+    node-client-2: ================================================================================
+    node-client-2: Installing:
+    node-client-2:  dos2unix          x86_64          7.4.0-3.el8            baseos          240 k
+    node-client-2:
+    node-client-2: Transaction Summary
+    node-client-2: ================================================================================
+    node-client-2: Install  1 Package
+    node-client-2:
+    node-client-2: Total download size: 240 k
+    node-client-2: Installed size: 663 k
+    node-client-2: Downloading Packages:
+    node-client-2: dos2unix-7.4.0-3.el8.x86_64.rpm                 1.1 MB/s | 240 kB     00:00
+    node-client-2: --------------------------------------------------------------------------------
+    node-client-2: Total                                           449 kB/s | 240 kB     00:00
+    node-client-2: Running transaction check
+    node-client-2: Transaction check succeeded.
+    node-client-2: Running transaction test
+    node-client-2: Transaction test succeeded.
+    node-client-2: Running transaction
+    node-client-2:   Preparing        :                                                        1/1
+    node-client-2:   Installing       : dos2unix-7.4.0-3.el8.x86_64                            1/1
+    node-client-2:   Running scriptlet: dos2unix-7.4.0-3.el8.x86_64                            1/1
+    node-client-2:   Verifying        : dos2unix-7.4.0-3.el8.x86_64                            1/1
+    node-client-2:
+    node-client-2: Installed:
+    node-client-2:   dos2unix-7.4.0-3.el8.x86_64
+    node-client-2:
+    node-client-2: Complete!
+    node-client-2: Sending build context to Docker daemon  9.216kB
+    node-client-2: Step 1/6 : FROM python:3.10.1-slim-bullseye
+    node-client-2: 3.10.1-slim-bullseye: Pulling from library/python
+    node-client-2: a2abf6c4d29d: Pulling fs layer
+    node-client-2: 27003db43ed4: Pulling fs layer
+    node-client-2: 58c2647bdcdf: Pulling fs layer
+    node-client-2: 1809d7e69691: Pulling fs layer
+    node-client-2: 0daa42a9c7ff: Pulling fs layer
+    node-client-2: 0daa42a9c7ff: Waiting
+    node-client-2: 1809d7e69691: Waiting
+    node-client-2: 27003db43ed4: Verifying Checksum
+    node-client-2: 27003db43ed4: Download complete
+    node-client-2: 58c2647bdcdf: Verifying Checksum
+    node-client-2: 58c2647bdcdf: Download complete
+    node-client-2: 1809d7e69691: Verifying Checksum
+    node-client-2: 1809d7e69691: Download complete
+    node-client-2: a2abf6c4d29d: Verifying Checksum
+    node-client-2: a2abf6c4d29d: Download complete
+    node-client-2: 0daa42a9c7ff: Verifying Checksum
+    node-client-2: 0daa42a9c7ff: Download complete
+    node-client-2: a2abf6c4d29d: Pull complete
+    node-client-2: 27003db43ed4: Pull complete
+    node-client-2: 58c2647bdcdf: Pull complete
+    node-client-2: 1809d7e69691: Pull complete
+    node-client-2: 0daa42a9c7ff: Pull complete
+    node-client-2: Digest: sha256:dd3016f846b8f88d8f6c28b43f1da899f07259121aff403091e6f89a703c3d36
+    node-client-2: Status: Downloaded newer image for python:3.10.1-slim-bullseye
+    node-client-2:  ---> 58d8fd9767c5
+    node-client-2: Step 2/6 : WORKDIR /app
+    node-client-2:  ---> Running in 19b12b356b30
+    node-client-2: Removing intermediate container 19b12b356b30
+    node-client-2:  ---> 03c8044015e4
+    node-client-2: Step 3/6 : RUN pip3 install Flask
+    node-client-2:  ---> Running in 86fb12db5ab0
+    node-client-2: Collecting Flask
+    node-client-2:   Downloading Flask-2.1.2-py3-none-any.whl (95 kB)
+    node-client-2: Collecting itsdangerous>=2.0
+    node-client-2:   Downloading itsdangerous-2.1.2-py3-none-any.whl (15 kB)
+    node-client-2: Collecting click>=8.0
+    node-client-2:   Downloading click-8.1.3-py3-none-any.whl (96 kB)
+    node-client-2: Collecting Werkzeug>=2.0
+    node-client-2:   Downloading Werkzeug-2.1.2-py3-none-any.whl (224 kB)
+    node-client-2: Collecting Jinja2>=3.0
+    node-client-2:   Downloading Jinja2-3.1.2-py3-none-any.whl (133 kB)
+    node-client-2: Collecting MarkupSafe>=2.0
+    node-client-2:   Downloading MarkupSafe-2.1.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (25 kB)
+    node-client-2: Installing collected packages: MarkupSafe, Werkzeug, Jinja2, itsdangerous, click, Flask
+    node-client-2: Successfully installed Flask-2.1.2 Jinja2-3.1.2 MarkupSafe-2.1.1 Werkzeug-2.1.2 click-8.1.3 itsdangerous-2.1.2
+    node-client-2: WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+    node-client-2: WARNING: You are using pip version 21.2.4; however, version 22.0.4 is available.
+    node-client-2: You should consider upgrading via the '/usr/local/bin/python -m pip install --upgrade pip' command.
+    node-client-2: Removing intermediate container 86fb12db5ab0
+    node-client-2:  ---> 383d5a00ebf3
+    node-client-2: Step 4/6 : RUN pip3 install requests
+    node-client-2:  ---> Running in 637f14642c3e
+    node-client-2: Collecting requests
+    node-client-2:   Downloading requests-2.27.1-py2.py3-none-any.whl (63 kB)
+    node-client-2: Collecting idna<4,>=2.5
+    node-client-2:   Downloading idna-3.3-py3-none-any.whl (61 kB)
+    node-client-2: Collecting urllib3<1.27,>=1.21.1
+    node-client-2:   Downloading urllib3-1.26.9-py2.py3-none-any.whl (138 kB)
+    node-client-2: Collecting certifi>=2017.4.17
+    node-client-2:   Downloading certifi-2021.10.8-py2.py3-none-any.whl (149 kB)
+    node-client-2: Collecting charset-normalizer~=2.0.0
+    node-client-2:   Downloading charset_normalizer-2.0.12-py3-none-any.whl (39 kB)
+    node-client-2: Installing collected packages: urllib3, idna, charset-normalizer, certifi, requests
+    node-client-2: Successfully installed certifi-2021.10.8 charset-normalizer-2.0.12 idna-3.3 requests-2.27.1 urllib3-1.26.9
+    node-client-2: WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+    node-client-2: WARNING: You are using pip version 21.2.4; however, version 22.0.4 is available.
+    node-client-2: You should consider upgrading via the '/usr/local/bin/python -m pip install --upgrade pip' command.
+    node-client-2: Removing intermediate container 637f14642c3e
+    node-client-2:  ---> 18672b372ffd
+    node-client-2: Step 5/6 : COPY app.py app.py
+    node-client-2:  ---> 7603f6d504e0
+    node-client-2: Step 6/6 : CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0"]
+    node-client-2:  ---> Running in a867fcd7559c
+    node-client-2: Removing intermediate container a867fcd7559c
+    node-client-2:  ---> 59f2f651b2b0
+    node-client-2: Successfully built 59f2f651b2b0
+    node-client-2: Successfully tagged flask-app:latest

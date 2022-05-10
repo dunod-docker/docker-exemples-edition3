@@ -1,0 +1,25 @@
+[vagrant@localhost compose]$ ./run.sh
+Sending build context to Docker daemon  1.903kB
+Step 1/4 : FROM mariadb:10.1
+ ---> 895244a22f37
+Step 2/4 : COPY wait-for-it.sh /wait-for-it.sh
+ ---> Using cache
+ ---> 8998f24723dd
+Step 3/4 : RUN chmod u+x wait-for-it.sh
+ ---> Using cache
+ ---> 34415bddbc5e
+Step 4/4 : COPY schema.sql /schema.sql
+ ---> 03a6c446f640
+Successfully built 03a6c446f640
+Successfully tagged compose_initdb:latest
+
+Use 'docker scan' to run Snyk tests against images to find vulnerabilities and learn how to fix                                                                                                                                                                                 them
+[+] Running 7/7
+ ⠿ Network compose_appex-network        Created                                           0.1s
+ ⠿ Volume "compose_appex-upload-files"  Created                                           0.0s
+ ⠿ Volume "compose_appex-db-volume"     Created                                           0.0s
+ ⠿ Container appex-db                   Started                                           0.5s
+ ⠿ Container compose-initdb-1           Started                                           1.3s
+ ⠿ Container appex-back-end             Started                                           2.4s
+ ⠿ Container appex-front-end            Started                                           2.3s
+Total reclaimed space: 0B

@@ -1,0 +1,24 @@
+nomad job run -address=http://172.28.128.17:4646 hello-front.nomad
+==> 2022-05-10T07:31:22Z: Monitoring evaluation "9be6e1ec"
+    2022-05-10T07:31:22Z: Evaluation triggered by job "hello-app"
+    2022-05-10T07:31:22Z: Allocation "040da20a" created: node "203ee208", group "hello-front"
+    2022-05-10T07:31:22Z: Allocation "2467221d" created: node "c2276607", group "hello-front"
+==> 2022-05-10T07:31:23Z: Monitoring evaluation "9be6e1ec"
+    2022-05-10T07:31:23Z: Evaluation within deployment: "cc998715"
+    2022-05-10T07:31:23Z: Allocation "040da20a" status changed: "pending" -> "running" (Tasks are running)
+    2022-05-10T07:31:23Z: Allocation "2467221d" status changed: "pending" -> "running" (Tasks are running)
+    2022-05-10T07:31:23Z: Evaluation status changed: "pending" -> "complete"
+==> 2022-05-10T07:31:23Z: Evaluation "9be6e1ec" finished with status "complete"
+==> 2022-05-10T07:31:23Z: Monitoring deployment "cc998715"
+  ✓ Deployment "cc998715" successful
+
+    2022-05-10T07:31:35Z
+    ID          = cc998715
+    Job ID      = hello-app
+    Job Version = 0
+    Status      = successful
+    Description = Deployment completed successfully
+
+    Deployed
+    Task Group   Desired  Placed  Healthy  Unhealthy  Progress Deadline
+    hello-front  2        2       2        0          2022-05-10T07:41:33Z
