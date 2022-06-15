@@ -3,6 +3,8 @@
 <!-- TOC -->
 
 - [Errata](#errata)
+    - [Chapitre 2](#chapitre-2)
+        - [Un exemple : Ansible : (§2.3.2)](#un-exemple--ansible--§232)
     - [Chapitre 5](#chapitre-5)
         - [docker events / docker system events (§5.2.6)](#docker-events--docker-system-events-§526)
     - [Chapitre 7](#chapitre-7)
@@ -11,6 +13,14 @@
             - [Configuration du job dans Jenkins (10.4.3)](#configuration-du-job-dans-jenkins-1043)
 
 <!-- /TOC -->
+
+## Chapitre 2
+
+### Un exemple : Ansible : (§2.3.2)
+
+Page 45, il est mentionné que "toutes les machines de l'inventaire" ne représente dans ce cas qu'un seul hôte au regard de l'exemple précédent. Or l'exemple en question qui se trouve à la page précédente fait état du fichier /etc/ansible/hosts qui contient 5 hosts.
+Il s'agit d'une erreur.
+En effet dans l'exemple "all" représente bien 5 machines et non une seule.
 
 ## Chapitre 5
 
